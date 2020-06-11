@@ -1,0 +1,3 @@
+﻿Module myFunc
+
+End Module
