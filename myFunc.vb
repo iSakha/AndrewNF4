@@ -260,7 +260,7 @@ Module myFunc
 
         Dim index As Integer
         index = _e.RowIndex
-        Console.WriteLine(_e)
+        'Console.WriteLine(_e)
         Dim selectedRow As DataGridViewRow
         selectedRow = _sender.Rows(index)
 
@@ -279,6 +279,10 @@ Module myFunc
             If f.Name = "sumForm" Then
                 sumForm.dgv_sum.ClearSelection()
                 sumForm.dgv_sum.Rows(index).Selected = True
+            End If
+
+            If f.Name = "addForm" Then
+                showData(index)
             End If
         Next f
     End Sub
@@ -314,6 +318,9 @@ Module myFunc
             If f.Name = "sumForm" Then
                 sumForm.dgv_sum.ClearSelection()
                 sumForm.dgv_sum.Rows(index).Selected = True
+            End If
+            If f.Name = "addForm" Then
+                showData(index)
             End If
         Next f
 
@@ -362,6 +369,9 @@ Module myFunc
             If f.Name = "sumForm" Then
                 sumForm.dgv_sum.ClearSelection()
                 sumForm.dgv_sum.Rows(index).Selected = True
+            End If
+            If f.Name = "addForm" Then
+                showData(index)
             End If
         Next f
 
@@ -424,5 +434,72 @@ Module myFunc
         End If
     End Sub
 
+    '===================================================================================
+    '             === block CDUDbuttons ===
+    '===================================================================================
+    Sub blockButtons()
+
+        mainForm.btn_add.Enabled = False
+        mainForm.btn_update.Enabled = False
+        mainForm.btn_delete.Enabled = False
+        mainForm.btn_next.Enabled = False
+        mainForm.btn_prev.Enabled = False
+
+        mainForm.menuItem_department.Enabled = False
+        mainForm.menuItem_company.Enabled = False
+
+        mainForm.btn_save.FlatStyle = FlatStyle.Flat
+        mainForm.btn_cancel.FlatStyle = FlatStyle.Flat
+    End Sub
+    '===================================================================================
+    '             === unblock CDUDbuttons ===
+    '===================================================================================
+    Sub unBlockButtons()
+
+        mainForm.btn_add.Enabled = True
+        mainForm.btn_update.Enabled = True
+        mainForm.btn_delete.Enabled = True
+        mainForm.btn_next.Enabled = True
+        mainForm.btn_prev.Enabled = True
+
+        mainForm.menuItem_department.Enabled = True
+        mainForm.menuItem_company.Enabled = True
+
+        mainForm.btn_save.FlatStyle = FlatStyle.Standard
+        mainForm.btn_cancel.FlatStyle = FlatStyle.Standard
+
+    End Sub
+
+    Sub showData(_index As Integer)
+        Console.WriteLine(_index)
+        Console.WriteLine(mainForm.dts.Tables(0).TableName)
+
+        Dim sRow(4, 7) As String
+
+        sRow = New String(4, 7) {
+            {addForm.fxtName, addForm.fxtQty, addForm.name_belimlight1, addForm.qty_belimlight1, addForm.
+            name_belimlight2, addForm.qty_belimlight2, addForm.name_belimlight3, addForm.qty_belimlight3},
+            {addForm.fxtName, addForm.fxtQty, addForm.name_PRlighting1, addForm.qty_PRlighting1, addForm.
+            name_PRlighting2, addForm.qty_PRlighting2, addForm.name_PRlighting3, addForm.qty_PRlighting3},
+            {addForm.fxtName, addForm.fxtQty, addForm.name_blackout1, addForm.qty_blackout1, addForm.
+            name_blackout2, addForm.qty_blackout2, addForm.name_blackout3, addForm.qty_blackout3},
+            {addForm.fxtName, addForm.fxtQty, addForm.name_vision1, addForm.qty_vision1, addForm.
+            name_vision2, addForm.qty_vision2, addForm.name_vision3, addForm.qty_vision3},
+            {addForm.fxtName, addForm.fxtQty, addForm.name_stage1, addForm.qty_stage1, addForm.
+            name_stage2, addForm.qty_stage2, addForm.name_stage3, addForm.qty_stage3}
+        }
+
+        For i As Integer = 0 To mainForm.dts.Tables.Count - 2
+            For j As Integer = 0 To 7
+                sRow(i, j) = mainForm.dts.Tables(i + 1).Rows(_index).Item(j + 1)
+                addForm.writeIntoTxtbxs(sRow(i, j), i, j)
+            Next j
+        Next i
+
+    End Sub
+
+    Sub updateData()
+
+    End Sub
 
 End Module

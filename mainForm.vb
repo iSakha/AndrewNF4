@@ -425,6 +425,11 @@ Public Class mainForm
 
 #End Region
 
+    '===================================================================================      
+    '                === Up,Down,Select DGV row ===
+    '===================================================================================
+
+#Region "select DGV row"
     Private Sub dgv_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellClick
         dgv_clickCell(sender, e)
         calcQuantity()
@@ -437,6 +442,62 @@ Public Class mainForm
     Private Sub btn_next_Click(sender As Object, e As EventArgs) Handles btn_next.Click
         nextRecord()
         calcQuantity()
+    End Sub
+#End Region
+
+#Region "CRUD buttons"
+    Private Sub btn_add_Click(sender As Object, e As EventArgs) Handles btn_add.Click
+        delta = 1
+        addForm.Show()
+        blockButtons()
+    End Sub
+
+    Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
+        'updateData()
+        addForm.Show()
+
+        'calcQuantity()
+        'format_sumDGV()
+        'delta = 0
+        'blockButtons()
+    End Sub
+
+    Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
+        'deleteRow()
+        delta = -1
+        blockButtons()
+    End Sub
+
+    Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
+        'saveButton(delta)
+        load_db()
+        unBlockButtons()
+
+    End Sub
+    Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click
+        create_dataset(iDepartment, iCompany)
+
+        Dim c As Color
+        Select Case iCompany
+            Case 1
+                c = Color.FromArgb(252, 228, 214)
+            Case 2
+                c = Color.FromArgb(221, 235, 247)
+            Case 3
+                c = Color.FromArgb(237, 237, 237)
+            Case 4
+                c = Color.FromArgb(226, 239, 218)
+            Case 5
+                c = Color.FromArgb(237, 226, 246)
+        End Select
+        dgv.DataSource = dts.Tables(iCompany)
+        format_dgv_dataset(c)
+        unBlockButtons()
+    End Sub
+#End Region
+
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Me.Close()
     End Sub
     '===================================================================================      
     '                === Test button ===

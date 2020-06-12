@@ -93,6 +93,7 @@ Partial Class addForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btn_close_addform = New System.Windows.Forms.Button()
         Me.btn_add_addform = New System.Windows.Forms.Button()
+        Me.btn_save_addform = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txt_qty_stage
@@ -768,7 +769,7 @@ Partial Class addForm
         '
         'btn_close_addform
         '
-        Me.btn_close_addform.Location = New System.Drawing.Point(438, 657)
+        Me.btn_close_addform.Location = New System.Drawing.Point(476, 657)
         Me.btn_close_addform.Name = "btn_close_addform"
         Me.btn_close_addform.Size = New System.Drawing.Size(75, 23)
         Me.btn_close_addform.TabIndex = 402
@@ -777,12 +778,21 @@ Partial Class addForm
         '
         'btn_add_addform
         '
-        Me.btn_add_addform.Location = New System.Drawing.Point(287, 657)
+        Me.btn_add_addform.Location = New System.Drawing.Point(250, 657)
         Me.btn_add_addform.Name = "btn_add_addform"
         Me.btn_add_addform.Size = New System.Drawing.Size(75, 23)
         Me.btn_add_addform.TabIndex = 403
         Me.btn_add_addform.Text = "Add"
         Me.btn_add_addform.UseVisualStyleBackColor = True
+        '
+        'btn_save_addform
+        '
+        Me.btn_save_addform.Location = New System.Drawing.Point(363, 657)
+        Me.btn_save_addform.Name = "btn_save_addform"
+        Me.btn_save_addform.Size = New System.Drawing.Size(75, 23)
+        Me.btn_save_addform.TabIndex = 404
+        Me.btn_save_addform.Text = "Save"
+        Me.btn_save_addform.UseVisualStyleBackColor = True
         '
         'addForm
         '
@@ -790,6 +800,7 @@ Partial Class addForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
         Me.ClientSize = New System.Drawing.Size(800, 706)
+        Me.Controls.Add(Me.btn_save_addform)
         Me.Controls.Add(Me.btn_close_addform)
         Me.Controls.Add(Me.btn_add_addform)
         Me.Controls.Add(Me.txt_qty_stage)
@@ -939,4 +950,5 @@ Partial Class addForm
     Friend WithEvents Label1 As Label
     Friend WithEvents btn_close_addform As Button
     Friend WithEvents btn_add_addform As Button
+    Friend WithEvents btn_save_addform As Button
 End Class

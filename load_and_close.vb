@@ -48,7 +48,7 @@ Module load_and_close
             (mainForm.sDir, Microsoft.VisualBasic.FileIO.SearchOption.SearchAllSubDirectories, "*.omdb")
                         'Console.WriteLine(foundFile)
                         mainForm.filePath.Add(foundFile)
-                        Console.WriteLine(foundFile)
+                        'Console.WriteLine(foundFile)
                         Dim dIndex = StrReverse(foundFile).IndexOf("\")
 
                         Dim name As String
@@ -56,7 +56,7 @@ Module load_and_close
 
                         name = Left(name, Len(name) - 5)
                         mainForm.fileNames.Add(name)
-                        Console.WriteLine(name)
+                        'Console.WriteLine(name)
                         backUpFile = Directory.GetCurrentDirectory() & "\BackUp\" & _folderName & "\" & name & ".ombckp"
                         My.Computer.FileSystem.CopyFile(foundFile, backUpFile)
                     Next
