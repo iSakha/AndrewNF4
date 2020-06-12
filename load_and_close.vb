@@ -69,6 +69,58 @@ Module load_and_close
     End Sub
 
     '===================================================================================
+    '             === Load database ===
+    '===================================================================================
+
+    Sub load_db()
+
+        Dim key As Integer = 0
+
+        mainForm.i_superPivotDict = New Dictionary(Of Integer, Dictionary(Of Integer, Dictionary(Of Integer, ExcelTable)))
+        mainForm.i_pivotTableDict = New Dictionary(Of Integer, Dictionary(Of Integer, ExcelTable))
+        mainForm.i_pivot_wsDict = New Dictionary(Of Integer, Dictionary(Of Integer, ExcelWorksheet))
+
+        For Each fPath As String In mainForm.filePath
+
+            '   Create collection of Excel files workSheets
+
+            Dim ws As ExcelWorksheet
+            Dim excelFile = New FileInfo(fPath)
+            'Console.WriteLine(mainForm.sFilePath)
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+            Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
+
+            key = key + 1
+
+            mainForm.i_wsDict = New Dictionary(Of Integer, ExcelWorksheet)
+
+            For i As Integer = 0 To Excel.Workbook.Worksheets.Count - 1
+
+                mainForm.i_xlTableDict = New Dictionary(Of Integer, ExcelTable)
+
+                ws = Excel.Workbook.Worksheets(i)
+
+                mainForm.i_wsDict.Add(i, ws)
+
+                Dim k As Integer = 0
+                For Each tbl As ExcelTable In ws.Tables
+
+                    mainForm.i_xlTableDict.Add(k, tbl)
+                    k = k + 1
+                Next tbl
+
+                mainForm.i_pivotTableDict.Add(i, mainForm.i_xlTableDict)
+            Next i
+
+            mainForm.i_pivot_wsDict.Add(key - 1, mainForm.i_wsDict)
+            mainForm.i_superPivotDict.Add(key - 1, mainForm.i_pivotTableDict)
+            mainForm.i_pivotTableDict = New Dictionary(Of Integer, Dictionary(Of Integer, ExcelTable))
+
+        Next fPath
+
+    End Sub
+
+    '===================================================================================
     '             === My Functions ===
     '===================================================================================
 
