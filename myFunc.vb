@@ -471,8 +471,8 @@ Module myFunc
     End Sub
 
     Sub showData(_index As Integer)
-        Console.WriteLine(_index)
-        Console.WriteLine(mainForm.dts.Tables(0).TableName)
+        'Console.WriteLine(_index)
+        'Console.WriteLine(mainForm.dts.Tables(0).TableName)
 
         Dim sRow(4, 7) As String
 
@@ -499,7 +499,7 @@ Module myFunc
     End Sub
 
     Sub updateData()
-
+        mainForm.dgv.DataSource = mainForm.dts
     End Sub
 
 End Module

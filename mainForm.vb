@@ -449,13 +449,17 @@ Public Class mainForm
     Private Sub btn_add_Click(sender As Object, e As EventArgs) Handles btn_add.Click
         delta = 1
         addForm.Show()
+        addForm.btn_add_addform.Visible = True
+        addForm.btn_update_addform.Visible = False
         blockButtons()
     End Sub
 
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
         'updateData()
         addForm.Show()
-
+        addForm.btn_add_addform.Visible = False
+        addForm.btn_update_addform.Visible = True
+        showData(0)
         'calcQuantity()
         'format_sumDGV()
         'delta = 0
@@ -476,7 +480,7 @@ Public Class mainForm
     End Sub
     Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click
         create_dataset(iDepartment, iCompany)
-
+        showData(0)
         Dim c As Color
         Select Case iCompany
             Case 1

@@ -1,7 +1,7 @@
 ﻿Public Class addForm
 
     Public fxtName As String
-    Public fxtQty As String
+    Public fxtQty As Integer
 
     Public qty_belimlight1, qty_belimlight2, qty_belimlight3 As Integer
     Public qty_belimlight As Integer
@@ -35,8 +35,9 @@
             txt_stage2_addform, txt_qty_stage2_addform, txt_stage3_addform, txt_qty_stage3_addform}
         }
 
-
-
+    End Sub
+    Private Sub btn_update_addform_Click(sender As Object, e As EventArgs) Handles btn_update_addform.Click
+        writeInto_dts()
     End Sub
 
     Private Sub btn_close_addform_Click(sender As Object, e As EventArgs) Handles btn_close_addform.Click
@@ -89,7 +90,13 @@
 
     End Sub
 
+    '===================================================================================
+    '             === UPDATE data in DB ===
+    '===================================================================================
     Sub writeInto_dts()
+
+        fxtQty = Integer.Parse(txt_qty_addform.Text)
+
         qty_belimlight1 = Integer.Parse(txt_qty_belimlight1_addform.Text)
         qty_belimlight2 = Integer.Parse(txt_qty_belimlight2_addform.Text)
         qty_belimlight3 = Integer.Parse(txt_qty_belimlight3_addform.Text)
@@ -151,8 +158,9 @@
 
         Dim sRow(4, 7) As String
         Dim row As DataRow
-        Dim dt As DataTable
-
+        'Dim dt As DataTable
+        Dim index As Integer = mainForm.dgv.CurrentRow.Index
+        'Console.WriteLine(index)
         sRow = New String(4, 7) {
             {fxtName, fxtQty, name_belimlight1, qty_belimlight1, name_belimlight2, qty_belimlight2, name_belimlight3, qty_belimlight3},
             {fxtName, fxtQty, name_PRlighting1, qty_PRlighting1, name_PRlighting2, qty_PRlighting2, name_PRlighting3, qty_PRlighting3},
@@ -161,6 +169,34 @@
             {fxtName, fxtQty, name_stage1, qty_stage1, name_stage2, qty_stage2, name_stage3, qty_stage3}
         }
 
+        For i As Integer = 0 To mainForm.dts.Tables.Count - 2
+            row = mainForm.dts.Tables(i + 1).Rows(index)
+            For j As Integer = 0 To 7
+                mainForm.dts.Tables(i + 1).Rows(index).Item(j + 1) = sRow(i, j)
+            Next j
+        Next i
 
+        mainForm.dts.Tables(0).Rows(index).Item(mainForm.iCompany + 2) = fxtQty
+
+        'mainForm.dts.Tables(0).Rows(index).Item(3) = qty_belimlight
+        'mainForm.dts.Tables(0).Rows(index).Item(4) = qty_PRlighting
+        'mainForm.dts.Tables(0).Rows(index).Item(5) = qty_blackout
+        'mainForm.dts.Tables(0).Rows(index).Item(6) = qty_vision
+        'mainForm.dts.Tables(0).Rows(index).Item(7) = qty_stage
+        'Dim result As Integer
+        'result = fxtQty - (qty_belimlight + qty_PRlighting + qty_blackout + qty_vision + qty_stage)
+        mainForm.dts.AcceptChanges()
+        mainForm.dgv.DataSource = mainForm.dts.Tables(mainForm.iCompany)
+        calcQuantity()
+        sumForm.dgv_sum.DataSource = mainForm.dts.Tables(0)
+        format_sumDGV()
+        blockButtons()
     End Sub
+    Private Sub btn_next_Click(sender As Object, e As EventArgs) Handles btn_next.Click
+        mainForm.btn_next.PerformClick()
+    End Sub
+    Private Sub btn_prev_Click(sender As Object, e As EventArgs) Handles btn_prev.Click
+        mainForm.btn_prev.PerformClick()
+    End Sub
+
 End Class

@@ -22,6 +22,7 @@ Partial Class addForm
     'Не изменяйте ее в редакторе исходного кода.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(addForm))
         Me.txt_qty_stage = New System.Windows.Forms.TextBox()
         Me.txt_qty_vision = New System.Windows.Forms.TextBox()
         Me.txt_qty_blackout = New System.Windows.Forms.TextBox()
@@ -93,7 +94,9 @@ Partial Class addForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btn_close_addform = New System.Windows.Forms.Button()
         Me.btn_add_addform = New System.Windows.Forms.Button()
-        Me.btn_save_addform = New System.Windows.Forms.Button()
+        Me.btn_update_addform = New System.Windows.Forms.Button()
+        Me.btn_next = New System.Windows.Forms.Button()
+        Me.btn_prev = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txt_qty_stage
@@ -785,14 +788,32 @@ Partial Class addForm
         Me.btn_add_addform.Text = "Add"
         Me.btn_add_addform.UseVisualStyleBackColor = True
         '
-        'btn_save_addform
+        'btn_update_addform
         '
-        Me.btn_save_addform.Location = New System.Drawing.Point(363, 657)
-        Me.btn_save_addform.Name = "btn_save_addform"
-        Me.btn_save_addform.Size = New System.Drawing.Size(75, 23)
-        Me.btn_save_addform.TabIndex = 404
-        Me.btn_save_addform.Text = "Save"
-        Me.btn_save_addform.UseVisualStyleBackColor = True
+        Me.btn_update_addform.Location = New System.Drawing.Point(363, 657)
+        Me.btn_update_addform.Name = "btn_update_addform"
+        Me.btn_update_addform.Size = New System.Drawing.Size(75, 23)
+        Me.btn_update_addform.TabIndex = 404
+        Me.btn_update_addform.Text = "Update"
+        Me.btn_update_addform.UseVisualStyleBackColor = True
+        '
+        'btn_next
+        '
+        Me.btn_next.Image = CType(resources.GetObject("btn_next.Image"), System.Drawing.Image)
+        Me.btn_next.Location = New System.Drawing.Point(609, 657)
+        Me.btn_next.Name = "btn_next"
+        Me.btn_next.Size = New System.Drawing.Size(55, 23)
+        Me.btn_next.TabIndex = 405
+        Me.btn_next.UseVisualStyleBackColor = True
+        '
+        'btn_prev
+        '
+        Me.btn_prev.Image = CType(resources.GetObject("btn_prev.Image"), System.Drawing.Image)
+        Me.btn_prev.Location = New System.Drawing.Point(609, 631)
+        Me.btn_prev.Name = "btn_prev"
+        Me.btn_prev.Size = New System.Drawing.Size(55, 23)
+        Me.btn_prev.TabIndex = 406
+        Me.btn_prev.UseVisualStyleBackColor = True
         '
         'addForm
         '
@@ -800,7 +821,9 @@ Partial Class addForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
         Me.ClientSize = New System.Drawing.Size(800, 706)
-        Me.Controls.Add(Me.btn_save_addform)
+        Me.Controls.Add(Me.btn_next)
+        Me.Controls.Add(Me.btn_prev)
+        Me.Controls.Add(Me.btn_update_addform)
         Me.Controls.Add(Me.btn_close_addform)
         Me.Controls.Add(Me.btn_add_addform)
         Me.Controls.Add(Me.txt_qty_stage)
@@ -950,5 +973,7 @@ Partial Class addForm
     Friend WithEvents Label1 As Label
     Friend WithEvents btn_close_addform As Button
     Friend WithEvents btn_add_addform As Button
-    Friend WithEvents btn_save_addform As Button
+    Friend WithEvents btn_update_addform As Button
+    Friend WithEvents btn_next As Button
+    Friend WithEvents btn_prev As Button
 End Class
