@@ -10,8 +10,8 @@ C:\Users\123\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\D
 C:\Users\123\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.exe
 C:\Users\123\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.xml
 C:\Users\123\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.pdb
-C:\Users\123\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.addForm.resources
 C:\Users\123\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.exportExcel.resources
 C:\Users\123\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.mainForm.resources
 C:\Users\123\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.sumForm.resources
 C:\Users\123\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\bin\Debug\NF4.exe.config
+C:\Users\123\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.editForm.resources

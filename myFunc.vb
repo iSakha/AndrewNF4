@@ -167,7 +167,11 @@ Module myFunc
     '                === Format DataGridView ===
     '===================================================================================
 #Region "Format DGV"
-    Sub format_dgv_dataset(_color As Color)
+    Sub format_dgv_dataset()
+
+        Dim c() As Color = {Color.FromArgb(252, 228, 214), Color.FromArgb(221, 235, 247), Color.FromArgb(237, 237, 237),
+            Color.FromArgb(226, 239, 218), Color.FromArgb(237, 226, 246)}
+
 
         mainForm.dgv.Columns(0).Width = 40                ' #
         mainForm.dgv.Columns(1).Width = 175               ' Fixture
@@ -186,10 +190,12 @@ Module myFunc
         For i = 0 To mainForm.dgv.Rows.Count - 2
 
             'mainForm.DGV_in.Rows(i).Cells(1).Value = Date.FromOADate(mainForm.DGV_in.Rows(i).Cells(1).Value)
-            mainForm.dgv.RowsDefaultCellStyle.BackColor = _color
+            mainForm.dgv.RowsDefaultCellStyle.BackColor = c(mainForm.iCompany - 1)
             mainForm.dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(250, 250, 250)
 
         Next i
+
+
 
     End Sub
 
@@ -252,7 +258,22 @@ Module myFunc
 
     End Sub
 #End Region
+    '===================================================================================
+    '             === Select company function  ===
+    '===================================================================================
+    Sub companyFunction()
+        create_dataset(mainForm.iDepartment, mainForm.iCategory)
 
+        mainForm.dgv.DataSource = mainForm.dts.Tables(mainForm.iCompany)
+        format_dgv_dataset()
+
+        '   Check is form running
+        If mainForm.sumFormFlag Then
+            sumForm.dgv_sum.DataSource = mainForm.dts.Tables(0)
+            format_sumDGV()
+        End If
+        mainForm.item_summary.Enabled = True
+    End Sub
     '===================================================================================
     '             === CellClick on DGV ===
     '===================================================================================
@@ -260,6 +281,7 @@ Module myFunc
 
         Dim index As Integer
         index = _e.RowIndex
+        mainForm.selIndex = index
         'Console.WriteLine(_e)
         Dim selectedRow As DataGridViewRow
         selectedRow = _sender.Rows(index)
@@ -275,16 +297,13 @@ Module myFunc
 
         mainForm.dgv.Rows(index).Selected = True
         '   Check is form running
-        For Each f As Form In Application.OpenForms
-            If f.Name = "sumForm" Then
-                sumForm.dgv_sum.ClearSelection()
-                sumForm.dgv_sum.Rows(index).Selected = True
-            End If
-
-            If f.Name = "addForm" Then
-                showData(index)
-            End If
-        Next f
+        If mainForm.sumFormFlag Then
+            sumForm.dgv_sum.ClearSelection()
+            sumForm.dgv_sum.Rows(index).Selected = True
+        End If
+        If mainForm.editFormFlag Then
+            showData(index)
+        End If
     End Sub
 #Region "next/prev buttons"
     '===================================================================================
@@ -297,7 +316,7 @@ Module myFunc
 
 
         index = mainForm.dgv.CurrentRow.Index
-
+        mainForm.selIndex = index
         mainForm.dgv.ClearSelection()
 
         mainForm.dgv.CurrentCell = mainForm.dgv.Item(0, index)
@@ -314,15 +333,13 @@ Module myFunc
         mainForm.dgv.CurrentCell = mainForm.dgv.Item(0, index)
         mainForm.dgv.Rows(index).Selected = True
         '   Check is form running
-        For Each f As Form In Application.OpenForms
-            If f.Name = "sumForm" Then
-                sumForm.dgv_sum.ClearSelection()
-                sumForm.dgv_sum.Rows(index).Selected = True
-            End If
-            If f.Name = "addForm" Then
-                showData(index)
-            End If
-        Next f
+        If mainForm.sumFormFlag Then
+            sumForm.dgv_sum.ClearSelection()
+            sumForm.dgv_sum.Rows(index).Selected = True
+        End If
+        If mainForm.editFormFlag Then
+            showData(index)
+        End If
 
         selectedRow = mainForm.dgv.Rows(index)
 
@@ -348,7 +365,7 @@ Module myFunc
         Dim selectedRow As DataGridViewRow
 
         index = mainForm.dgv.CurrentRow.Index
-
+        mainForm.selIndex = index
         mainForm.dgv.ClearSelection()
 
 
@@ -365,15 +382,15 @@ Module myFunc
         mainForm.dgv.CurrentCell = mainForm.dgv.Item(0, index)
         mainForm.dgv.Rows(index).Selected = True
         '   Check is form running
-        For Each f As Form In Application.OpenForms
-            If f.Name = "sumForm" Then
-                sumForm.dgv_sum.ClearSelection()
-                sumForm.dgv_sum.Rows(index).Selected = True
-            End If
-            If f.Name = "addForm" Then
-                showData(index)
-            End If
-        Next f
+
+        If mainForm.sumFormFlag Then
+            sumForm.dgv_sum.ClearSelection()
+            sumForm.dgv_sum.Rows(index).Selected = True
+        End If
+        If mainForm.editFormFlag Then
+            showData(index)
+        End If
+
 
         selectedRow = mainForm.dgv.Rows(index)
 
@@ -394,29 +411,22 @@ Module myFunc
     '===================================================================================
     Sub calcQuantity()
 
-        Dim index As Integer
-        Dim i, j, qty, sum As Integer
-        ' Dim smetaQty, companiesQty As Integer
-
-        'i = mainForm.iCategory + 1
-
-        index = mainForm.dgv.CurrentRow.Index
+        Dim j, qty, sum As Integer
 
         For j = 1 To mainForm.dts.Tables.Count - 1
             sum = 0
-            qty = mainForm.dts.Tables(j).Rows(index).Item(4)
+            qty = mainForm.dts.Tables(j).Rows(mainForm.selIndex).Item(4)
             sum = sum + qty
-            qty = mainForm.dts.Tables(j).Rows(index).Item(6)
+            qty = mainForm.dts.Tables(j).Rows(mainForm.selIndex).Item(6)
             sum = sum + qty
-            qty = mainForm.dts.Tables(j).Rows(index).Item(8)
+            qty = mainForm.dts.Tables(j).Rows(mainForm.selIndex).Item(8)
             sum = sum + qty
 
             mainForm.dgv_result.Rows(0).Cells(j).Value = sum
-
-
+            editForm.dgv_result.Rows(0).Cells(j).Value = sum
         Next j
 
-        Dim smetaQty As Integer = mainForm.dts.Tables(0).Rows(index).Item(2)
+        Dim smetaQty As Integer = mainForm.dts.Tables(0).Rows(mainForm.selIndex).Item(2)
 
         Dim companiesQty As Integer = mainForm.dgv_result.Rows(0).Cells(1).Value +
         mainForm.dgv_result.Rows(0).Cells(2).Value +
@@ -425,12 +435,16 @@ Module myFunc
         mainForm.dgv_result.Rows(0).Cells(5).Value
 
         mainForm.dgv_result.Rows(0).Cells(0).Value = smetaQty
+        editForm.dgv_result.Rows(0).Cells(0).Value = smetaQty
         mainForm.dgv_result.Rows(0).Cells(6).Value = smetaQty - companiesQty
+        editForm.dgv_result.Rows(0).Cells(6).Value = smetaQty - companiesQty
 
         If (smetaQty - companiesQty = 0) Then
             mainForm.dgv_result.Item(6, 0).Style.BackColor = Color.LightGreen
+            editForm.dgv_result.Item(6, 0).Style.BackColor = Color.LightGreen
         Else
             mainForm.dgv_result.Item(6, 0).Style.BackColor = Color.LightPink
+            editForm.dgv_result.Item(6, 0).Style.BackColor = Color.LightPink
         End If
     End Sub
 
@@ -470,29 +484,29 @@ Module myFunc
 
     End Sub
 
-    Sub showData(_index As Integer)
+    Sub showData(_index)
         'Console.WriteLine(_index)
         'Console.WriteLine(mainForm.dts.Tables(0).TableName)
 
         Dim sRow(4, 7) As String
 
         sRow = New String(4, 7) {
-            {addForm.fxtName, addForm.fxtQty, addForm.name_belimlight1, addForm.qty_belimlight1, addForm.
-            name_belimlight2, addForm.qty_belimlight2, addForm.name_belimlight3, addForm.qty_belimlight3},
-            {addForm.fxtName, addForm.fxtQty, addForm.name_PRlighting1, addForm.qty_PRlighting1, addForm.
-            name_PRlighting2, addForm.qty_PRlighting2, addForm.name_PRlighting3, addForm.qty_PRlighting3},
-            {addForm.fxtName, addForm.fxtQty, addForm.name_blackout1, addForm.qty_blackout1, addForm.
-            name_blackout2, addForm.qty_blackout2, addForm.name_blackout3, addForm.qty_blackout3},
-            {addForm.fxtName, addForm.fxtQty, addForm.name_vision1, addForm.qty_vision1, addForm.
-            name_vision2, addForm.qty_vision2, addForm.name_vision3, addForm.qty_vision3},
-            {addForm.fxtName, addForm.fxtQty, addForm.name_stage1, addForm.qty_stage1, addForm.
-            name_stage2, addForm.qty_stage2, addForm.name_stage3, addForm.qty_stage3}
+            {editForm.fxtName, editForm.fxtQty, editForm.name_belimlight1, editForm.qty_belimlight1, editForm.
+            name_belimlight2, editForm.qty_belimlight2, editForm.name_belimlight3, editForm.qty_belimlight3},
+            {editForm.fxtName, editForm.fxtQty, editForm.name_PRlighting1, editForm.qty_PRlighting1, editForm.
+            name_PRlighting2, editForm.qty_PRlighting2, editForm.name_PRlighting3, editForm.qty_PRlighting3},
+            {editForm.fxtName, editForm.fxtQty, editForm.name_blackout1, editForm.qty_blackout1, editForm.
+            name_blackout2, editForm.qty_blackout2, editForm.name_blackout3, editForm.qty_blackout3},
+            {editForm.fxtName, editForm.fxtQty, editForm.name_vision1, editForm.qty_vision1, editForm.
+            name_vision2, editForm.qty_vision2, editForm.name_vision3, editForm.qty_vision3},
+            {editForm.fxtName, editForm.fxtQty, editForm.name_stage1, editForm.qty_stage1, editForm.
+            name_stage2, editForm.qty_stage2, editForm.name_stage3, editForm.qty_stage3}
         }
 
         For i As Integer = 0 To mainForm.dts.Tables.Count - 2
             For j As Integer = 0 To 7
                 sRow(i, j) = mainForm.dts.Tables(i + 1).Rows(_index).Item(j + 1)
-                addForm.writeIntoTxtbxs(sRow(i, j), i, j)
+                editForm.writeIntoTxtbxs(sRow(i, j), i, j)
             Next j
         Next i
 

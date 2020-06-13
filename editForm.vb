@@ -1,4 +1,4 @@
-﻿Public Class addForm
+﻿Public Class editForm
 
     Public fxtName As String
     Public fxtQty As Integer
@@ -178,18 +178,20 @@
 
         mainForm.dts.Tables(0).Rows(index).Item(mainForm.iCompany + 2) = fxtQty
 
-        'mainForm.dts.Tables(0).Rows(index).Item(3) = qty_belimlight
-        'mainForm.dts.Tables(0).Rows(index).Item(4) = qty_PRlighting
-        'mainForm.dts.Tables(0).Rows(index).Item(5) = qty_blackout
-        'mainForm.dts.Tables(0).Rows(index).Item(6) = qty_vision
-        'mainForm.dts.Tables(0).Rows(index).Item(7) = qty_stage
-        'Dim result As Integer
-        'result = fxtQty - (qty_belimlight + qty_PRlighting + qty_blackout + qty_vision + qty_stage)
+        mainForm.dts.Tables(0).Rows(index).Item(3) = qty_belimlight
+        mainForm.dts.Tables(0).Rows(index).Item(4) = qty_PRlighting
+        mainForm.dts.Tables(0).Rows(index).Item(5) = qty_blackout
+        mainForm.dts.Tables(0).Rows(index).Item(6) = qty_vision
+        mainForm.dts.Tables(0).Rows(index).Item(7) = qty_stage
+        Dim result As Integer
+        result = fxtQty - (qty_belimlight + qty_PRlighting + qty_blackout + qty_vision + qty_stage)
+        mainForm.dts.Tables(0).Rows(index).Item(11) = result
         mainForm.dts.AcceptChanges()
         mainForm.dgv.DataSource = mainForm.dts.Tables(mainForm.iCompany)
-        calcQuantity()
+
         sumForm.dgv_sum.DataSource = mainForm.dts.Tables(0)
         format_sumDGV()
+        calcQuantity()
         blockButtons()
     End Sub
     Private Sub btn_next_Click(sender As Object, e As EventArgs) Handles btn_next.Click
@@ -198,5 +200,7 @@
     Private Sub btn_prev_Click(sender As Object, e As EventArgs) Handles btn_prev.Click
         mainForm.btn_prev.PerformClick()
     End Sub
-
+    Private Sub editForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        mainForm.editFormFlag = False
+    End Sub
 End Class

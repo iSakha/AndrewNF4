@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class addForm
+Partial Class editForm
     Inherits System.Windows.Forms.Form
 
     'Форма переопределяет dispose для очистки списка компонентов.
@@ -22,7 +22,14 @@ Partial Class addForm
     'Не изменяйте ее в редакторе исходного кода.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(addForm))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(editForm))
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txt_qty_stage = New System.Windows.Forms.TextBox()
         Me.txt_qty_vision = New System.Windows.Forms.TextBox()
         Me.txt_qty_blackout = New System.Windows.Forms.TextBox()
@@ -97,6 +104,15 @@ Partial Class addForm
         Me.btn_update_addform = New System.Windows.Forms.Button()
         Me.btn_next = New System.Windows.Forms.Button()
         Me.btn_prev = New System.Windows.Forms.Button()
+        Me.dgv_result = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.dgv_result, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txt_qty_stage
@@ -815,7 +831,76 @@ Partial Class addForm
         Me.btn_prev.TabIndex = 406
         Me.btn_prev.UseVisualStyleBackColor = True
         '
-        'addForm
+        'dgv_result
+        '
+        Me.dgv_result.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgv_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv_result.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7})
+        Me.dgv_result.Location = New System.Drawing.Point(12, 576)
+        Me.dgv_result.Name = "dgv_result"
+        Me.dgv_result.ReadOnly = True
+        Me.dgv_result.Size = New System.Drawing.Size(743, 49)
+        Me.dgv_result.TabIndex = 0
+        '
+        'Column1
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle8
+        Me.Column1.HeaderText = "Смета"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(228, Byte), Integer), CType(CType(214, Byte), Integer))
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle9
+        Me.Column2.HeaderText = "Belimlight"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle10
+        Me.Column3.HeaderText = "PRLighting"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column4
+        '
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(237, Byte), Integer), CType(CType(237, Byte), Integer), CType(CType(237, Byte), Integer))
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle11
+        Me.Column4.HeaderText = "Blackout"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        '
+        'Column5
+        '
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(218, Byte), Integer))
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle12
+        Me.Column5.HeaderText = "Multivision"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'Column6
+        '
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(237, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(246, Byte), Integer))
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle13
+        Me.Column6.HeaderText = "Stage"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
+        'Column7
+        '
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle14
+        Me.Column7.HeaderText = "Итого"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        '
+        'editForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -827,6 +912,7 @@ Partial Class addForm
         Me.Controls.Add(Me.btn_close_addform)
         Me.Controls.Add(Me.btn_add_addform)
         Me.Controls.Add(Me.txt_qty_stage)
+        Me.Controls.Add(Me.dgv_result)
         Me.Controls.Add(Me.txt_qty_vision)
         Me.Controls.Add(Me.txt_qty_blackout)
         Me.Controls.Add(Me.txt_qty_PRlighting)
@@ -895,8 +981,9 @@ Partial Class addForm
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txt_name_addform)
         Me.Controls.Add(Me.Label1)
-        Me.Name = "addForm"
+        Me.Name = "editForm"
         Me.Text = "addForm"
+        CType(Me.dgv_result, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -976,4 +1063,12 @@ Partial Class addForm
     Friend WithEvents btn_update_addform As Button
     Friend WithEvents btn_next As Button
     Friend WithEvents btn_prev As Button
+    Friend WithEvents dgv_result As DataGridView
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column7 As DataGridViewTextBoxColumn
 End Class

@@ -26,6 +26,7 @@ Public Class mainForm
     Public iDepartment, iCategory, iCompany As Integer
 
     Public dts As DataSet
+    Public selIndex As Integer      ' Selercted index
 
     Public sCompany() As String = {"belimlight", "PRLighting", "blackout", "vision", "stage"}
 
@@ -33,9 +34,10 @@ Public Class mainForm
 
     Public exportDir As String
 
-
-
     Public cancelFlag As Boolean = False
+    Public sumFormFlag As Boolean = False
+    Public editFormFlag As Boolean = False
+
     '===================================================================================
     '             === mainForm_Load ===
     '===================================================================================
@@ -327,94 +329,38 @@ Public Class mainForm
 
 #Region "select Company"
     Private Sub item_belimlight_Click(sender As Object, e As EventArgs) Handles item_belimlight.Click
-
         iCompany = 1
-        create_dataset(iDepartment, iCategory)
         writeToLabelCompany(sender)
-        Dim c As Color = Color.FromArgb(252, 228, 214)
-        dgv.DataSource = dts.Tables(iCompany)
-        format_dgv_dataset(c)
-        '   Check is form running
-        For Each f As Form In Application.OpenForms
-            If f.Name = "sumForm" Then
-                sumForm.dgv_sum.DataSource = dts.Tables(0)
-                format_sumDGV()
-            End If
-        Next f
-        item_summary.Enabled = True
+        companyFunction()
     End Sub
 
     Private Sub item_PRLighting_Click(sender As Object, e As EventArgs) Handles item_PRLighting.Click
         iCompany = 2
-        create_dataset(iDepartment, iCategory)
         writeToLabelCompany(sender)
-        Dim c As Color = Color.FromArgb(221, 235, 247)
-        dgv.DataSource = dts.Tables(iCompany)
-        format_dgv_dataset(c)
-        '   Check is form running
-        For Each f As Form In Application.OpenForms
-            If f.Name = "sumForm" Then
-                sumForm.dgv_sum.DataSource = dts.Tables(0)
-                format_sumDGV()
-            End If
-        Next f
-        item_summary.Enabled = True
+        companyFunction()
     End Sub
 
     Private Sub item_blackout_Click(sender As Object, e As EventArgs) Handles item_blackout.Click
         iCompany = 3
-        create_dataset(iDepartment, iCategory)
         writeToLabelCompany(sender)
-        Dim c As Color = Color.FromArgb(237, 237, 237)
-        dgv.DataSource = dts.Tables(iCompany)
-        format_dgv_dataset(c)
-        '   Check is form running
-        For Each f As Form In Application.OpenForms
-            If f.Name = "sumForm" Then
-                sumForm.dgv_sum.DataSource = dts.Tables(0)
-                format_sumDGV()
-            End If
-        Next f
-        item_summary.Enabled = True
+        companyFunction()
     End Sub
 
     Private Sub item_vision_Click(sender As Object, e As EventArgs) Handles item_vision.Click
         iCompany = 4
-        create_dataset(iDepartment, iCategory)
         writeToLabelCompany(sender)
-        Dim c As Color = Color.FromArgb(226, 239, 218)
-        dgv.DataSource = dts.Tables(iCompany)
-        format_dgv_dataset(c)
-        '   Check is form running
-        For Each f As Form In Application.OpenForms
-            If f.Name = "sumForm" Then
-                sumForm.dgv_sum.DataSource = dts.Tables(0)
-                format_sumDGV()
-            End If
-        Next f
-        item_summary.Enabled = True
+        companyFunction()
     End Sub
 
     Private Sub item_stage_Click(sender As Object, e As EventArgs) Handles item_stage.Click
         iCompany = 5
-        create_dataset(iDepartment, iCategory)
         writeToLabelCompany(sender)
-        Dim c As Color = Color.FromArgb(237, 226, 246)
-        dgv.DataSource = dts.Tables(iCompany)
-        format_dgv_dataset(c)
-        '   Check is form running
-        For Each f As Form In Application.OpenForms
-            If f.Name = "sumForm" Then
-                sumForm.dgv_sum.DataSource = dts.Tables(0)
-                format_sumDGV()
-            End If
-        Next f
-        item_summary.Enabled = True
+        companyFunction()
     End Sub
     Private Sub item_summary_Click(sender As Object, e As EventArgs) Handles item_summary.Click
 
         sumForm.Show()
-
+        sumFormFlag = True
         sumForm.dgv_sum.DataSource = dts.Tables(0)
         sumForm.dgv_sum.Columns(8).Visible = False
         sumForm.dgv_sum.Columns(9).Visible = False
@@ -448,22 +394,20 @@ Public Class mainForm
 #Region "CRUD buttons"
     Private Sub btn_add_Click(sender As Object, e As EventArgs) Handles btn_add.Click
         delta = 1
-        addForm.Show()
-        addForm.btn_add_addform.Visible = True
-        addForm.btn_update_addform.Visible = False
+        editForm.Show()
+        editForm.btn_add_addform.Visible = True
+        editForm.btn_update_addform.Visible = False
         blockButtons()
     End Sub
 
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
-        'updateData()
-        addForm.Show()
-        addForm.btn_add_addform.Visible = False
-        addForm.btn_update_addform.Visible = True
-        showData(0)
-        'calcQuantity()
-        'format_sumDGV()
-        'delta = 0
-        'blockButtons()
+
+        editForm.Show()
+        editFormFlag = True
+        editForm.btn_add_addform.Visible = False
+        editForm.btn_update_addform.Visible = True
+        showData(selIndex)
+
     End Sub
 
     Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
@@ -479,8 +423,11 @@ Public Class mainForm
 
     End Sub
     Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click
-        create_dataset(iDepartment, iCompany)
-        showData(0)
+        companyFunction()
+        calcQuantity()
+        If editFormFlag Then
+            showData(0)
+        End If
         Dim c As Color
         Select Case iCompany
             Case 1
@@ -495,7 +442,9 @@ Public Class mainForm
                 c = Color.FromArgb(237, 226, 246)
         End Select
         dgv.DataSource = dts.Tables(iCompany)
-        format_dgv_dataset(c)
+
+        sumForm.dgv_sum.DataSource = dts.Tables(0)
+        format_sumDGV()
         unBlockButtons()
     End Sub
 #End Region

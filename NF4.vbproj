@@ -76,10 +76,10 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addForm.Designer.vb">
-      <DependentUpon>addForm.vb</DependentUpon>
+    <Compile Include="editForm.Designer.vb">
+      <DependentUpon>editForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="addForm.vb">
+    <Compile Include="editForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="exportExcel.Designer.vb">
@@ -120,8 +120,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="addForm.resx">
-      <DependentUpon>addForm.vb</DependentUpon>
+    <EmbeddedResource Include="editForm.resx">
+      <DependentUpon>editForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="exportExcel.resx">
       <DependentUpon>exportExcel.vb</DependentUpon>
