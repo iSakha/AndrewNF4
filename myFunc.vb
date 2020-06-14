@@ -411,22 +411,26 @@ Module myFunc
     '===================================================================================
     Sub calcQuantity()
 
+        Dim index As Integer
         Dim j, qty, sum As Integer
+
+        index = mainForm.dgv.CurrentRow.Index
+        mainForm.selIndex = index
 
         For j = 1 To mainForm.dts.Tables.Count - 1
             sum = 0
-            qty = mainForm.dts.Tables(j).Rows(mainForm.selIndex).Item(4)
+            qty = mainForm.dts.Tables(j).Rows(index).Item(4)
             sum = sum + qty
-            qty = mainForm.dts.Tables(j).Rows(mainForm.selIndex).Item(6)
+            qty = mainForm.dts.Tables(j).Rows(index).Item(6)
             sum = sum + qty
-            qty = mainForm.dts.Tables(j).Rows(mainForm.selIndex).Item(8)
+            qty = mainForm.dts.Tables(j).Rows(index).Item(8)
             sum = sum + qty
 
             mainForm.dgv_result.Rows(0).Cells(j).Value = sum
             editForm.dgv_result.Rows(0).Cells(j).Value = sum
         Next j
 
-        Dim smetaQty As Integer = mainForm.dts.Tables(0).Rows(mainForm.selIndex).Item(2)
+        Dim smetaQty As Integer = mainForm.dts.Tables(0).Rows(index).Item(2)
 
         Dim companiesQty As Integer = mainForm.dgv_result.Rows(0).Cells(1).Value +
         mainForm.dgv_result.Rows(0).Cells(2).Value +
@@ -446,6 +450,92 @@ Module myFunc
             mainForm.dgv_result.Item(6, 0).Style.BackColor = Color.LightPink
             editForm.dgv_result.Item(6, 0).Style.BackColor = Color.LightPink
         End If
+    End Sub
+    '===================================================================================
+    '             === SAVE data to DB ===
+    '===================================================================================
+
+    Sub saveButton(_delta As Integer)
+
+        Dim oldAddr As OfficeOpenXml.ExcelAddressBase
+        Dim newAddr As OfficeOpenXml.ExcelAddressBase
+
+        Dim dt As DataTable
+        Dim ws As ExcelWorksheet
+
+        Dim xlTable As ExcelTable
+        Dim startCellAddress As String
+
+        Dim excelFile = New FileInfo(mainForm.filePath(mainForm.iDepartment + 1))
+
+        Console.WriteLine(mainForm.filePath(mainForm.iDepartment + 1))
+
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+        Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
+
+        Console.WriteLine(mainForm.iCategory)
+
+        ws = Excel.Workbook.Worksheets(mainForm.iCategory)
+
+        Console.WriteLine(ws.Name)
+        Select Case _delta
+            Case 0
+                '   Write to Exceltable
+                dt = mainForm.dts.Tables(mainForm.iCompany)
+
+                xlTable = ws.Tables(mainForm.iCompany)
+                startCellAddress = xlTable.Range.Start.Address
+
+                xlTable.Range.Clear()
+                ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
+
+                '   Write to pivot Exceltable
+                dt = mainForm.dts.Tables(0)
+
+                xlTable = ws.Tables(0)
+                startCellAddress = xlTable.Range.Start.Address
+
+                xlTable.Range.Clear()
+                ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
+
+            Case <> 0
+                For i As Integer = 1 To mainForm.sCompany.Count
+
+                    dt = mainForm.dts.Tables(i)
+
+                    xlTable = ws.Tables(i)
+                    oldAddr = xlTable.Address
+                    xlTable.Range.Clear()
+                    newAddr = New ExcelAddressBase(oldAddr.Start.Row, oldAddr.Start.Column, oldAddr.End.Row + _delta, oldAddr.End.Column)
+                    xlTable.TableXml.InnerXml = xlTable.TableXml.InnerXml.Replace(oldAddr.ToString(), newAddr.ToString())
+
+                    startCellAddress = xlTable.Range.Start.Address
+
+                    ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
+
+                Next i
+
+                '   Write to pivot Exceltable
+                dt = mainForm.dts.Tables(0)
+
+                xlTable = ws.Tables(0)
+                oldAddr = xlTable.Address
+                newAddr = New ExcelAddressBase(oldAddr.Start.Row, oldAddr.Start.Column, oldAddr.End.Row + _delta, oldAddr.End.Column)
+                xlTable.TableXml.InnerXml = xlTable.TableXml.InnerXml.Replace(oldAddr.ToString(), newAddr.ToString())
+
+                startCellAddress = xlTable.Range.Start.Address
+
+                xlTable.Range.Clear()
+                ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
+
+        End Select
+
+        formatXl_table(Excel, excelFile, mainForm.filePath(mainForm.iDepartment + 1), mainForm.iCategory)
+
+        Excel.SaveAs(excelFile)
+
+
+
     End Sub
 
     '===================================================================================
@@ -514,6 +604,98 @@ Module myFunc
 
     Sub updateData()
         mainForm.dgv.DataSource = mainForm.dts
+    End Sub
+    '===================================================================================
+    '             === Format Excel table ===
+    '===================================================================================
+
+    Sub formatXl_table(_Excel As Object, _excelFile As Object, _sPath As String, _worksheetNumber As Integer)
+
+        Dim rngHeader, rngSide, rngTbl_0(5) As ExcelRange
+
+        Dim rngTbl_0_to_center As ExcelRange                ' For summary table
+
+        Dim rngTbl_to_center As ExcelRange                  ' For company's table
+        Dim rngTbl_to_center_1 As ExcelRange
+        Dim rngTbl_to_center_2 As ExcelRange
+        Dim rngTbl_to_center_3 As ExcelRange
+
+
+        Dim startRow, startColumn, endRow As Integer
+        Dim sideBackColor As Color = Color.FromArgb(242, 245, 245)
+        Dim ws As ExcelWorksheet
+        ws = _Excel.Workbook.Worksheets(_worksheetNumber)
+
+        Dim col() As Color
+
+        col = {Color.FromArgb(252, 228, 214), Color.FromArgb(221, 235, 247), Color.FromArgb(237, 237, 237),
+            Color.FromArgb(226, 239, 218), Color.FromArgb(237, 226, 246)}
+
+        Dim i As Integer = 0
+
+        For Each tbl As ExcelTable In ws.Tables
+
+            startRow = tbl.Address.Start.Row
+            endRow = tbl.Address.End.Row
+            startColumn = tbl.Address.Start.Column
+
+            rngHeader = ws.Cells(startRow, startColumn + 3, startRow, startColumn + 8)
+
+            rngSide = ws.Cells(startRow + 1, startColumn + 1, endRow, startColumn + 1)
+
+            rngTbl_to_center = ws.Cells(startRow, startColumn + 2, endRow, startColumn + 2)
+            rngTbl_to_center_1 = ws.Cells(startRow, startColumn + 4, endRow, startColumn + 4)
+            rngTbl_to_center_2 = ws.Cells(startRow, startColumn + 6, endRow, startColumn + 6)
+            rngTbl_to_center_3 = ws.Cells(startRow, startColumn + 8, endRow, startColumn + 8)
+
+            rngTbl_0(0) = ws.Cells(startRow, startColumn + 3, endRow, startColumn + 3)
+            rngTbl_0(1) = ws.Cells(startRow, startColumn + 4, endRow, startColumn + 4)
+            rngTbl_0(2) = ws.Cells(startRow, startColumn + 5, endRow, startColumn + 5)
+            rngTbl_0(3) = ws.Cells(startRow, startColumn + 6, endRow, startColumn + 6)
+            rngTbl_0(4) = ws.Cells(startRow, startColumn + 7, endRow, startColumn + 7)
+
+            rngTbl_0_to_center = ws.Cells(startRow, startColumn + 2, endRow, startColumn + 11)
+
+            rngSide.Style.Fill.PatternType = Style.ExcelFillStyle.Solid
+            rngSide.Style.Fill.BackgroundColor.SetColor(sideBackColor)
+
+            rngSide.Style.Font.Size = 11
+            rngSide.Style.Font.Italic = True
+            rngSide.Style.Font.Bold = True
+            rngSide.Style.Font.Name = "Calibri"
+
+            Select Case i
+                Case 0
+
+                    For j As Integer = 0 To 4
+                        rngTbl_0(j).Style.Fill.PatternType = Style.ExcelFillStyle.Solid
+                        rngTbl_0(j).Style.Fill.BackgroundColor.SetColor(col(j))
+                        rngTbl_0_to_center.Style.HorizontalAlignment = Style.ExcelHorizontalAlignment.Center
+                    Next j
+
+                Case <> 0
+
+                    rngHeader.Style.Fill.PatternType = Style.ExcelFillStyle.Solid
+                    rngHeader.Style.Fill.BackgroundColor.SetColor(col(i - 1))
+
+                    rngTbl_to_center.Style.HorizontalAlignment = Style.ExcelHorizontalAlignment.Center
+                    rngTbl_to_center_1.Style.HorizontalAlignment = Style.ExcelHorizontalAlignment.Center
+                    rngTbl_to_center_2.Style.HorizontalAlignment = Style.ExcelHorizontalAlignment.Center
+                    rngTbl_to_center_3.Style.HorizontalAlignment = Style.ExcelHorizontalAlignment.Center
+
+                    rngTbl_to_center.Style.Font.Size = 11
+                    rngTbl_to_center.Style.Font.Italic = True
+                    rngTbl_to_center.Style.Font.Bold = True
+                    rngTbl_to_center.Style.Font.Name = "Calibri"
+
+            End Select
+
+            i = i + 1
+
+        Next tbl
+
+        _Excel.SaveAs(_excelFile)
+
     End Sub
 
 End Module

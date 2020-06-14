@@ -401,7 +401,7 @@ Public Class mainForm
     End Sub
 
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
-
+        delta = 0
         editForm.Show()
         editFormFlag = True
         editForm.btn_add_addform.Visible = False
@@ -417,7 +417,7 @@ Public Class mainForm
     End Sub
 
     Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
-        'saveButton(delta)
+        saveButton(delta)
         load_db()
         unBlockButtons()
 

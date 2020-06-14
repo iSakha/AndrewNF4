@@ -76,48 +76,52 @@ Module load_and_close
 
         Dim key As Integer = 0
 
-        mainForm.i_superPivotDict = New Dictionary(Of Integer, Dictionary(Of Integer, Dictionary(Of Integer, ExcelTable)))
-        mainForm.i_pivotTableDict = New Dictionary(Of Integer, Dictionary(Of Integer, ExcelTable))
-        mainForm.i_pivot_wsDict = New Dictionary(Of Integer, Dictionary(Of Integer, ExcelWorksheet))
+        Select Case mainForm.cancelFlag
 
-        For Each fPath As String In mainForm.filePath
+            Case False
 
-            '   Create collection of Excel files workSheets
+                mainForm.i_superPivotDict = New Dictionary(Of Integer, Dictionary(Of Integer, Dictionary(Of Integer, ExcelTable)))
+                mainForm.i_pivotTableDict = New Dictionary(Of Integer, Dictionary(Of Integer, ExcelTable))
+                mainForm.i_pivot_wsDict = New Dictionary(Of Integer, Dictionary(Of Integer, ExcelWorksheet))
 
-            Dim ws As ExcelWorksheet
-            Dim excelFile = New FileInfo(fPath)
-            'Console.WriteLine(mainForm.sFilePath)
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial
-            Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
+                For Each fPath As String In mainForm.filePath
 
-            key = key + 1
+                    '   Create collection of Excel files workSheets
 
-            mainForm.i_wsDict = New Dictionary(Of Integer, ExcelWorksheet)
+                    Dim ws As ExcelWorksheet
+                    Dim excelFile = New FileInfo(fPath)
+                    'Console.WriteLine(mainForm.sFilePath)
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+                    Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
 
-            For i As Integer = 0 To Excel.Workbook.Worksheets.Count - 1
+                    key = key + 1
 
-                mainForm.i_xlTableDict = New Dictionary(Of Integer, ExcelTable)
+                    mainForm.i_wsDict = New Dictionary(Of Integer, ExcelWorksheet)
 
-                ws = Excel.Workbook.Worksheets(i)
+                    For i As Integer = 0 To Excel.Workbook.Worksheets.Count - 1
 
-                mainForm.i_wsDict.Add(i, ws)
+                        mainForm.i_xlTableDict = New Dictionary(Of Integer, ExcelTable)
 
-                Dim k As Integer = 0
-                For Each tbl As ExcelTable In ws.Tables
+                        ws = Excel.Workbook.Worksheets(i)
 
-                    mainForm.i_xlTableDict.Add(k, tbl)
-                    k = k + 1
-                Next tbl
+                        mainForm.i_wsDict.Add(i, ws)
 
-                mainForm.i_pivotTableDict.Add(i, mainForm.i_xlTableDict)
-            Next i
+                        Dim k As Integer = 0
+                        For Each tbl As ExcelTable In ws.Tables
 
-            mainForm.i_pivot_wsDict.Add(key - 1, mainForm.i_wsDict)
-            mainForm.i_superPivotDict.Add(key - 1, mainForm.i_pivotTableDict)
-            mainForm.i_pivotTableDict = New Dictionary(Of Integer, Dictionary(Of Integer, ExcelTable))
+                            mainForm.i_xlTableDict.Add(k, tbl)
+                            k = k + 1
+                        Next tbl
 
-        Next fPath
+                        mainForm.i_pivotTableDict.Add(i, mainForm.i_xlTableDict)
+                    Next i
 
+                    mainForm.i_pivot_wsDict.Add(key - 1, mainForm.i_wsDict)
+                    mainForm.i_superPivotDict.Add(key - 1, mainForm.i_pivotTableDict)
+                    mainForm.i_pivotTableDict = New Dictionary(Of Integer, Dictionary(Of Integer, ExcelTable))
+
+                Next fPath
+        End Select
     End Sub
 
     '===================================================================================
@@ -131,19 +135,25 @@ Module load_and_close
         Dim format As String = ("yyy MM dd HH':'mm':'ss")
         Dim myDate As DateTime = DateTime.Now
 
-        folderName = myDate.ToString(format)
-
-        folderName = Regex.Replace(folderName, "\D", "")            ' timestamp name
-        backUpFolder = Directory.GetCurrentDirectory() & "\BackUp"
-        '   Create folder with timestamp name inside backUp folder
-        My.Computer.FileSystem.CreateDirectory(backUpFolder & "\" & folderName)
-
         ' Show the FolderBrowserDialog.
         mainForm.FBD.SelectedPath = Directory.GetCurrentDirectory()
         Dim result As DialogResult = mainForm.FBD.ShowDialog()
         If (result = DialogResult.OK) Then
             mainForm.sDir = mainForm.FBD.SelectedPath
+        Else
+            mainForm.cancelFlag = True
         End If
+
+        Select Case mainForm.cancelFlag
+            Case False
+                folderName = myDate.ToString(format)
+
+            folderName = Regex.Replace(folderName, "\D", "")            ' timestamp name
+            backUpFolder = Directory.GetCurrentDirectory() & "\BackUp"
+            '   Create folder with timestamp name inside backUp folder
+            My.Computer.FileSystem.CreateDirectory(backUpFolder & "\" & folderName)
+
+        End Select
 
         Return (folderName)
 
