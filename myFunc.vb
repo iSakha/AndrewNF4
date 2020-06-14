@@ -452,6 +452,19 @@ Module myFunc
         End If
     End Sub
     '===================================================================================
+    '             === DELETE data from DB ===
+    '===================================================================================
+    Sub deleteRow()
+
+        Dim index As Integer = mainForm.dgv.CurrentRow.Index
+        Dim row As DataRow
+
+        For Each dt As DataTable In mainForm.dts.Tables
+            row = dt.Rows(index)
+            row.Delete()
+        Next dt
+    End Sub
+    '===================================================================================
     '             === SAVE data to DB ===
     '===================================================================================
 
@@ -696,6 +709,78 @@ Module myFunc
 
         _Excel.SaveAs(_excelFile)
 
+    End Sub
+    '===================================================================================
+    '             === Export dataset ===
+    '===================================================================================
+    Sub exportDataset(_iDepartment As Integer, _timeStampDir As String)
+
+        Dim columnWidth(12) As Integer
+        columnWidth = {4, 52, 9, 42, 25, 37, 11, 44, 13, 13, 13, 13}
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+        Dim Excel As ExcelPackage = New ExcelPackage()
+        Dim objExcel, objExcelFile As Object
+        objExcel = Excel
+
+        Dim ws As ExcelWorksheet
+        Dim xlTable As ExcelTable
+        Dim xlTableName As String
+        Dim startRow(6) As Integer
+        Dim rng As ExcelRange
+        Dim startColumn, endRow, endColumn, tiltShift As Integer
+        Dim exportSheetName As String
+        Dim exportFileName() As String = {"LightingExport", "ScreenExport", "CommutationExport" _
+        , "Truss_and_motorsExport", "ConstructionExport", "SoundExport"}
+
+        My.Computer.FileSystem.CreateDirectory(Directory.GetCurrentDirectory() & "\ExcelExport\" & _timeStampDir)
+
+        mainForm.exportDir = Directory.GetCurrentDirectory() & "\ExcelExport\" & _timeStampDir
+
+        Dim sPath As String = mainForm.exportDir & "\" & exportFileName(_iDepartment) & ".xlsx"
+
+        'Console.WriteLine(mainForm.i_pivot_wsDict(_iDepartment).Count - 1)
+
+        For j As Integer = 0 To mainForm.i_pivot_wsDict(_iDepartment).Count - 1
+            create_dataset(_iDepartment, j)
+            tiltShift = 5
+            startColumn = 3
+            startRow(6) = New Integer()
+
+            startRow(0) = 3
+            endRow = startRow(0) + mainForm.dts.Tables(0).Rows.Count
+            startRow(1) = endRow + tiltShift
+            endRow = startRow(1) + mainForm.dts.Tables(1).Rows.Count
+            startRow(2) = endRow + tiltShift
+            endRow = startRow(2) + mainForm.dts.Tables(2).Rows.Count
+            startRow(3) = endRow + tiltShift
+            endRow = startRow(3) + mainForm.dts.Tables(2).Rows.Count
+            startRow(4) = endRow + tiltShift
+            endRow = startRow(4) + mainForm.dts.Tables(2).Rows.Count
+            startRow(5) = endRow + tiltShift
+
+            exportSheetName = mainForm.i_pivot_wsDict(_iDepartment)(j).Name
+            ws = Excel.Workbook.Worksheets.Add(exportSheetName)
+
+            For k As Integer = 0 To 11
+                ws.Column(k + 3).Width = columnWidth(k)
+            Next k
+
+            For i As Integer = 0 To mainForm.dts.Tables.Count - 1
+
+                endRow = startRow(i) + mainForm.dts.Tables(i).Rows.Count
+                endColumn = startColumn + mainForm.dts.Tables(i).Columns.Count - 1
+                xlTableName = mainForm.dts.Tables(i).TableName
+                rng = ws.Cells(startRow(i), startColumn, endRow, endColumn)
+
+                xlTable = ws.Tables.Add(rng, xlTableName)
+                ws.Cells("C" & startRow(i)).LoadFromDataTable(mainForm.dts.Tables(i), True)
+                xlTable.TableStyle = TableStyles.Light15
+
+            Next i
+            objExcelFile = New FileInfo(sPath)
+            formatXl_table(objExcel, objExcelFile, sPath, j)
+        Next j
+        Excel.SaveAs(New FileInfo(sPath))
     End Sub
 
 End Module

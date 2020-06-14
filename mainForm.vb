@@ -62,7 +62,12 @@ Public Class mainForm
         cancelFlag = False
 
     End Sub
-
+    '===================================================================================
+    '             === Export to Excel ===
+    '===================================================================================
+    Private Sub ExportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExportToolStripMenuItem.Click
+        exportExcel.Show()
+    End Sub
 
 #Region "select Lighting"
     Private Sub item_movHeads_Click(sender As Object, e As EventArgs) Handles item_movHeads.Click
@@ -398,6 +403,7 @@ Public Class mainForm
         editForm.btn_add_addform.Visible = True
         editForm.btn_update_addform.Visible = False
         blockButtons()
+        btn_save.Enabled = True
     End Sub
 
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
@@ -407,19 +413,21 @@ Public Class mainForm
         editForm.btn_add_addform.Visible = False
         editForm.btn_update_addform.Visible = True
         showData(selIndex)
-
+        btn_save.Enabled = True
     End Sub
 
     Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
-        'deleteRow()
+        deleteRow()
         delta = -1
         blockButtons()
+        btn_save.Enabled = True
     End Sub
 
     Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
         saveButton(delta)
         load_db()
         unBlockButtons()
+        btn_save.Enabled = False
 
     End Sub
     Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click
@@ -446,6 +454,7 @@ Public Class mainForm
         sumForm.dgv_sum.DataSource = dts.Tables(0)
         format_sumDGV()
         unBlockButtons()
+        btn_save.Enabled = False
     End Sub
 #End Region
 

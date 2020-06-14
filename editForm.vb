@@ -19,6 +19,8 @@
     Public name_vision1, name_vision2, name_vision3 As String
     Public name_stage1, name_stage2, name_stage3 As String
 
+    Dim add_update_mode As Boolean = False
+
     Dim txtBxs(4, 7) As Object
 
     Private Sub addForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -37,9 +39,13 @@
 
     End Sub
     Private Sub btn_update_addform_Click(sender As Object, e As EventArgs) Handles btn_update_addform.Click
+        add_update_mode = False
         writeInto_dts()
     End Sub
-
+    Private Sub btn_add_addform_Click(sender As Object, e As EventArgs) Handles btn_add_addform.Click
+        add_update_mode = True
+        writeInto_dts()
+    End Sub
     Private Sub btn_close_addform_Click(sender As Object, e As EventArgs) Handles btn_close_addform.Click
         Me.Close()
     End Sub
@@ -158,7 +164,7 @@
 
         Dim sRow(4, 7) As String
         Dim row As DataRow
-        'Dim dt As DataTable
+        Dim dt As DataTable
         Dim index As Integer = mainForm.dgv.CurrentRow.Index
         'Console.WriteLine(index)
         sRow = New String(4, 7) {
@@ -169,30 +175,67 @@
             {fxtName, fxtQty, name_stage1, qty_stage1, name_stage2, qty_stage2, name_stage3, qty_stage3}
         }
 
-        For i As Integer = 0 To mainForm.dts.Tables.Count - 2
-            row = mainForm.dts.Tables(i + 1).Rows(index)
-            For j As Integer = 0 To 7
-                mainForm.dts.Tables(i + 1).Rows(index).Item(j + 1) = sRow(i, j)
-            Next j
-        Next i
+        Select Case add_update_mode
+            Case True
+                ' Add function
+                For i As Integer = 0 To mainForm.dts.Tables.Count - 2
+                    dt = mainForm.dts.Tables(i + 1)
+                    row = dt.Rows.Add()
+                    For j As Integer = 0 To 7
+                        row.Item(j + 1) = sRow(i, j)
+                    Next j
+                    row.Item(0) = dt.Rows(dt.Rows.Count - 2).Item(0) + 1
+                Next i
+                ' add data to summary table
+                dt = mainForm.dts.Tables(0)
+                row = dt.Rows.Add()
 
-        mainForm.dts.Tables(0).Rows(index).Item(mainForm.iCompany + 2) = fxtQty
+                row.Item(0) = dt.Rows(dt.Rows.Count - 2).Item(0) + 1
+                row.Item(1) = fxtName
+                row.Item(2) = fxtQty
+                row.Item(3) = qty_belimlight
+                row.Item(4) = qty_PRlighting
+                row.Item(5) = qty_blackout
+                row.Item(6) = qty_vision
+                row.Item(7) = qty_stage
+                row.Item(8) = 0
+                row.Item(9) = 0
+                row.Item(10) = 0
+                row.Item(11) = row.Item(2) - (row.Item(3) + row.Item(4) + row.Item(5) + row.Item(6) + row.Item(7))
 
-        mainForm.dts.Tables(0).Rows(index).Item(3) = qty_belimlight
-        mainForm.dts.Tables(0).Rows(index).Item(4) = qty_PRlighting
-        mainForm.dts.Tables(0).Rows(index).Item(5) = qty_blackout
-        mainForm.dts.Tables(0).Rows(index).Item(6) = qty_vision
-        mainForm.dts.Tables(0).Rows(index).Item(7) = qty_stage
-        Dim result As Integer
-        result = fxtQty - (qty_belimlight + qty_PRlighting + qty_blackout + qty_vision + qty_stage)
-        mainForm.dts.Tables(0).Rows(index).Item(11) = result
-        mainForm.dts.AcceptChanges()
-        mainForm.dgv.DataSource = mainForm.dts.Tables(mainForm.iCompany)
+            Case False
+                ' Update function
+                For i As Integer = 0 To mainForm.dts.Tables.Count - 2
+                    dt = mainForm.dts.Tables(i + 1)
+                    row = dt.Rows(index)
+                    For j As Integer = 0 To 7
+                        dt.Rows(index).Item(j + 1) = sRow(i, j)
+                    Next j
+                Next i
 
-        sumForm.dgv_sum.DataSource = mainForm.dts.Tables(0)
-        format_sumDGV()
+
+
+                mainForm.dts.Tables(0).Rows(index).Item(mainForm.iCompany + 2) = fxtQty
+
+                mainForm.dts.Tables(0).Rows(index).Item(3) = qty_belimlight
+                mainForm.dts.Tables(0).Rows(index).Item(4) = qty_PRlighting
+                mainForm.dts.Tables(0).Rows(index).Item(5) = qty_blackout
+                mainForm.dts.Tables(0).Rows(index).Item(6) = qty_vision
+                mainForm.dts.Tables(0).Rows(index).Item(7) = qty_stage
+                Dim result As Integer
+                result = fxtQty - (qty_belimlight + qty_PRlighting + qty_blackout + qty_vision + qty_stage)
+                mainForm.dts.Tables(0).Rows(index).Item(11) = result
+                mainForm.dts.AcceptChanges()
+                mainForm.dgv.DataSource = mainForm.dts.Tables(mainForm.iCompany)
+
+                sumForm.dgv_sum.DataSource = mainForm.dts.Tables(0)
+
+        End Select
+
+        'format_sumDGV()
         calcQuantity()
         blockButtons()
+
     End Sub
     Private Sub btn_next_Click(sender As Object, e As EventArgs) Handles btn_next.Click
         mainForm.btn_next.PerformClick()
