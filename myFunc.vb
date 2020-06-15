@@ -481,38 +481,43 @@ Module myFunc
 
         Dim excelFile = New FileInfo(mainForm.filePath(mainForm.iDepartment + 1))
 
-        Console.WriteLine(mainForm.filePath(mainForm.iDepartment + 1))
+        'Console.WriteLine(mainForm.filePath(mainForm.iDepartment + 1))
 
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial
         Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
 
-        Console.WriteLine(mainForm.iCategory)
+        'Console.WriteLine(mainForm.iCategory)
 
         ws = Excel.Workbook.Worksheets(mainForm.iCategory)
 
-        Console.WriteLine(ws.Name)
-        Select Case _delta
-            Case 0
-                '   Write to Exceltable
-                dt = mainForm.dts.Tables(mainForm.iCompany)
+        'Console.WriteLine(ws.Name)
 
-                xlTable = ws.Tables(mainForm.iCompany)
-                startCellAddress = xlTable.Range.Start.Address
 
-                xlTable.Range.Clear()
-                ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
 
-                '   Write to pivot Exceltable
-                dt = mainForm.dts.Tables(0)
+        'For i As Integer = 1 To mainForm.sCompany.Count
 
-                xlTable = ws.Tables(0)
-                startCellAddress = xlTable.Range.Start.Address
 
-                xlTable.Range.Clear()
-                ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
+        '    '   Write to Exceltable
+        '    dt = mainForm.dts.Tables(mainForm.iCompany)
 
-            Case <> 0
-                For i As Integer = 1 To mainForm.sCompany.Count
+        '    xlTable = ws.Tables(mainForm.iCompany)
+        '    startCellAddress = xlTable.Range.Start.Address
+
+        '    xlTable.Range.Clear()
+        '    ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
+
+        '    '   Write to pivot Exceltable
+        '    dt = mainForm.dts.Tables(0)
+
+        '    xlTable = ws.Tables(0)
+        '    startCellAddress = xlTable.Range.Start.Address
+
+        '    xlTable.Range.Clear()
+        '    ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
+
+        'Next i
+
+        For i As Integer = 1 To mainForm.sCompany.Count
 
                     dt = mainForm.dts.Tables(i)
 
@@ -541,7 +546,7 @@ Module myFunc
                 xlTable.Range.Clear()
                 ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
 
-        End Select
+
 
         formatXl_table(Excel, excelFile, mainForm.filePath(mainForm.iDepartment + 1), mainForm.iCategory)
 

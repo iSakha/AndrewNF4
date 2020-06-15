@@ -45,6 +45,12 @@ Public Class mainForm
         checkExpirationDate()
     End Sub
     '===================================================================================
+    '             === File => Open => Load from backup ===
+    '===================================================================================
+    Private Sub FileToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem1.Click
+        loadFromBackup()
+    End Sub
+    '===================================================================================
     '             === File => Open => Load database ===
     '===================================================================================
     Private Sub FolderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FolderToolStripMenuItem.Click
@@ -470,11 +476,13 @@ Public Class mainForm
         'My.Settings.testString = "Good bye!"
         'My.Settings.Save()
 
-        Console.WriteLine(i_pivot_wsDict.Count)
-        Console.WriteLine(i_superPivotDict.Count)
-        Console.WriteLine(i_pivotTableDict.Count)
+        'Console.WriteLine(i_pivot_wsDict.Count)
+        'Console.WriteLine(i_superPivotDict.Count)
+        'Console.WriteLine(i_pivotTableDict.Count)
 
-        Console.WriteLine(i_superPivotDict(0)(2)(2).Name)
+        'Console.WriteLine(i_superPivotDict(0)(2)(2).Name)
+
+        'extractFiles()
 
     End Sub
 End Class

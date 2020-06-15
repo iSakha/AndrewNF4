@@ -2,8 +2,11 @@
 Imports OfficeOpenXml.Table
 Imports System.IO
 Imports System.Text.RegularExpressions
+Imports Ionic.Zip
 
 Module load_and_close
+
+    Dim zipFolder As String
     '===================================================================================
     '             === check expiration date ===
     '===================================================================================
@@ -66,6 +69,9 @@ Module load_and_close
                 Catch
                 End Try
         End Select
+
+        compressFiles()
+
     End Sub
 
     '===================================================================================
@@ -148,14 +154,89 @@ Module load_and_close
             Case False
                 folderName = myDate.ToString(format)
 
-            folderName = Regex.Replace(folderName, "\D", "")            ' timestamp name
-            backUpFolder = Directory.GetCurrentDirectory() & "\BackUp"
-            '   Create folder with timestamp name inside backUp folder
-            My.Computer.FileSystem.CreateDirectory(backUpFolder & "\" & folderName)
-
+                folderName = Regex.Replace(folderName, "\D", "")            ' timestamp name
+                backUpFolder = Directory.GetCurrentDirectory() & "\BackUp"
+                '   Create folder with timestamp name inside backUp folder
+                My.Computer.FileSystem.CreateDirectory(backUpFolder & "\" & folderName)
+                zipFolder = backUpFolder & "\" & folderName
         End Select
 
         Return (folderName)
 
     End Function
+    '===================================================================================
+    '             === compress files ===
+    '===================================================================================
+    Sub compressFiles()
+
+        Console.WriteLine(zipFolder)
+
+        Dim Files() As String = IO.Directory.GetFiles(zipFolder)
+
+        Using zip As ZipFile = New ZipFile
+
+            zip.Password = "iSakha2836"
+            zip.Encryption = Ionic.Zip.EncryptionAlgorithm.WinZipAes256
+            zip.AddDirectory(zipFolder)
+            zip.Save(zipFolder & "\DB.omdb")
+
+        End Using
+
+        ' delete uncompressed files
+
+        For Each _file As String In Directory.GetFiles(zipFolder)
+            If System.IO.Path.GetExtension(_file) = ".ombckp" Then  ' Check extension
+                File.Delete(_file)
+            End If
+        Next
+
+        ' change extension to .ombckp
+
+        Dim sPath, oldName, newName As String
+
+        sPath = zipFolder & "\DB.omdb"
+        oldName = "DB.omdb"
+        newName = "DB.ombckp"
+
+        My.Computer.FileSystem.RenameFile(sPath, newName)
+
+    End Sub
+
+    Sub loadFromBackup()
+
+        '   open file using open file dialog
+        mainForm.OFD.InitialDirectory = Directory.GetCurrentDirectory()
+        mainForm.OFD.Filter = "Database files|*.ombckp"
+        If mainForm.OFD.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            mainForm.sFilePath = mainForm.OFD.FileName
+        Else
+            Exit Sub
+        End If
+
+        Using zip As ZipFile = ZipFile.Read(mainForm.sFilePath)
+
+            zip.Password = "iSakha2836"
+            zip.ExtractAll(Directory.GetCurrentDirectory() & "\datafolder", ExtractExistingFileAction.OverwriteSilently)
+            Console.WriteLine(Directory.GetCurrentDirectory() & "\datafolder")
+        End Using
+
+        Dim sPath, oldName, newName As String
+
+        For Each foundFile In My.Computer.FileSystem.GetFiles _
+           (Directory.GetCurrentDirectory() & "\datafolder", Microsoft.VisualBasic.FileIO.SearchOption.SearchAllSubDirectories, "*.ombckp")
+
+            sPath = foundFile
+            Dim dIndex = StrReverse(foundFile).IndexOf("\")
+
+            Dim name As String
+            name = Right(foundFile, dIndex)
+
+            name = Left(name, Len(name) - 6)
+            oldName = name & "ombckp"
+            newName = name & "omdb"
+
+            My.Computer.FileSystem.RenameFile(sPath, newName)
+        Next
+
+    End Sub
 End Module
