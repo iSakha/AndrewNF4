@@ -48,6 +48,7 @@ Module myFunc
             r_xlTable = xlTable.Address.Rows
 
             adr = xlTable.Address.Address
+            'Console.WriteLine(adr)
             rng = ws.Cells(adr)
 
             Select Case k

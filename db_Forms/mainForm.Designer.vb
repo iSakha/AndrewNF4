@@ -154,6 +154,7 @@ Partial Class mainForm
         Me.item_summary = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFD = New System.Windows.Forms.OpenFileDialog()
         Me.FBD = New System.Windows.Forms.FolderBrowserDialog()
+        Me.CreateSmetaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -677,7 +678,7 @@ Partial Class mainForm
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomizeToolStripMenuItem, Me.OptionsToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomizeToolStripMenuItem, Me.OptionsToolStripMenuItem, Me.CreateSmetaToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
@@ -685,13 +686,13 @@ Partial Class mainForm
         'CustomizeToolStripMenuItem
         '
         Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CustomizeToolStripMenuItem.Text = "&Customize"
         '
         'OptionsToolStripMenuItem
         '
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.OptionsToolStripMenuItem.Text = "&Options"
         '
         'HelpToolStripMenuItem
@@ -1061,6 +1062,12 @@ Partial Class mainForm
         '
         Me.OFD.FileName = "OpenFileDialog1"
         '
+        'CreateSmetaToolStripMenuItem
+        '
+        Me.CreateSmetaToolStripMenuItem.Name = "CreateSmetaToolStripMenuItem"
+        Me.CreateSmetaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CreateSmetaToolStripMenuItem.Text = "Create Smeta"
+        '
         'mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1216,4 +1223,5 @@ Partial Class mainForm
     Friend WithEvents item_summary As ToolStripMenuItem
     Friend WithEvents OFD As OpenFileDialog
     Friend WithEvents FBD As FolderBrowserDialog
+    Friend WithEvents CreateSmetaToolStripMenuItem As ToolStripMenuItem
 End Class

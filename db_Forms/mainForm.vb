@@ -462,6 +462,7 @@ Public Class mainForm
         unBlockButtons()
         btn_save.Enabled = False
     End Sub
+
 #End Region
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
@@ -484,5 +485,14 @@ Public Class mainForm
 
         'extractFiles()
 
+    End Sub
+    '=================================================================================== 
+    '===================================================================================      
+    '                === SMETA SECTION ===
+    '===================================================================================
+    '=================================================================================== 
+
+    Private Sub CreateSmetaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateSmetaToolStripMenuItem.Click
+        smetaMainForm.Show()
     End Sub
 End Class

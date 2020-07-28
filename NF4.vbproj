@@ -79,23 +79,23 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="editForm.Designer.vb">
+    <Compile Include="db_Forms\editForm.Designer.vb">
       <DependentUpon>editForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="editForm.vb">
+    <Compile Include="db_Forms\editForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="exportExcel.Designer.vb">
+    <Compile Include="db_Modules\exportExcel.Designer.vb">
       <DependentUpon>exportExcel.vb</DependentUpon>
     </Compile>
-    <Compile Include="exportExcel.vb">
+    <Compile Include="db_Modules\exportExcel.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="load_and_close.vb" />
-    <Compile Include="mainForm.vb">
+    <Compile Include="db_Modules\load_and_close.vb" />
+    <Compile Include="db_Forms\mainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mainForm.Designer.vb">
+    <Compile Include="db_Forms\mainForm.Designer.vb">
       <DependentUpon>mainForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
@@ -114,22 +114,29 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="myFunc.vb" />
-    <Compile Include="sumForm.Designer.vb">
+    <Compile Include="db_Modules\myFunc.vb" />
+    <Compile Include="db_Forms\sumForm.Designer.vb">
       <DependentUpon>sumForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="sumForm.vb">
+    <Compile Include="db_Forms\sumForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="smeta_Forms\smetaMainForm.Designer.vb">
+      <DependentUpon>smetaMainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="smeta_Forms\smetaMainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="smeta_Modules\smetaFunc.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="editForm.resx">
+    <EmbeddedResource Include="db_Forms\editForm.resx">
       <DependentUpon>editForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="exportExcel.resx">
+    <EmbeddedResource Include="db_Modules\exportExcel.resx">
       <DependentUpon>exportExcel.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="mainForm.resx">
+    <EmbeddedResource Include="db_Forms\mainForm.resx">
       <DependentUpon>mainForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -138,8 +145,11 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="sumForm.resx">
+    <EmbeddedResource Include="db_Forms\sumForm.resx">
       <DependentUpon>sumForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="smeta_Forms\smetaMainForm.resx">
+      <DependentUpon>smetaMainForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -155,5 +165,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
