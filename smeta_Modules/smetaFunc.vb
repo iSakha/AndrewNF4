@@ -40,6 +40,8 @@ Module smetaFunc
 
                 xlTable = ws.Tables(0)
 
+                Console.WriteLine(xlTable.Name)
+
                 adr = xlTable.Address.Address
                 r_xlTable = xlTable.Address.Rows
                 rng = ws.Cells(adr)
@@ -63,8 +65,8 @@ Module smetaFunc
         dt.Columns(2).DataType = System.Type.GetType("System.Int32")               ' Qty
 
         'Add Rows from Excel table
-        For l As Integer = 0 To 2                                               '   Department
-            For k As Integer = 1 To mainForm.i_pivot_wsDict(l).Count            '   Categories
+
+        For k As Integer = 1 To rng_Collection.Count            '   Categories
 
                 For i = 1 To r_xlTable_Collection(k) - 1
 
@@ -79,11 +81,8 @@ Module smetaFunc
                 Next i
 
             Next k
-        Next l
+
         smetaMainForm.DGV_smeta.DataSource = dt
-
-
-        'Test gitignore
 
         Return (dt)
 
