@@ -8,5 +8,6 @@ Public Class smetaMainForm
 
     Private Sub smetaMainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         createGlobal_dt()
+
     End Sub
 End Class

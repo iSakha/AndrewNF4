@@ -32,27 +32,30 @@ Module smetaFunc
         c_xlTable = 3
         rng_Collection = New Collection
 
-        For i As Integer = 0 To mainForm.i_pivot_wsDict(0).Count - 1
+        For l As Integer = 0 To 2
+            For i As Integer = 0 To mainForm.i_pivot_wsDict(l).Count - 1
 
-            ws = mainForm.i_pivot_wsDict(0)(i)
-            xlTable = ws.Tables(0)
+                ws = mainForm.i_pivot_wsDict(l)(i)
 
-            adr = xlTable.Address.Address
-            r_xlTable = xlTable.Address.Rows
-            rng = ws.Cells(adr)
 
-            xlTable_Collection.Add(xlTable)
-            adr_Collection.Add(adr)
-            r_xlTable_Collection.Add(r_xlTable)
-            rng_Collection.Add(rng)
+                xlTable = ws.Tables(0)
 
-        Next i
+                adr = xlTable.Address.Address
+                r_xlTable = xlTable.Address.Rows
+                rng = ws.Cells(adr)
 
+                xlTable_Collection.Add(xlTable)
+                adr_Collection.Add(adr)
+                r_xlTable_Collection.Add(r_xlTable)
+                rng_Collection.Add(rng)
+
+            Next i
+        Next l
         'Adding the Columns
 
         For i = 0 To c_xlTable - 1
-            dt.Columns.Add(rng_Collection(1).Value(0, i))
-        Next i
+                dt.Columns.Add(rng_Collection(1).Value(0, i))
+            Next i
 
 
         dt.Columns(0).DataType = System.Type.GetType("System.Int32")               ' #
@@ -60,23 +63,23 @@ Module smetaFunc
         dt.Columns(2).DataType = System.Type.GetType("System.Int32")               ' Qty
 
         'Add Rows from Excel table
+        For l As Integer = 0 To 2                                               '   Department
+            For k As Integer = 1 To mainForm.i_pivot_wsDict(l).Count            '   Categories
 
-        For k As Integer = 1 To mainForm.i_pivot_wsDict(0).Count
+                For i = 1 To r_xlTable_Collection(k) - 1
 
-            For i = 1 To r_xlTable_Collection(k) - 1
+                    row = dt.Rows.Add()
 
-                row = dt.Rows.Add()
+                    For j = 0 To c_xlTable - 1
 
-                For j = 0 To c_xlTable - 1
+                        row.Item(j) = rng_Collection(k).Value(i, j)
 
-                    row.Item(j) = rng_Collection(k).Value(i, j)
+                    Next j
 
-                Next j
+                Next i
 
-            Next i
-
-        Next k
-
+            Next k
+        Next l
         smetaMainForm.DGV_smeta.DataSource = dt
 
 
