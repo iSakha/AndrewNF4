@@ -59,3 +59,4 @@ C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj
 C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.xml
 C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.pdb
 C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.smetaMainForm.resources
+G:\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.smetaMainForm.resources

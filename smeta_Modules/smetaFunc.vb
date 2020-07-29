@@ -61,19 +61,25 @@ Module smetaFunc
 
         'Add Rows from Excel table
 
-        For i As Integer = 0 To mainForm.i_pivot_wsDict(0).Count - 2
+        For k As Integer = 1 To mainForm.i_pivot_wsDict(0).Count
 
-            row = dt.Rows.Add()
+            For i = 1 To r_xlTable_Collection(k) - 1
 
-            For j = 0 To c_xlTable - 1
+                row = dt.Rows.Add()
 
-                row.Item(j) = rng_Collection(i + 1).Value(i + 1, j)
+                For j = 0 To c_xlTable - 1
 
-            Next j
+                    row.Item(j) = rng_Collection(k).Value(i, j)
 
-        Next i
+                Next j
 
+            Next i
+
+        Next k
+
+        smetaMainForm.DGV_smeta.DataSource = dt
 
         Return (dt)
+
     End Function
 End Module
