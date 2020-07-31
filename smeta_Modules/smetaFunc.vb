@@ -29,10 +29,12 @@ Module smetaFunc
         xlTable_Collection = New Collection
         adr_Collection = New Collection
         r_xlTable_Collection = New Collection
-        c_xlTable = 3
+        c_xlTable = 5
         rng_Collection = New Collection
 
-        For l As Integer = 0 To 2
+
+
+        For l As Integer = 0 To 5
             For i As Integer = 0 To mainForm.i_pivot_wsDict(l).Count - 1
 
                 ws = mainForm.i_pivot_wsDict(l)(i)
@@ -60,9 +62,20 @@ Module smetaFunc
             Next i
 
 
-        dt.Columns(0).DataType = System.Type.GetType("System.Int32")               ' #
-        dt.Columns(1).DataType = System.Type.GetType("System.String")              ' Fixture
+        dt.Columns(0).DataType = System.Type.GetType("System.Int32")               ' Department
+        dt.Columns(1).DataType = System.Type.GetType("System.Int32")               ' Category
+        dt.Columns(2).DataType = System.Type.GetType("System.Int32")               ' ID
+        dt.Columns(2).DataType = System.Type.GetType("System.String")              ' Fixture
         dt.Columns(2).DataType = System.Type.GetType("System.Int32")               ' Qty
+
+
+        dt.Columns(0).ColumnName = "Dep"
+        dt.Columns(1).ColumnName = "Cat"
+        dt.Columns(2).ColumnName = "ID"
+        dt.Columns(3).ColumnName = "Fixture"
+        dt.Columns(4).ColumnName = "Qty"
+
+        Console.WriteLine(rng_Collection.Count)
 
         'Add Rows from Excel table
 
