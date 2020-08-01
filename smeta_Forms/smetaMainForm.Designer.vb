@@ -25,13 +25,14 @@ Partial Class smetaMainForm
         Me.DGV_smeta = New System.Windows.Forms.DataGridView()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.btn_lighting_smeta = New System.Windows.Forms.Button()
-        Me.btn_screen_smeta = New System.Windows.Forms.Button()
-        Me.btn_commut_smeta = New System.Windows.Forms.Button()
-        Me.btn_truss_smeta = New System.Windows.Forms.Button()
-        Me.btn_construct_smeta = New System.Windows.Forms.Button()
         Me.btn_sound_smeta = New System.Windows.Forms.Button()
+        Me.btn_construct_smeta = New System.Windows.Forms.Button()
+        Me.btn_truss_smeta = New System.Windows.Forms.Button()
+        Me.btn_commut_smeta = New System.Windows.Forms.Button()
+        Me.btn_screen_smeta = New System.Windows.Forms.Button()
+        Me.btn_lighting_smeta = New System.Windows.Forms.Button()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.btn_clrSelRow_smeta = New System.Windows.Forms.Button()
         CType(Me.DGV_smeta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -57,6 +58,7 @@ Partial Class smetaMainForm
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.btn_clrSelRow_smeta)
         Me.TabPage1.Controls.Add(Me.btn_sound_smeta)
         Me.TabPage1.Controls.Add(Me.btn_construct_smeta)
         Me.TabPage1.Controls.Add(Me.btn_truss_smeta)
@@ -72,6 +74,72 @@ Partial Class smetaMainForm
         Me.TabPage1.Text = "Database"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'btn_sound_smeta
+        '
+        Me.btn_sound_smeta.BackColor = System.Drawing.Color.Thistle
+        Me.btn_sound_smeta.Location = New System.Drawing.Point(19, 151)
+        Me.btn_sound_smeta.Name = "btn_sound_smeta"
+        Me.btn_sound_smeta.Size = New System.Drawing.Size(145, 23)
+        Me.btn_sound_smeta.TabIndex = 1
+        Me.btn_sound_smeta.Text = "06 Sound"
+        Me.btn_sound_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_sound_smeta.UseVisualStyleBackColor = False
+        '
+        'btn_construct_smeta
+        '
+        Me.btn_construct_smeta.BackColor = System.Drawing.Color.LightCyan
+        Me.btn_construct_smeta.Location = New System.Drawing.Point(19, 122)
+        Me.btn_construct_smeta.Name = "btn_construct_smeta"
+        Me.btn_construct_smeta.Size = New System.Drawing.Size(145, 23)
+        Me.btn_construct_smeta.TabIndex = 1
+        Me.btn_construct_smeta.Text = "05 Construction"
+        Me.btn_construct_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_construct_smeta.UseVisualStyleBackColor = False
+        '
+        'btn_truss_smeta
+        '
+        Me.btn_truss_smeta.BackColor = System.Drawing.Color.Honeydew
+        Me.btn_truss_smeta.Location = New System.Drawing.Point(19, 93)
+        Me.btn_truss_smeta.Name = "btn_truss_smeta"
+        Me.btn_truss_smeta.Size = New System.Drawing.Size(145, 23)
+        Me.btn_truss_smeta.TabIndex = 1
+        Me.btn_truss_smeta.Text = "04 Truss and motors"
+        Me.btn_truss_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_truss_smeta.UseVisualStyleBackColor = False
+        '
+        'btn_commut_smeta
+        '
+        Me.btn_commut_smeta.BackColor = System.Drawing.Color.MistyRose
+        Me.btn_commut_smeta.Location = New System.Drawing.Point(19, 64)
+        Me.btn_commut_smeta.Name = "btn_commut_smeta"
+        Me.btn_commut_smeta.Size = New System.Drawing.Size(145, 23)
+        Me.btn_commut_smeta.TabIndex = 1
+        Me.btn_commut_smeta.Text = "03 Commutation"
+        Me.btn_commut_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_commut_smeta.UseVisualStyleBackColor = False
+        '
+        'btn_screen_smeta
+        '
+        Me.btn_screen_smeta.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.btn_screen_smeta.Location = New System.Drawing.Point(19, 35)
+        Me.btn_screen_smeta.Name = "btn_screen_smeta"
+        Me.btn_screen_smeta.Size = New System.Drawing.Size(145, 23)
+        Me.btn_screen_smeta.TabIndex = 1
+        Me.btn_screen_smeta.Text = "02 Screen"
+        Me.btn_screen_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_screen_smeta.UseVisualStyleBackColor = False
+        '
+        'btn_lighting_smeta
+        '
+        Me.btn_lighting_smeta.BackColor = System.Drawing.Color.LemonChiffon
+        Me.btn_lighting_smeta.Location = New System.Drawing.Point(19, 6)
+        Me.btn_lighting_smeta.Name = "btn_lighting_smeta"
+        Me.btn_lighting_smeta.Size = New System.Drawing.Size(145, 23)
+        Me.btn_lighting_smeta.TabIndex = 1
+        Me.btn_lighting_smeta.Text = "01 Lighting"
+        Me.btn_lighting_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_lighting_smeta.UseVisualStyleBackColor = False
+        '
         'TabPage2
         '
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
@@ -82,65 +150,14 @@ Partial Class smetaMainForm
         Me.TabPage2.Text = "Smeta"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'btn_lighting_smeta
+        'btn_clrSelRow_smeta
         '
-        Me.btn_lighting_smeta.Location = New System.Drawing.Point(19, 6)
-        Me.btn_lighting_smeta.Name = "btn_lighting_smeta"
-        Me.btn_lighting_smeta.Size = New System.Drawing.Size(145, 23)
-        Me.btn_lighting_smeta.TabIndex = 1
-        Me.btn_lighting_smeta.Text = "01 Lighting"
-        Me.btn_lighting_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_lighting_smeta.UseVisualStyleBackColor = True
-        '
-        'btn_screen_smeta
-        '
-        Me.btn_screen_smeta.Location = New System.Drawing.Point(19, 35)
-        Me.btn_screen_smeta.Name = "btn_screen_smeta"
-        Me.btn_screen_smeta.Size = New System.Drawing.Size(145, 23)
-        Me.btn_screen_smeta.TabIndex = 1
-        Me.btn_screen_smeta.Text = "02 Screen"
-        Me.btn_screen_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_screen_smeta.UseVisualStyleBackColor = True
-        '
-        'btn_commut_smeta
-        '
-        Me.btn_commut_smeta.Location = New System.Drawing.Point(19, 64)
-        Me.btn_commut_smeta.Name = "btn_commut_smeta"
-        Me.btn_commut_smeta.Size = New System.Drawing.Size(145, 23)
-        Me.btn_commut_smeta.TabIndex = 1
-        Me.btn_commut_smeta.Text = "03 Commutation"
-        Me.btn_commut_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_commut_smeta.UseVisualStyleBackColor = True
-        '
-        'btn_truss_smeta
-        '
-        Me.btn_truss_smeta.Location = New System.Drawing.Point(19, 93)
-        Me.btn_truss_smeta.Name = "btn_truss_smeta"
-        Me.btn_truss_smeta.Size = New System.Drawing.Size(145, 23)
-        Me.btn_truss_smeta.TabIndex = 1
-        Me.btn_truss_smeta.Text = "04 Truss and motors"
-        Me.btn_truss_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_truss_smeta.UseVisualStyleBackColor = True
-        '
-        'btn_construct_smeta
-        '
-        Me.btn_construct_smeta.Location = New System.Drawing.Point(19, 122)
-        Me.btn_construct_smeta.Name = "btn_construct_smeta"
-        Me.btn_construct_smeta.Size = New System.Drawing.Size(145, 23)
-        Me.btn_construct_smeta.TabIndex = 1
-        Me.btn_construct_smeta.Text = "05 Construction"
-        Me.btn_construct_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_construct_smeta.UseVisualStyleBackColor = True
-        '
-        'btn_sound_smeta
-        '
-        Me.btn_sound_smeta.Location = New System.Drawing.Point(19, 151)
-        Me.btn_sound_smeta.Name = "btn_sound_smeta"
-        Me.btn_sound_smeta.Size = New System.Drawing.Size(145, 23)
-        Me.btn_sound_smeta.TabIndex = 1
-        Me.btn_sound_smeta.Text = "06 Sound"
-        Me.btn_sound_smeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_sound_smeta.UseVisualStyleBackColor = True
+        Me.btn_clrSelRow_smeta.Location = New System.Drawing.Point(19, 261)
+        Me.btn_clrSelRow_smeta.Name = "btn_clrSelRow_smeta"
+        Me.btn_clrSelRow_smeta.Size = New System.Drawing.Size(145, 23)
+        Me.btn_clrSelRow_smeta.TabIndex = 2
+        Me.btn_clrSelRow_smeta.Text = "Clear selected row"
+        Me.btn_clrSelRow_smeta.UseVisualStyleBackColor = True
         '
         'smetaMainForm
         '
@@ -167,4 +184,5 @@ Partial Class smetaMainForm
     Friend WithEvents btn_screen_smeta As Button
     Friend WithEvents btn_lighting_smeta As Button
     Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents btn_clrSelRow_smeta As Button
 End Class
