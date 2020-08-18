@@ -343,6 +343,8 @@ Public Class mainForm
         iCompany = 1
         writeToLabelCompany(sender)
         companyFunction()
+        Console.WriteLine(iDepartment)
+        Console.WriteLine(iCategory)
     End Sub
 
     Private Sub item_PRLighting_Click(sender As Object, e As EventArgs) Handles item_PRLighting.Click

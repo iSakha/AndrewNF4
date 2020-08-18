@@ -29,7 +29,7 @@ Module smetaFunc
         xlTable_Collection = New Collection
         adr_Collection = New Collection
         r_xlTable_Collection = New Collection
-        c_xlTable = 13
+        c_xlTable = 21
         rng_Collection = New Collection
 
 
@@ -79,6 +79,18 @@ Module smetaFunc
         dt.Columns(12).DataType = System.Type.GetType("System.Int32")               ' Price
 
 
+        dt.Columns(13).DataType = System.Type.GetType("System.Int32")               ' R1 
+        dt.Columns(14).DataType = System.Type.GetType("System.Int32")               ' R2
+        dt.Columns(15).DataType = System.Type.GetType("System.Int32")               ' R3
+        dt.Columns(16).DataType = System.Type.GetType("System.Int32")               ' R4
+        dt.Columns(17).DataType = System.Type.GetType("System.Int32")               ' R5 
+        dt.Columns(18).DataType = System.Type.GetType("System.Int32")               ' R6
+        dt.Columns(19).DataType = System.Type.GetType("System.Int32")               ' R7
+        dt.Columns(20).DataType = System.Type.GetType("System.Int32")               ' R8
+
+
+
+
         dt.Columns(0).ColumnName = "Dep"
         dt.Columns(1).ColumnName = "Cat"
         dt.Columns(2).ColumnName = "ID"
@@ -88,6 +100,17 @@ Module smetaFunc
         dt.Columns(10).ColumnName = "Weight"
         dt.Columns(11).ColumnName = "Power/Length"
         dt.Columns(12).ColumnName = "Price"
+
+        dt.Columns(13).ColumnName = "R1"
+        dt.Columns(14).ColumnName = "R2"
+        dt.Columns(15).ColumnName = "R3"
+        dt.Columns(16).ColumnName = "R4"
+        dt.Columns(17).ColumnName = "R5"
+        dt.Columns(18).ColumnName = "R6"
+        dt.Columns(19).ColumnName = "R7"
+        dt.Columns(20).ColumnName = "R8"
+
+
 
         Console.WriteLine(rng_Collection.Count)
 

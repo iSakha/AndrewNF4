@@ -25,7 +25,7 @@ Module myFunc
     '===================================================================================
     '             === Create dataset ===
     '===================================================================================
-    Sub create_dataset(_iDEpartment As Integer, _iCategory As Integer)
+    Sub create_dataset(_iDepartment As Integer, _iCategory As Integer)
 
         Dim dt As DataTable
 
@@ -39,8 +39,8 @@ Module myFunc
 
         mainForm.dts = New DataSet
 
-        ws = mainForm.i_pivot_wsDict(_iDEpartment)(_iCategory)
-
+        ws = mainForm.i_pivot_wsDict(_iDepartment)(_iCategory)
+        Console.WriteLine(ws.Name)
         For k As Integer = 0 To ws.Tables.Count - 1
 
             xlTable = ws.Tables(k)
@@ -63,26 +63,50 @@ Module myFunc
                         dt.Columns.Add(rng.Value(0, i))
                     Next i
 
-                    dt.Columns(0).DataType = System.Type.GetType("System.Int32")               ' #
-                    dt.Columns(1).DataType = System.Type.GetType("System.String")              ' Fixture
-                    dt.Columns(2).DataType = System.Type.GetType("System.Int32")               ' Q-ty
-                    dt.Columns(3).DataType = System.Type.GetType("System.Int32")               ' BelImlight
-                    dt.Columns(4).DataType = System.Type.GetType("System.Int32")               ' PRLightigTouring
-                    dt.Columns(5).DataType = System.Type.GetType("System.Int32")               ' BlackOut
-                    dt.Columns(6).DataType = System.Type.GetType("System.Int32")               ' Vision
-                    dt.Columns(7).DataType = System.Type.GetType("System.Int32")               ' Stage
-                    dt.Columns(8).DataType = System.Type.GetType("System.Int32")               ' Weight
-                    If mainForm.iDepartment = 3 Then
-                        dt.Columns(9).DataType = System.Type.GetType("System.String")          ' Power/length
-                    Else
-                        dt.Columns(9).DataType = System.Type.GetType("System.Int32")           ' Power/length
-                    End If
+                    dt.Columns(0).DataType = System.Type.GetType("System.Int32")               ' Department
+                    dt.Columns(1).DataType = System.Type.GetType("System.Int32")               ' Category
+                    dt.Columns(2).DataType = System.Type.GetType("System.Int32")               ' ID
+                    dt.Columns(3).DataType = System.Type.GetType("System.String")              ' Fixture
+                    dt.Columns(4).DataType = System.Type.GetType("System.Int32")               ' Qty
 
-                    dt.Columns(10).DataType = System.Type.GetType("System.Int32")              ' Price
-                    dt.Columns.Add()
-                    dt.Columns(11).DataType = System.Type.GetType("System.Int32")              ' Result
-                    dt.Columns(11).ColumnName = "Result"
+                    dt.Columns(5).DataType = System.Type.GetType("System.Int32")               ' Qty BelImlight 
+                    dt.Columns(6).DataType = System.Type.GetType("System.Int32")               ' Qty PRLightigTouring
+                    dt.Columns(7).DataType = System.Type.GetType("System.Int32")               ' Qty BlackOut
+                    dt.Columns(8).DataType = System.Type.GetType("System.Int32")               ' Qty Vision
+                    dt.Columns(9).DataType = System.Type.GetType("System.Int32")               ' Qty Stage
 
+                    dt.Columns(10).DataType = System.Type.GetType("System.Int32")               ' Weight
+                    dt.Columns(11).DataType = System.Type.GetType("System.Int32")               ' Power/Length
+                    dt.Columns(12).DataType = System.Type.GetType("System.Int32")               ' Price
+
+
+                    dt.Columns(13).DataType = System.Type.GetType("System.Int32")               ' Result 
+                    dt.Columns(14).DataType = System.Type.GetType("System.Int32")               ' R2
+                    dt.Columns(15).DataType = System.Type.GetType("System.Int32")               ' R3
+                    dt.Columns(16).DataType = System.Type.GetType("System.Int32")               ' R4
+                    dt.Columns(17).DataType = System.Type.GetType("System.Int32")               ' R5 
+                    dt.Columns(18).DataType = System.Type.GetType("System.Int32")               ' R6
+                    dt.Columns(19).DataType = System.Type.GetType("System.Int32")               ' R7
+                    dt.Columns(20).DataType = System.Type.GetType("System.Int32")               ' R8
+
+                    dt.Columns(0).ColumnName = "Dep"
+                    dt.Columns(1).ColumnName = "Cat"
+                    dt.Columns(2).ColumnName = "ID"
+                    dt.Columns(3).ColumnName = "Fixture"
+                    dt.Columns(4).ColumnName = "Qty"
+
+                    dt.Columns(10).ColumnName = "Weight"
+                    dt.Columns(11).ColumnName = "Power/Length"
+                    dt.Columns(12).ColumnName = "Price"
+
+                    dt.Columns(13).ColumnName = "Result"
+                    dt.Columns(14).ColumnName = "R2"
+                    dt.Columns(15).ColumnName = "R3"
+                    dt.Columns(16).ColumnName = "R4"
+                    dt.Columns(17).ColumnName = "R5"
+                    dt.Columns(18).ColumnName = "R6"
+                    dt.Columns(19).ColumnName = "R7"
+                    dt.Columns(20).ColumnName = "R8"
 
                     For i = 1 To r_xlTable - 1
 
@@ -96,14 +120,14 @@ Module myFunc
 
                         Dim val, val_bel, val_pr, val_black, val_vis, val_st As Integer
 
-                        val = row.Item(2)
-                        val_bel = row.Item(3)
-                        val_pr = row.Item(4)
-                        val_black = row.Item(5)
-                        val_vis = row.Item(6)
-                        val_st = row.Item(7)
+                        val = row.Item(4)
+                        val_bel = row.Item(5)
+                        val_pr = row.Item(6)
+                        val_black = row.Item(7)
+                        val_vis = row.Item(8)
+                        val_st = row.Item(9)
 
-                        row.Item(c_xlTable) = val - (val_bel + val_pr + val_black + val_vis + val_st)
+                        row.Item(13) = val - (val_bel + val_pr + val_black + val_vis + val_st)
 
                     Next i
 
@@ -264,7 +288,8 @@ Module myFunc
     '===================================================================================
     Sub companyFunction()
         create_dataset(mainForm.iDepartment, mainForm.iCategory)
-
+        Console.WriteLine(mainForm.iDepartment)
+        Console.WriteLine(mainForm.iCategory)
         mainForm.dgv.DataSource = mainForm.dts.Tables(mainForm.iCompany)
         format_dgv_dataset()
 

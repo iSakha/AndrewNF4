@@ -53,6 +53,7 @@ Public Class smetaMainForm
         index = DGV_smeta.SelectedCells.Item(0).RowIndex
         selectedRow = DGV_smeta.Rows(index)
         selectedRow.DefaultCellStyle.BackColor = DGV_smeta.DefaultCellStyle.BackColor
+        DGV_smeta.Columns(3).DefaultCellStyle.BackColor = Color.FromArgb(242, 245, 245)
         selectedRow.Cells(3).Style.BackColor = Color.FromArgb(242, 245, 245)
         DGV_smeta.Rows(index).Selected = False
 
