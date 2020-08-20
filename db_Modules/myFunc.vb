@@ -198,19 +198,37 @@ Module myFunc
             Color.FromArgb(226, 239, 218), Color.FromArgb(237, 226, 246)}
 
 
-        mainForm.dgv.Columns(0).Width = 40                ' #
-        mainForm.dgv.Columns(1).Width = 175               ' Fixture
-        mainForm.dgv.Columns(2).Width = 40                ' Q-ty
-        mainForm.dgv.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.dgv.Columns(3).Width = 220               ' BelImlight_1  (PRLightigTouring, BlackOut, Vision, Stage)
-        mainForm.dgv.Columns(4).Width = 40                ' Q-ty_1
+        'mainForm.dgv.Columns(0).Width = 40                ' #
+        'mainForm.dgv.Columns(1).Width = 175               ' Fixture
+        'mainForm.dgv.Columns(2).Width = 40                ' Q-ty
+        'mainForm.dgv.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'mainForm.dgv.Columns(3).Width = 220               ' BelImlight_1  (PRLightigTouring, BlackOut, Vision, Stage)
+        'mainForm.dgv.Columns(4).Width = 40                ' Q-ty_1
+        'mainForm.dgv.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'mainForm.dgv.Columns(5).Width = 220               ' BelImlight_2  (PRLightigTouring, BlackOut, Vision, Stage)
+        'mainForm.dgv.Columns(6).Width = 40                ' Q-ty_2
+        'mainForm.dgv.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'mainForm.dgv.Columns(7).Width = 180               ' BelImlight_3  (PRLightigTouring, BlackOut, Vision, Stage)
+        'mainForm.dgv.Columns(8).Width = 40                ' Q-ty_3
+        'mainForm.dgv.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+
+        mainForm.dgv.Columns(0).Visible = False           ' Department  
+        mainForm.dgv.Columns(1).Visible = False           ' Category  
+        mainForm.dgv.Columns(2).Width = 60                ' ID
+        mainForm.dgv.Columns(3).Width = 175               ' Fixture
+        mainForm.dgv.Columns(4).Width = 40                ' Q-ty
         mainForm.dgv.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.dgv.Columns(5).Width = 220               ' BelImlight_2  (PRLightigTouring, BlackOut, Vision, Stage)
-        mainForm.dgv.Columns(6).Width = 40                ' Q-ty_2
+        mainForm.dgv.Columns(5).Width = 230               ' BelImlight_1  (PRLightigTouring, BlackOut, Vision, Stage)
+        mainForm.dgv.Columns(6).Width = 40                ' Q-ty_1
         mainForm.dgv.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.dgv.Columns(7).Width = 180               ' BelImlight_3  (PRLightigTouring, BlackOut, Vision, Stage)
-        mainForm.dgv.Columns(8).Width = 40                ' Q-ty_3
+        mainForm.dgv.Columns(7).Width = 230               ' BelImlight_2  (PRLightigTouring, BlackOut, Vision, Stage)
+        mainForm.dgv.Columns(8).Width = 40                ' Q-ty_2
         mainForm.dgv.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        mainForm.dgv.Columns(9).Width = 180               ' BelImlight_3  (PRLightigTouring, BlackOut, Vision, Stage)
+        mainForm.dgv.Columns(10).Width = 40                ' Q-ty_3
+        mainForm.dgv.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
 
         For i = 0 To mainForm.dgv.Rows.Count - 2
 
@@ -220,7 +238,7 @@ Module myFunc
 
         Next i
 
-
+        mainForm.dgv.RowHeadersVisible = False
 
     End Sub
 
@@ -288,8 +306,6 @@ Module myFunc
     '===================================================================================
     Sub companyFunction()
         create_dataset(mainForm.iDepartment, mainForm.iCategory)
-        Console.WriteLine(mainForm.iDepartment)
-        Console.WriteLine(mainForm.iCategory)
         mainForm.dgv.DataSource = mainForm.dts.Tables(mainForm.iCompany)
         format_dgv_dataset()
 
@@ -515,33 +531,6 @@ Module myFunc
         'Console.WriteLine(mainForm.iCategory)
 
         ws = Excel.Workbook.Worksheets(mainForm.iCategory)
-
-        'Console.WriteLine(ws.Name)
-
-
-
-        'For i As Integer = 1 To mainForm.sCompany.Count
-
-
-        '    '   Write to Exceltable
-        '    dt = mainForm.dts.Tables(mainForm.iCompany)
-
-        '    xlTable = ws.Tables(mainForm.iCompany)
-        '    startCellAddress = xlTable.Range.Start.Address
-
-        '    xlTable.Range.Clear()
-        '    ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
-
-        '    '   Write to pivot Exceltable
-        '    dt = mainForm.dts.Tables(0)
-
-        '    xlTable = ws.Tables(0)
-        '    startCellAddress = xlTable.Range.Start.Address
-
-        '    xlTable.Range.Clear()
-        '    ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
-
-        'Next i
 
         For i As Integer = 1 To mainForm.sCompany.Count
 

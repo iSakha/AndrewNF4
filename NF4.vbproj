@@ -85,6 +85,12 @@
     <Compile Include="db_Forms\editForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="db_Forms\settingsForm.Designer.vb">
+      <DependentUpon>settingsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="db_Forms\settingsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="db_Modules\exportExcel.Designer.vb">
       <DependentUpon>exportExcel.vb</DependentUpon>
     </Compile>
@@ -121,6 +127,7 @@
     <Compile Include="db_Forms\sumForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Settings.vb" />
     <Compile Include="smeta_Forms\smetaMainForm.Designer.vb">
       <DependentUpon>smetaMainForm.vb</DependentUpon>
     </Compile>
@@ -132,6 +139,9 @@
   <ItemGroup>
     <EmbeddedResource Include="db_Forms\editForm.resx">
       <DependentUpon>editForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db_Forms\settingsForm.resx">
+      <DependentUpon>settingsForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="db_Modules\exportExcel.resx">
       <DependentUpon>exportExcel.vb</DependentUpon>

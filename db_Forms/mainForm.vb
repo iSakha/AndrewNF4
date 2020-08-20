@@ -55,7 +55,10 @@ Public Class mainForm
     '===================================================================================
     Private Sub FolderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FolderToolStripMenuItem.Click
 
-        createBackup(timeStampFolder())
+        Dim response = MsgBox("Последний бэкап был создан " & My.Settings.dateLastBackUp & vbCr & "Создать новый?", vbYesNo)
+        If response = MsgBoxResult.Yes Then
+            createBackup(timeStampFolder())
+        End If
         load_db()
 
         iDepartment = 0
@@ -343,8 +346,6 @@ Public Class mainForm
         iCompany = 1
         writeToLabelCompany(sender)
         companyFunction()
-        Console.WriteLine(iDepartment)
-        Console.WriteLine(iCategory)
     End Sub
 
     Private Sub item_PRLighting_Click(sender As Object, e As EventArgs) Handles item_PRLighting.Click
@@ -470,6 +471,7 @@ Public Class mainForm
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         Me.Close()
     End Sub
+
     '===================================================================================      
     '                === Test button ===
     '===================================================================================
@@ -488,6 +490,12 @@ Public Class mainForm
         'extractFiles()
 
     End Sub
+
+    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
+        settingsForm.Show()
+    End Sub
+
+
     '=================================================================================== 
     '===================================================================================      
     '                === SMETA SECTION ===

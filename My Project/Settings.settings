@@ -11,5 +11,11 @@
     <Setting Name="testString" Type="System.String" Scope="User">
       <Value Profile="(Default)">hello</Value>
     </Setting>
+    <Setting Name="databasePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="dateLastBackUp" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
