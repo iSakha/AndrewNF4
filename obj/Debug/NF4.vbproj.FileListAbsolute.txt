@@ -61,3 +61,5 @@ C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj
 C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.smetaMainForm.resources
 G:\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.smetaMainForm.resources
 G:\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.settingsForm.resources
+C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.settingsForm.resources
+C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.vbproj.CoreCompileInputs.cache

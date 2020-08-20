@@ -139,19 +139,32 @@ Module myFunc
                     'Adding the Columns
                     For i = 0 To c_xlTable - 1
                         dt.Columns.Add(rng.Value(0, i))
+                        Console.WriteLine(rng.Value(0, i))
                     Next i
 
-                    dt.Columns(0).DataType = System.Type.GetType("System.Int32")
-                    dt.Columns(1).DataType = System.Type.GetType("System.String")
-                    dt.Columns(2).DataType = System.Type.GetType("System.Int32")
-                    dt.Columns(3).DataType = System.Type.GetType("System.String")
-                    dt.Columns(4).DataType = System.Type.GetType("System.Int32")
-                    dt.Columns(5).DataType = System.Type.GetType("System.String")
-                    dt.Columns(6).DataType = System.Type.GetType("System.Int32")
-                    dt.Columns(7).DataType = System.Type.GetType("System.String")
-                    dt.Columns(8).DataType = System.Type.GetType("System.Int32")
+                    dt.Columns(0).DataType = System.Type.GetType("System.Int32")               ' Department
+                    dt.Columns(1).DataType = System.Type.GetType("System.Int32")               ' Category
+                    dt.Columns(2).DataType = System.Type.GetType("System.Int32")               ' ID
+                    dt.Columns(3).DataType = System.Type.GetType("System.String")              ' Fixture
+                    dt.Columns(4).DataType = System.Type.GetType("System.Int32")               ' Qty
+                    dt.Columns(5).DataType = System.Type.GetType("System.String")              ' CompanyName_1
+                    dt.Columns(6).DataType = System.Type.GetType("System.Int32")               ' Qty_1
+                    dt.Columns(7).DataType = System.Type.GetType("System.String")              ' CompanyName_2
+                    dt.Columns(8).DataType = System.Type.GetType("System.Int32")               ' Qty_2
+                    dt.Columns(9).DataType = System.Type.GetType("System.String")              ' CompanyName_3
+                    dt.Columns(10).DataType = System.Type.GetType("System.Int32")              ' Qty_3
 
-
+                    dt.Columns(0).ColumnName = "Dep"
+                    dt.Columns(1).ColumnName = "Cat"
+                    dt.Columns(2).ColumnName = "ID"
+                    dt.Columns(3).ColumnName = "Fixture"
+                    dt.Columns(4).ColumnName = "Qty"
+                    dt.Columns(5).ColumnName = "Name_1"
+                    dt.Columns(6).ColumnName = "Qty_1"
+                    dt.Columns(7).ColumnName = "Name_2"
+                    dt.Columns(8).ColumnName = "Qty_2"
+                    dt.Columns(9).ColumnName = "Name_3"
+                    dt.Columns(10).ColumnName = "Qty_3"
                     'Add Rows from Excel table
 
                     For i = 1 To r_xlTable - 1
@@ -172,6 +185,10 @@ Module myFunc
                                     Case 7
                                         row.Item(j) = ""
                                     Case 8
+                                        row.Item(j) = 0
+                                    Case 9
+                                        row.Item(j) = ""
+                                    Case 10
                                         row.Item(j) = 0
                                 End Select
                             Else
@@ -253,51 +270,115 @@ Module myFunc
         col = {Color.FromArgb(252, 228, 214), Color.FromArgb(221, 235, 247), Color.FromArgb(237, 237, 237),
             Color.FromArgb(226, 239, 218), Color.FromArgb(237, 226, 246)}
 
-        sumForm.dgv_sum.Columns(0).Width = 55                ' #
-        sumForm.dgv_sum.Columns(1).Width = 230               ' Fixture
-        sumForm.dgv_sum.Columns(2).Width = 65                ' Q-ty
-        sumForm.dgv_sum.Columns(2).DefaultCellStyle.Font = New Font("Tahoma", 10)
-        sumForm.dgv_sum.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(3).Width = 62                ' BelImlight
-        sumForm.dgv_sum.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(4).Width = 62                ' PRLightigTouring
+        'sumForm.dgv_sum.Columns(0).Width = 55                ' #
+        'sumForm.dgv_sum.Columns(1).Width = 230               ' Fixture
+        'sumForm.dgv_sum.Columns(2).Width = 65                ' Q-ty
+        'sumForm.dgv_sum.Columns(2).DefaultCellStyle.Font = New Font("Tahoma", 10)
+        'sumForm.dgv_sum.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'sumForm.dgv_sum.Columns(3).Width = 62                ' BelImlight
+        'sumForm.dgv_sum.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'sumForm.dgv_sum.Columns(4).Width = 62                ' PRLightigTouring
+        'sumForm.dgv_sum.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'sumForm.dgv_sum.Columns(5).Width = 62                ' BlackOut
+        'sumForm.dgv_sum.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'sumForm.dgv_sum.Columns(6).Width = 62                ' Vision
+        'sumForm.dgv_sum.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'sumForm.dgv_sum.Columns(7).Width = 62                ' Stage
+        'sumForm.dgv_sum.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        'sumForm.dgv_sum.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'sumForm.dgv_sum.Columns(11).Width = 65
+        'sumForm.dgv_sum.Columns(11).DefaultCellStyle.Font = New Font("Tahoma", 10, FontStyle.Bold)
+
+        'sumForm.dgv_sum.Columns(3).DefaultCellStyle.BackColor = col(0)
+        'sumForm.dgv_sum.Columns(4).DefaultCellStyle.BackColor = col(1)
+        'sumForm.dgv_sum.Columns(5).DefaultCellStyle.BackColor = col(2)
+        'sumForm.dgv_sum.Columns(6).DefaultCellStyle.BackColor = col(3)
+        'sumForm.dgv_sum.Columns(7).DefaultCellStyle.BackColor = col(4)
+
+        'For i = 0 To sumForm.dgv_sum.Rows.Count - 2
+
+        '    sumForm.dgv_sum.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(250, 250, 250)
+        '    If sumForm.dgv_sum.Item(11, i).Value = 0 Then
+        '        sumForm.dgv_sum.Item(0, i).Style.BackColor = Color.FromArgb(216, 238, 192)
+        '        sumForm.dgv_sum.Item(1, i).Style.BackColor = Color.FromArgb(216, 238, 192)
+        '        sumForm.dgv_sum.Item(2, i).Style.BackColor = Color.FromArgb(216, 238, 192)
+        '        sumForm.dgv_sum.Item(11, i).Style.BackColor = Color.FromArgb(216, 238, 192)
+        '    Else
+        '        sumForm.dgv_sum.Item(0, i).Style.BackColor = Color.FromArgb(255, 183, 183)
+        '        sumForm.dgv_sum.Item(1, i).Style.BackColor = Color.FromArgb(255, 183, 183)
+        '        sumForm.dgv_sum.Item(2, i).Style.BackColor = Color.FromArgb(255, 183, 183)
+        '        sumForm.dgv_sum.Item(11, i).Style.BackColor = Color.FromArgb(255, 183, 183)
+        '    End If
+        'Next i
+
+        'sumForm.dgv_sum.Columns(8).Visible = False
+        'sumForm.dgv_sum.Columns(9).Visible = False
+        'sumForm.dgv_sum.Columns(10).Visible = False
+
+        sumForm.dgv_sum.Columns(0).Visible = False           ' Department
+        sumForm.dgv_sum.Columns(1).Visible = False           ' Category
+        sumForm.dgv_sum.Columns(2).Width = 55                ' ID
+        sumForm.dgv_sum.Columns(3).Width = 230               ' Fixture
+        sumForm.dgv_sum.Columns(4).Width = 65                ' Q-ty
+        sumForm.dgv_sum.Columns(4).DefaultCellStyle.Font = New Font("Tahoma", 10)
         sumForm.dgv_sum.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(5).Width = 62                ' BlackOut
+        sumForm.dgv_sum.Columns(5).Width = 62                ' BelImlight
         sumForm.dgv_sum.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(6).Width = 62                ' Vision
+        sumForm.dgv_sum.Columns(6).Width = 62                ' PRLightigTouring
         sumForm.dgv_sum.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(7).Width = 62                ' Stage
+        sumForm.dgv_sum.Columns(7).Width = 62                ' BlackOut
         sumForm.dgv_sum.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        sumForm.dgv_sum.Columns(8).Width = 62                ' Vision
+        sumForm.dgv_sum.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        sumForm.dgv_sum.Columns(9).Width = 62                ' Stage
+        sumForm.dgv_sum.Columns(9).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
-        sumForm.dgv_sum.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(11).Width = 65
-        sumForm.dgv_sum.Columns(11).DefaultCellStyle.Font = New Font("Tahoma", 10, FontStyle.Bold)
+        sumForm.dgv_sum.Columns(10).Visible = False     ' Weight
+        sumForm.dgv_sum.Columns(11).Visible = False     ' Power/Length
+        sumForm.dgv_sum.Columns(12).Visible = False     ' Price
 
-        sumForm.dgv_sum.Columns(3).DefaultCellStyle.BackColor = col(0)
-        sumForm.dgv_sum.Columns(4).DefaultCellStyle.BackColor = col(1)
-        sumForm.dgv_sum.Columns(5).DefaultCellStyle.BackColor = col(2)
-        sumForm.dgv_sum.Columns(6).DefaultCellStyle.BackColor = col(3)
-        sumForm.dgv_sum.Columns(7).DefaultCellStyle.BackColor = col(4)
+        sumForm.dgv_sum.Columns(13).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        sumForm.dgv_sum.Columns(13).Width = 65
+        sumForm.dgv_sum.Columns(13).DefaultCellStyle.Font = New Font("Tahoma", 10, FontStyle.Bold)
+
+        sumForm.dgv_sum.Columns(14).Visible = False
+        sumForm.dgv_sum.Columns(15).Visible = False
+        sumForm.dgv_sum.Columns(16).Visible = False
+        sumForm.dgv_sum.Columns(17).Visible = False
+        sumForm.dgv_sum.Columns(18).Visible = False
+        sumForm.dgv_sum.Columns(19).Visible = False
+        sumForm.dgv_sum.Columns(20).Visible = False
+
+        sumForm.dgv_sum.Columns(5).DefaultCellStyle.BackColor = col(0)      ' BelImlight
+        sumForm.dgv_sum.Columns(6).DefaultCellStyle.BackColor = col(1)      ' PRLightigTouring
+        sumForm.dgv_sum.Columns(7).DefaultCellStyle.BackColor = col(2)      ' BlackOut
+        sumForm.dgv_sum.Columns(8).DefaultCellStyle.BackColor = col(3)      ' Vision
+        sumForm.dgv_sum.Columns(9).DefaultCellStyle.BackColor = col(4)      ' Stage
+
+
 
         For i = 0 To sumForm.dgv_sum.Rows.Count - 2
 
             sumForm.dgv_sum.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(250, 250, 250)
-            If sumForm.dgv_sum.Item(11, i).Value = 0 Then
-                sumForm.dgv_sum.Item(0, i).Style.BackColor = Color.FromArgb(216, 238, 192)
-                sumForm.dgv_sum.Item(1, i).Style.BackColor = Color.FromArgb(216, 238, 192)
+            If sumForm.dgv_sum.Item(13, i).Value = 0 Then
                 sumForm.dgv_sum.Item(2, i).Style.BackColor = Color.FromArgb(216, 238, 192)
-                sumForm.dgv_sum.Item(11, i).Style.BackColor = Color.FromArgb(216, 238, 192)
+                sumForm.dgv_sum.Item(3, i).Style.BackColor = Color.FromArgb(216, 238, 192)
+                sumForm.dgv_sum.Item(4, i).Style.BackColor = Color.FromArgb(216, 238, 192)
+                sumForm.dgv_sum.Item(13, i).Style.BackColor = Color.FromArgb(216, 238, 192)
             Else
-                sumForm.dgv_sum.Item(0, i).Style.BackColor = Color.FromArgb(255, 183, 183)
-                sumForm.dgv_sum.Item(1, i).Style.BackColor = Color.FromArgb(255, 183, 183)
                 sumForm.dgv_sum.Item(2, i).Style.BackColor = Color.FromArgb(255, 183, 183)
-                sumForm.dgv_sum.Item(11, i).Style.BackColor = Color.FromArgb(255, 183, 183)
+                sumForm.dgv_sum.Item(3, i).Style.BackColor = Color.FromArgb(255, 183, 183)
+                sumForm.dgv_sum.Item(4, i).Style.BackColor = Color.FromArgb(255, 183, 183)
+                sumForm.dgv_sum.Item(13, i).Style.BackColor = Color.FromArgb(255, 183, 183)
             End If
         Next i
 
-        sumForm.dgv_sum.Columns(8).Visible = False
-        sumForm.dgv_sum.Columns(9).Visible = False
-        sumForm.dgv_sum.Columns(10).Visible = False
+        '
+        '
+        'sumForm.dgv_sum.Columns(10).Visible = False
+        'sumForm.dgv_sum.Columns(11).Visible = False
+        'sumForm.dgv_sum.Columns(12).Visible = False
 
     End Sub
 #End Region
@@ -328,14 +409,14 @@ Module myFunc
         Dim selectedRow As DataGridViewRow
         selectedRow = _sender.Rows(index)
 
-        mainForm.rtb_fixtureName.Text = selectedRow.Cells(1).Value.ToString
-        mainForm.txt_qty.Text = selectedRow.Cells(2).Value.ToString
-        mainForm.rtb_FirstName.Text = selectedRow.Cells(3).Value.ToString
-        mainForm.txt_qty1.Text = selectedRow.Cells(4).Value.ToString
-        mainForm.rtb_SecondName.Text = selectedRow.Cells(5).Value.ToString
-        mainForm.txt_qty2.Text = selectedRow.Cells(6).Value.ToString
-        mainForm.rtb_ThirdName.Text = selectedRow.Cells(7).Value.ToString
-        mainForm.txt_qty3.Text = selectedRow.Cells(8).Value.ToString
+        mainForm.rtb_fixtureName.Text = selectedRow.Cells(3).Value.ToString
+        mainForm.txt_qty.Text = selectedRow.Cells(4).Value.ToString
+        mainForm.rtb_FirstName.Text = selectedRow.Cells(5).Value.ToString
+        mainForm.txt_qty1.Text = selectedRow.Cells(6).Value.ToString
+        mainForm.rtb_SecondName.Text = selectedRow.Cells(7).Value.ToString
+        mainForm.txt_qty2.Text = selectedRow.Cells(8).Value.ToString
+        mainForm.rtb_ThirdName.Text = selectedRow.Cells(9).Value.ToString
+        mainForm.txt_qty3.Text = selectedRow.Cells(10).Value.ToString
 
         mainForm.dgv.Rows(index).Selected = True
         '   Check is form running
@@ -460,19 +541,40 @@ Module myFunc
         mainForm.selIndex = index
 
         For j = 1 To mainForm.dts.Tables.Count - 1
-            sum = 0
-            qty = mainForm.dts.Tables(j).Rows(index).Item(4)
-            sum = sum + qty
-            qty = mainForm.dts.Tables(j).Rows(index).Item(6)
-            sum = sum + qty
-            qty = mainForm.dts.Tables(j).Rows(index).Item(8)
-            sum = sum + qty
 
+            Console.WriteLine(mainForm.dts.Tables(j).TableName)
+
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(0))
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(1))
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(2))
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(3))
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(4))
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(5))
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(6))
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(7))
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(8))
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(9))
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(10))
+
+
+            sum = 0
+            qty = mainForm.dts.Tables(j).Rows(index).Item(6)
+
+            sum = sum + qty
+            Console.WriteLine(sum)
+
+            qty = mainForm.dts.Tables(j).Rows(index).Item(8)
+            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(8))
+            sum = sum + qty
+            Console.WriteLine(sum)
+            qty = mainForm.dts.Tables(j).Rows(index).Item(10)
+            sum = sum + qty
+            Console.WriteLine(sum)
             mainForm.dgv_result.Rows(0).Cells(j).Value = sum
             editForm.dgv_result.Rows(0).Cells(j).Value = sum
         Next j
 
-        Dim smetaQty As Integer = mainForm.dts.Tables(0).Rows(index).Item(2)
+        Dim smetaQty As Integer = mainForm.dts.Tables(0).Rows(index).Item(4)
 
         Dim companiesQty As Integer = mainForm.dgv_result.Rows(0).Cells(1).Value +
         mainForm.dgv_result.Rows(0).Cells(2).Value +
@@ -802,5 +904,22 @@ Module myFunc
         Next j
         Excel.SaveAs(New FileInfo(sPath))
     End Sub
+
+    '=================================================================================== 
+    '===================================================================================      
+    '                === I don't understand why !!! ===
+    '===================================================================================
+    '=================================================================================== 
+    Function myRight(_foundFile, _dIndex)
+        Dim name As String
+        name = Right(_foundFile, _dIndex)
+        Return name
+    End Function
+
+    Function myLeft(_name)
+        Dim name As String
+        name = Left(_name, Len(_name) - 5)
+        Return name
+    End Function
 
 End Module

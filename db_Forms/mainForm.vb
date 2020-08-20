@@ -2,8 +2,9 @@
 Imports OfficeOpenXml.Table
 Imports System.IO
 
-Public Class mainForm
 
+
+Public Class mainForm
 
     Public sDir As String
     Public sFilePath As String
@@ -58,6 +59,45 @@ Public Class mainForm
         Dim response = MsgBox("Последний бэкап был создан " & My.Settings.dateLastBackUp & vbCr & "Создать новый?", vbYesNo)
         If response = MsgBoxResult.Yes Then
             createBackup(timeStampFolder())
+        Else
+            ' Show the FolderBrowserDialog.
+            FBD.SelectedPath = Directory.GetCurrentDirectory()
+            Dim result As DialogResult = FBD.ShowDialog()
+            If (result = DialogResult.OK) Then
+                sDir = FBD.SelectedPath
+
+                My.Settings.databasePath = sDir
+                settingsForm.txt_pathDB.Text = My.Settings.databasePath
+
+            Else
+                cancelFlag = True
+            End If
+
+            filePath = New Collection
+            fileNames = New Collection
+            Try
+                For Each foundFile In My.Computer.FileSystem.GetFiles _
+                (sDir, Microsoft.VisualBasic.FileIO.SearchOption.SearchAllSubDirectories, "*.omdb")
+                    'Console.WriteLine(foundFile)
+                    filePath.Add(foundFile)
+
+                    Dim dIndex = StrReverse(foundFile).IndexOf("\")
+
+                    Dim name As String
+
+                    '   !!!!!!!!!!!!!!!!!!!!!!!!!!!!   хз почему не работают функции Right и Left в этом модуле !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+                    name = myRight(foundFile, dIndex)
+                    'Console.WriteLine(name)
+                    name = myLeft(name)
+                    'Console.WriteLine(name)
+                    fileNames.Add(name)
+
+                Next
+
+            Catch
+            End Try
+
         End If
         load_db()
 
@@ -376,9 +416,9 @@ Public Class mainForm
         sumForm.Show()
         sumFormFlag = True
         sumForm.dgv_sum.DataSource = dts.Tables(0)
-        sumForm.dgv_sum.Columns(8).Visible = False
-        sumForm.dgv_sum.Columns(9).Visible = False
-        sumForm.dgv_sum.Columns(10).Visible = False
+        'sumForm.dgv_sum.Columns(8).Visible = False
+        'sumForm.dgv_sum.Columns(9).Visible = False
+        'sumForm.dgv_sum.Columns(10).Visible = False
         format_sumDGV()
 
     End Sub
@@ -505,4 +545,7 @@ Public Class mainForm
     Private Sub CreateSmetaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateSmetaToolStripMenuItem.Click
         smetaMainForm.Show()
     End Sub
+
+
+
 End Class
