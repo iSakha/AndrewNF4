@@ -444,7 +444,9 @@ Public Class mainForm
         calcQuantity()
     End Sub
 #End Region
-
+    '===================================================================================      
+    '                === CRUD buttons ===
+    '===================================================================================
 #Region "CRUD buttons"
     Private Sub btn_add_Click(sender As Object, e As EventArgs) Handles btn_add.Click
         delta = 1

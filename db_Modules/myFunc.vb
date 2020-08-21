@@ -40,7 +40,7 @@ Module myFunc
         mainForm.dts = New DataSet
 
         ws = mainForm.i_pivot_wsDict(_iDepartment)(_iCategory)
-        Console.WriteLine(ws.Name)
+        'Console.WriteLine(ws.Name)
         For k As Integer = 0 To ws.Tables.Count - 1
 
             xlTable = ws.Tables(k)
@@ -542,19 +542,19 @@ Module myFunc
 
         For j = 1 To mainForm.dts.Tables.Count - 1
 
-            Console.WriteLine(mainForm.dts.Tables(j).TableName)
+            'Console.WriteLine(mainForm.dts.Tables(j).TableName)
 
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(0))
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(1))
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(2))
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(3))
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(4))
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(5))
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(6))
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(7))
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(8))
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(9))
-            Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(10))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(0))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(1))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(2))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(3))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(4))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(5))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(6))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(7))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(8))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(9))
+            'Console.WriteLine(mainForm.dts.Tables(j).Rows(index).Item(10))
 
 
             sum = 0
@@ -730,7 +730,7 @@ Module myFunc
 
         For i As Integer = 0 To mainForm.dts.Tables.Count - 2
             For j As Integer = 0 To 7
-                sRow(i, j) = mainForm.dts.Tables(i + 1).Rows(_index).Item(j + 1)
+                sRow(i, j) = mainForm.dts.Tables(i + 1).Rows(_index).Item(j + 3)
                 editForm.writeIntoTxtbxs(sRow(i, j), i, j)
             Next j
         Next i

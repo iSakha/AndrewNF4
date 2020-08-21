@@ -58,6 +58,7 @@
     End Sub
 
     Sub calculate()
+
         qty_belimlight1 = Integer.Parse(txt_qty_belimlight1_addform.Text)
         qty_belimlight2 = Integer.Parse(txt_qty_belimlight2_addform.Text)
         qty_belimlight3 = Integer.Parse(txt_qty_belimlight3_addform.Text)
@@ -165,7 +166,7 @@
         Dim sRow(4, 7) As String
         Dim row As DataRow
         Dim dt As DataTable
-        Dim index As Integer = mainForm.dgv.CurrentRow.Index
+
         'Console.WriteLine(index)
         sRow = New String(4, 7) {
             {fxtName, fxtQty, name_belimlight1, qty_belimlight1, name_belimlight2, qty_belimlight2, name_belimlight3, qty_belimlight3},
@@ -181,8 +182,13 @@
                 For i As Integer = 0 To mainForm.dts.Tables.Count - 2
                     dt = mainForm.dts.Tables(i + 1)
                     row = dt.Rows.Add()
+
+                    row.Item(0) = dt.Rows(dt.Rows.Count - 2).Item(0)
+                    row.Item(1) = dt.Rows(dt.Rows.Count - 2).Item(1)
+                    row.Item(2) = dt.Rows(dt.Rows.Count - 2).Item(2) + 1
+
                     For j As Integer = 0 To 7
-                        row.Item(j + 1) = sRow(i, j)
+                        row.Item(j + 3) = sRow(i, j)
                     Next j
                     row.Item(0) = dt.Rows(dt.Rows.Count - 2).Item(0) + 1
                 Next i
@@ -190,41 +196,51 @@
                 dt = mainForm.dts.Tables(0)
                 row = dt.Rows.Add()
 
-                row.Item(0) = dt.Rows(dt.Rows.Count - 2).Item(0) + 1
-                row.Item(1) = fxtName
-                row.Item(2) = fxtQty
-                row.Item(3) = qty_belimlight
-                row.Item(4) = qty_PRlighting
-                row.Item(5) = qty_blackout
-                row.Item(6) = qty_vision
-                row.Item(7) = qty_stage
-                row.Item(8) = 0
-                row.Item(9) = 0
+                row.Item(0) = dt.Rows(dt.Rows.Count - 2).Item(0)
+                row.Item(1) = dt.Rows(dt.Rows.Count - 2).Item(1)
+                row.Item(2) = dt.Rows(dt.Rows.Count - 2).Item(2) + 1
+                row.Item(3) = fxtName
+                row.Item(4) = fxtQty
+                row.Item(5) = qty_belimlight
+                row.Item(6) = qty_PRlighting
+                row.Item(7) = qty_blackout
+                row.Item(8) = qty_vision
+                row.Item(9) = qty_stage
                 row.Item(10) = 0
-                row.Item(11) = row.Item(2) - (row.Item(3) + row.Item(4) + row.Item(5) + row.Item(6) + row.Item(7))
+                row.Item(11) = 0
+                row.Item(12) = 0
+                row.Item(13) = row.Item(4) - (row.Item(5) + row.Item(6) + row.Item(7) + row.Item(8) + row.Item(9))
+                row.Item(14) = 0
+                row.Item(15) = 0
+                row.Item(16) = 0
+                row.Item(17) = 0
+                row.Item(18) = 0
+                row.Item(19) = 0
+                row.Item(20) = 0
 
             Case False
+                Dim index As Integer = mainForm.dgv.CurrentRow.Index
                 ' Update function
                 For i As Integer = 0 To mainForm.dts.Tables.Count - 2
                     dt = mainForm.dts.Tables(i + 1)
                     row = dt.Rows(index)
                     For j As Integer = 0 To 7
-                        dt.Rows(index).Item(j + 1) = sRow(i, j)
+                        dt.Rows(index).Item(j + 3) = sRow(i, j)
                     Next j
                 Next i
 
 
 
-                mainForm.dts.Tables(0).Rows(index).Item(mainForm.iCompany + 2) = fxtQty
+                mainForm.dts.Tables(0).Rows(index).Item(mainForm.iCompany + 4) = fxtQty
 
-                mainForm.dts.Tables(0).Rows(index).Item(3) = qty_belimlight
-                mainForm.dts.Tables(0).Rows(index).Item(4) = qty_PRlighting
-                mainForm.dts.Tables(0).Rows(index).Item(5) = qty_blackout
-                mainForm.dts.Tables(0).Rows(index).Item(6) = qty_vision
-                mainForm.dts.Tables(0).Rows(index).Item(7) = qty_stage
+                mainForm.dts.Tables(0).Rows(index).Item(5) = qty_belimlight
+                mainForm.dts.Tables(0).Rows(index).Item(6) = qty_PRlighting
+                mainForm.dts.Tables(0).Rows(index).Item(7) = qty_blackout
+                mainForm.dts.Tables(0).Rows(index).Item(8) = qty_vision
+                mainForm.dts.Tables(0).Rows(index).Item(9) = qty_stage
                 Dim result As Integer
                 result = fxtQty - (qty_belimlight + qty_PRlighting + qty_blackout + qty_vision + qty_stage)
-                mainForm.dts.Tables(0).Rows(index).Item(11) = result
+                mainForm.dts.Tables(0).Rows(index).Item(13) = result
                 mainForm.dts.AcceptChanges()
                 mainForm.dgv.DataSource = mainForm.dts.Tables(mainForm.iCompany)
 
