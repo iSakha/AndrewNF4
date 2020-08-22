@@ -256,6 +256,7 @@ Module myFunc
         Next i
 
         mainForm.dgv.RowHeadersVisible = False
+        mainForm.dgv.CurrentCell = mainForm.dgv.Item(2, 0)
 
     End Sub
 
@@ -442,7 +443,7 @@ Module myFunc
         mainForm.selIndex = index
         mainForm.dgv.ClearSelection()
 
-        mainForm.dgv.CurrentCell = mainForm.dgv.Item(0, index)
+        mainForm.dgv.CurrentCell = mainForm.dgv.Item(2, index)
         mainForm.dgv.Rows(index).Selected = True
 
 
@@ -453,7 +454,7 @@ Module myFunc
 
 
         index = index - 1
-        mainForm.dgv.CurrentCell = mainForm.dgv.Item(0, index)
+        mainForm.dgv.CurrentCell = mainForm.dgv.Item(2, index)
         mainForm.dgv.Rows(index).Selected = True
         '   Check is form running
         If mainForm.sumFormFlag Then
@@ -492,7 +493,7 @@ Module myFunc
         mainForm.dgv.ClearSelection()
 
 
-        mainForm.dgv.CurrentCell = mainForm.dgv.Item(0, index)
+        mainForm.dgv.CurrentCell = mainForm.dgv.Item(2, index)
         mainForm.dgv.Rows(index).Selected = True
 
         If index = mainForm.dgv.Rows.Count - 2 Then
@@ -502,7 +503,7 @@ Module myFunc
 
 
         index = index + 1
-        mainForm.dgv.CurrentCell = mainForm.dgv.Item(0, index)
+        mainForm.dgv.CurrentCell = mainForm.dgv.Item(2, index)
         mainForm.dgv.Rows(index).Selected = True
         '   Check is form running
 
