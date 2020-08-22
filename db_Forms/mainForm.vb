@@ -44,15 +44,72 @@ Public Class mainForm
     '===================================================================================
     Private Sub mainForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         checkExpirationDate()
+        settingsForm.txt_pathDB.Text = My.Settings.databasePath
     End Sub
     '===================================================================================
-    '             === File => Open => Load from backup ===
+    '             === File => Load DB from => Backup ===
     '===================================================================================
     Private Sub FileToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem1.Click
         loadFromBackup()
     End Sub
     '===================================================================================
-    '             === File => Open => Load database ===
+    '             === File => Load DB from => Saved location ===
+    '===================================================================================
+    Private Sub SavedLocationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SavedLocationToolStripMenuItem.Click
+        Dim response = MsgBox("Последний бэкап был создан " & My.Settings.dateLastBackUp & vbCr & "Создать новый?", vbYesNo)
+        If response = MsgBoxResult.Yes Then
+            createBackup(timeStampFolder())
+        Else
+
+            sDir = My.Settings.databasePath
+
+
+            filePath = New Collection
+            fileNames = New Collection
+            Try
+                For Each foundFile In My.Computer.FileSystem.GetFiles _
+                (sDir, Microsoft.VisualBasic.FileIO.SearchOption.SearchAllSubDirectories, "*.omdb")
+                    'Console.WriteLine(foundFile)
+                    filePath.Add(foundFile)
+
+                    Dim dIndex = StrReverse(foundFile).IndexOf("\")
+
+                    Dim name As String
+
+                    '   !!!!!!!!!!!!!!!!!!!!!!!!!!!!   хз почему не работают функции Right и Left в этом модуле !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+                    name = myRight(foundFile, dIndex)
+                    'Console.WriteLine(name)
+                    name = myLeft(name)
+                    'Console.WriteLine(name)
+                    fileNames.Add(name)
+
+                Next
+
+            Catch
+            End Try
+
+        End If
+        load_db()
+
+        iDepartment = 0
+        iCategory = 0
+        iCompany = 1
+
+        menuItem_department.Enabled = True
+        menuItem_company.Enabled = True
+
+        cancelFlag = False
+    End Sub
+    '===================================================================================
+    '             === Run settings ===
+    '===================================================================================
+    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
+        settingsForm.Show()
+        settingsForm.btn_browse.Select()
+    End Sub
+    '===================================================================================
+    '             === File => Load DB from => Specified location ===
     '===================================================================================
     Private Sub FolderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FolderToolStripMenuItem.Click
 
@@ -532,11 +589,6 @@ Public Class mainForm
         'extractFiles()
 
     End Sub
-
-    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
-        settingsForm.Show()
-    End Sub
-
 
     '=================================================================================== 
     '===================================================================================      

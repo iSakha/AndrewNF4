@@ -24,6 +24,7 @@ Partial Class settingsForm
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_pathDB = New System.Windows.Forms.TextBox()
+        Me.btn_browse = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -42,11 +43,21 @@ Partial Class settingsForm
         Me.txt_pathDB.Size = New System.Drawing.Size(618, 20)
         Me.txt_pathDB.TabIndex = 1
         '
+        'btn_browse
+        '
+        Me.btn_browse.Location = New System.Drawing.Point(772, 12)
+        Me.btn_browse.Name = "btn_browse"
+        Me.btn_browse.Size = New System.Drawing.Size(32, 20)
+        Me.btn_browse.TabIndex = 2
+        Me.btn_browse.Text = "..."
+        Me.btn_browse.UseVisualStyleBackColor = True
+        '
         'settingsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(887, 618)
+        Me.Controls.Add(Me.btn_browse)
         Me.Controls.Add(Me.txt_pathDB)
         Me.Controls.Add(Me.Label1)
         Me.Name = "settingsForm"
@@ -58,4 +69,5 @@ Partial Class settingsForm
 
     Friend WithEvents Label1 As Label
     Friend WithEvents txt_pathDB As TextBox
+    Friend WithEvents btn_browse As Button
 End Class

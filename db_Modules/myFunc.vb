@@ -637,32 +637,32 @@ Module myFunc
 
         For i As Integer = 1 To mainForm.sCompany.Count
 
-                    dt = mainForm.dts.Tables(i)
+            dt = mainForm.dts.Tables(i)
 
-                    xlTable = ws.Tables(i)
-                    oldAddr = xlTable.Address
-                    xlTable.Range.Clear()
-                    newAddr = New ExcelAddressBase(oldAddr.Start.Row, oldAddr.Start.Column, oldAddr.End.Row + _delta, oldAddr.End.Column)
-                    xlTable.TableXml.InnerXml = xlTable.TableXml.InnerXml.Replace(oldAddr.ToString(), newAddr.ToString())
+            xlTable = ws.Tables(i)
+            oldAddr = xlTable.Address
+            xlTable.Range.Clear()
+            newAddr = New ExcelAddressBase(oldAddr.Start.Row, oldAddr.Start.Column, oldAddr.End.Row + _delta, oldAddr.End.Column)
+            xlTable.TableXml.InnerXml = xlTable.TableXml.InnerXml.Replace(oldAddr.ToString(), newAddr.ToString())
 
-                    startCellAddress = xlTable.Range.Start.Address
+            startCellAddress = xlTable.Range.Start.Address
 
-                    ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
+            ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
 
-                Next i
+        Next i
 
-                '   Write to pivot Exceltable
-                dt = mainForm.dts.Tables(0)
+        '   Write to pivot Exceltable
+        dt = mainForm.dts.Tables(0)
 
-                xlTable = ws.Tables(0)
-                oldAddr = xlTable.Address
-                newAddr = New ExcelAddressBase(oldAddr.Start.Row, oldAddr.Start.Column, oldAddr.End.Row + _delta, oldAddr.End.Column)
-                xlTable.TableXml.InnerXml = xlTable.TableXml.InnerXml.Replace(oldAddr.ToString(), newAddr.ToString())
+        xlTable = ws.Tables(0)
+        oldAddr = xlTable.Address
+        newAddr = New ExcelAddressBase(oldAddr.Start.Row, oldAddr.Start.Column, oldAddr.End.Row + _delta, oldAddr.End.Column)
+        xlTable.TableXml.InnerXml = xlTable.TableXml.InnerXml.Replace(oldAddr.ToString(), newAddr.ToString())
 
-                startCellAddress = xlTable.Range.Start.Address
+        startCellAddress = xlTable.Range.Start.Address
 
-                xlTable.Range.Clear()
-                ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
+        xlTable.Range.Clear()
+        ws.Cells(startCellAddress).LoadFromDataTable(dt, True)
 
 
 

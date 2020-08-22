@@ -42,36 +42,36 @@ Module load_and_close
         Dim backUpFile, foundFile As String
 
         Select Case mainForm.cancelFlag
-                Case False
-                    '   create backup database in BackUp folder
-                    mainForm.filePath = New Collection
-                    mainForm.fileNames = New Collection
-                    Try
-                        For Each foundFile In My.Computer.FileSystem.GetFiles _
+            Case False
+                '   create backup database in BackUp folder
+                mainForm.filePath = New Collection
+                mainForm.fileNames = New Collection
+                Try
+                    For Each foundFile In My.Computer.FileSystem.GetFiles _
                 (mainForm.sDir, Microsoft.VisualBasic.FileIO.SearchOption.SearchAllSubDirectories, "*.omdb")
-                            'Console.WriteLine(foundFile)
-                            mainForm.filePath.Add(foundFile)
-                            'Console.WriteLine(foundFile)
-                            Dim dIndex = StrReverse(foundFile).IndexOf("\")
+                        'Console.WriteLine(foundFile)
+                        mainForm.filePath.Add(foundFile)
+                        'Console.WriteLine(foundFile)
+                        Dim dIndex = StrReverse(foundFile).IndexOf("\")
 
-                            Dim name As String
-                            name = Right(foundFile, dIndex)
+                        Dim name As String
+                        name = Right(foundFile, dIndex)
 
-                            name = Left(name, Len(name) - 5)
-                            mainForm.fileNames.Add(name)
-                            'Console.WriteLine(name)
-                            backUpFile = Directory.GetCurrentDirectory() & "\BackUp\" & _folderName & "\" & name & ".ombckp"
-                            My.Computer.FileSystem.CopyFile(foundFile, backUpFile)
-                        Next
+                        name = Left(name, Len(name) - 5)
+                        mainForm.fileNames.Add(name)
+                        'Console.WriteLine(name)
+                        backUpFile = Directory.GetCurrentDirectory() & "\BackUp\" & _folderName & "\" & name & ".ombckp"
+                        My.Computer.FileSystem.CopyFile(foundFile, backUpFile)
+                    Next
 
-                        MsgBox("Создаем резервную копию базы данных в папке BackUp", vbOKOnly + vbInformation)
-                        My.Settings.dateLastBackUp = Now
+                    MsgBox("Создаем резервную копию базы данных в папке BackUp", vbOKOnly + vbInformation)
+                    My.Settings.dateLastBackUp = Now
 
-                    Catch
-                    End Try
-            End Select
+                Catch
+                End Try
+        End Select
 
-            compressFiles()
+        compressFiles()
 
 
     End Sub
