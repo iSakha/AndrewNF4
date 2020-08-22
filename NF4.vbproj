@@ -85,6 +85,12 @@
     <Compile Include="db_Forms\editForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="db_Forms\paramForm.Designer.vb">
+      <DependentUpon>paramForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="db_Forms\paramForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="db_Forms\settingsForm.Designer.vb">
       <DependentUpon>settingsForm.vb</DependentUpon>
     </Compile>
@@ -139,6 +145,9 @@
   <ItemGroup>
     <EmbeddedResource Include="db_Forms\editForm.resx">
       <DependentUpon>editForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db_Forms\paramForm.resx">
+      <DependentUpon>paramForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="db_Forms\settingsForm.resx">
       <DependentUpon>settingsForm.vb</DependentUpon>

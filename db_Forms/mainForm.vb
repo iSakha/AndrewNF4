@@ -570,12 +570,53 @@ Public Class mainForm
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         Me.Close()
     End Sub
+    '===================================================================================      
+    '                === Run paramForm ===
+    '===================================================================================
+    Private Sub CustomizeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomizeToolStripMenuItem.Click
+
+        paramForm.Show()
+        paramForm.lbl_dpartmentValue.Text = Me.lbl_dpartmentValue.Text
+        paramForm.lbl_subsectionValue.Text = Me.lbl_subsectionValue.Text
+
+        create_dataset(iDepartment, iCategory)
+        paramForm.dgv.DataSource = dts.Tables(0)
+
+        '                === Format dgv ===
+        '===================================================================================
+
+        paramForm.dgv.Columns(0).Visible = False           ' Department
+        paramForm.dgv.Columns(1).Visible = False           ' Category
+        paramForm.dgv.Columns(2).Width = 55                ' ID
+        paramForm.dgv.Columns(3).Width = 230               ' Fixture
+        paramForm.dgv.Columns(4).Width = 65                ' Q-ty
+        paramForm.dgv.Columns(5).Visible = False
+        paramForm.dgv.Columns(6).Visible = False
+        paramForm.dgv.Columns(7).Visible = False
+        paramForm.dgv.Columns(8).Visible = False
+        paramForm.dgv.Columns(9).Visible = False
+        paramForm.dgv.Columns(10).Width = 65               ' Weight
+        paramForm.dgv.Columns(11).Width = 65               ' Power/Length
+        paramForm.dgv.Columns(12).Width = 65               ' Price
+        paramForm.dgv.Columns(13).Visible = False          ' Result
+        paramForm.dgv.Columns(14).Width = 65               ' Reserve 2
+        paramForm.dgv.Columns(15).Width = 65               ' Reserve 3
+        paramForm.dgv.Columns(16).Width = 65               ' Reserve 4
+        paramForm.dgv.Columns(17).Width = 65               ' Reserve 5
+        paramForm.dgv.Columns(18).Width = 65               ' Reserve 6
+        paramForm.dgv.Columns(19).Width = 65               ' Reserve 7
+        paramForm.dgv.Columns(20).Width = 65               ' Reserve 8
+
+        paramForm.dgv.DefaultCellStyle.BackColor = Color.White
+        paramForm.dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(250, 245, 240)
+
+    End Sub
 
     '===================================================================================      
     '                === Test button ===
     '===================================================================================
     Private Sub btn_test_Click(sender As Object, e As EventArgs) Handles btn_test.Click
-        Console.WriteLine(My.Settings.lastRun)
+        'Console.WriteLine(My.Settings.lastRun)
         'Console.WriteLine(My.Settings.testString)
         'My.Settings.testString = "Good bye!"
         'My.Settings.Save()

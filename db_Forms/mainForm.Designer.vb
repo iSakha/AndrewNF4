@@ -72,6 +72,7 @@ Partial Class mainForm
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.FolderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SavedLocationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveAsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -155,7 +156,6 @@ Partial Class mainForm
         Me.item_summary = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFD = New System.Windows.Forms.OpenFileDialog()
         Me.FBD = New System.Windows.Forms.FolderBrowserDialog()
-        Me.SavedLocationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -545,14 +545,20 @@ Partial Class mainForm
         'FileToolStripMenuItem1
         '
         Me.FileToolStripMenuItem1.Name = "FileToolStripMenuItem1"
-        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(168, 22)
         Me.FileToolStripMenuItem1.Text = "&Backup"
         '
         'FolderToolStripMenuItem
         '
         Me.FolderToolStripMenuItem.Name = "FolderToolStripMenuItem"
-        Me.FolderToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.FolderToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.FolderToolStripMenuItem.Text = "&Specified location"
+        '
+        'SavedLocationToolStripMenuItem
+        '
+        Me.SavedLocationToolStripMenuItem.Name = "SavedLocationToolStripMenuItem"
+        Me.SavedLocationToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.SavedLocationToolStripMenuItem.Text = "&Saved location"
         '
         'toolStripSeparator
         '
@@ -693,13 +699,13 @@ Partial Class mainForm
         'OptionsToolStripMenuItem
         '
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.OptionsToolStripMenuItem.Text = "&Settings"
         '
         'CreateSmetaToolStripMenuItem
         '
         Me.CreateSmetaToolStripMenuItem.Name = "CreateSmetaToolStripMenuItem"
-        Me.CreateSmetaToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.CreateSmetaToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
         Me.CreateSmetaToolStripMenuItem.Text = "Create Smeta"
         '
         'HelpToolStripMenuItem
@@ -1068,12 +1074,6 @@ Partial Class mainForm
         'OFD
         '
         Me.OFD.FileName = "OpenFileDialog1"
-        '
-        'SavedLocationToolStripMenuItem
-        '
-        Me.SavedLocationToolStripMenuItem.Name = "SavedLocationToolStripMenuItem"
-        Me.SavedLocationToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.SavedLocationToolStripMenuItem.Text = "&Saved location"
         '
         'mainForm
         '
