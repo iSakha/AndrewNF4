@@ -5,10 +5,12 @@ Imports System.IO
 Public Class smetaMainForm
 
     Dim dt_Global As DataTable
-
     Private Sub smetaMainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         createGlobal_dt()
         format_DGV_smeta()
+        txt_pwr.Text = 0
+        txt_price.Text = 0
+        txt_weight.Text = 0
     End Sub
 
     Private Sub btn_lighting_smeta_Click(sender As Object, e As EventArgs) Handles btn_lighting_smeta.Click
@@ -36,46 +38,31 @@ Public Class smetaMainForm
     End Sub
 
     Private Sub DGV_smeta_Scroll(sender As Object, e As ScrollEventArgs) _
-     Handles DGV_smeta.Scroll
+     Handles DGV_db.Scroll
 
-        Console.WriteLine(DGV_smeta.FirstDisplayedScrollingRowIndex)
+        Console.WriteLine(DGV_db.FirstDisplayedScrollingRowIndex)
 
     End Sub
 
-    Private Sub DGV_smeta_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGV_smeta.CellClick
+    Private Sub DGV_smeta_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGV_db.CellClick
         DGV_smeta_clickCell(sender, e)
     End Sub
 
-    Private Sub btn_clrSelRow_smeta_Click(sender As Object, e As EventArgs) Handles btn_clrSelRow_smeta.Click
-
-        Dim index As Integer
-        Dim selectedRow As DataGridViewRow
-        index = DGV_smeta.SelectedCells.Item(0).RowIndex
-        selectedRow = DGV_smeta.Rows(index)
-        selectedRow.DefaultCellStyle.BackColor = DGV_smeta.DefaultCellStyle.BackColor
-        DGV_smeta.Columns(3).DefaultCellStyle.BackColor = Color.FromArgb(242, 245, 245)
-        selectedRow.Cells(3).Style.BackColor = Color.FromArgb(242, 245, 245)
-        DGV_smeta.Rows(index).Selected = False
+    Private Sub DGV_smeta_Enter(sender As Object, e As EventArgs) Handles DGV_db.Enter
 
     End Sub
 
-    Private Sub DGV_smeta_Enter(sender As Object, e As EventArgs) Handles DGV_smeta.Enter
-
-    End Sub
-
-    Private Sub DGV_smeta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles DGV_smeta.KeyPress
+    Private Sub DGV_smeta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles DGV_db.KeyPress
         If e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Return) Then
-            Dim row As DataGridViewRow
-
-            For Each row In DGV_smeta.Rows
-                If row.Cells(20).Value > 0 Then
-                    row.DefaultCellStyle.BackColor = Color.Yellow
-                Else
-                    row.DefaultCellStyle.BackColor = SystemColors.Window
-                End If
-
-            Next row
-
+            enumRows()
         End If
+    End Sub
+
+    Private Sub btn_filter_Click(sender As Object, e As EventArgs) Handles btn_filter.Click
+        DGV_smeta.Columns.Add("Col_0", "Dep")
+        DGV_smeta.Columns.Add("Col_1", "Cat")
+        DGV_smeta.Columns.Add("Col_2", "ID")
+        DGV_smeta.Columns.Add("Col_3", "Fixture")
+        DGV_smeta.Columns.Add("Col_4", "Qty")
     End Sub
 End Class
