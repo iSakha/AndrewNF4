@@ -58,4 +58,24 @@ Public Class smetaMainForm
         DGV_smeta.Rows(index).Selected = False
 
     End Sub
+
+    Private Sub DGV_smeta_Enter(sender As Object, e As EventArgs) Handles DGV_smeta.Enter
+
+    End Sub
+
+    Private Sub DGV_smeta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles DGV_smeta.KeyPress
+        If e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Return) Then
+            Dim row As DataGridViewRow
+
+            For Each row In DGV_smeta.Rows
+                If row.Cells(20).Value > 0 Then
+                    row.DefaultCellStyle.BackColor = Color.Yellow
+                Else
+                    row.DefaultCellStyle.BackColor = SystemColors.Window
+                End If
+
+            Next row
+
+        End If
+    End Sub
 End Class

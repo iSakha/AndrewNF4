@@ -108,7 +108,7 @@ Module smetaFunc
         dt.Columns(17).ColumnName = "R5"
         dt.Columns(18).ColumnName = "R6"
         dt.Columns(19).ColumnName = "R7"
-        dt.Columns(20).ColumnName = "R8"
+        dt.Columns(20).ColumnName = "OrderQty"
 
 
 
@@ -206,7 +206,7 @@ Module smetaFunc
         smetaMainForm.DGV_smeta.Columns(2).Width = 80
         smetaMainForm.DGV_smeta.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         smetaMainForm.DGV_smeta.Columns(2).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        smetaMainForm.DGV_smeta.Columns(3).Width = 490
+        smetaMainForm.DGV_smeta.Columns(3).Width = 430
         smetaMainForm.DGV_smeta.Columns(3).DefaultCellStyle.BackColor = Color.FromArgb(242, 245, 245)
         smetaMainForm.DGV_smeta.Columns(3).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
         smetaMainForm.DGV_smeta.Columns(4).Width = 50
@@ -226,6 +226,16 @@ Module smetaFunc
         smetaMainForm.DGV_smeta.Columns(12).Width = 60
         smetaMainForm.DGV_smeta.Columns(12).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         smetaMainForm.DGV_smeta.Columns(12).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
+        smetaMainForm.DGV_smeta.Columns(13).Visible = False
+        smetaMainForm.DGV_smeta.Columns(14).Visible = False
+        smetaMainForm.DGV_smeta.Columns(15).Visible = False
+        smetaMainForm.DGV_smeta.Columns(16).Visible = False
+        smetaMainForm.DGV_smeta.Columns(17).Visible = False
+        smetaMainForm.DGV_smeta.Columns(18).Visible = False
+        smetaMainForm.DGV_smeta.Columns(19).Visible = False
+        smetaMainForm.DGV_smeta.Columns(20).Width = 60
+        smetaMainForm.DGV_smeta.Columns(20).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        smetaMainForm.DGV_smeta.Columns(20).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
 
     End Sub
 
@@ -241,12 +251,23 @@ Module smetaFunc
     End Function
 
     Sub DGV_smeta_clickCell(_sender As Object, _e As DataGridViewCellEventArgs)
+
         Dim index As Integer
         index = _e.RowIndex
         Console.WriteLine(index)
-        Dim selectedRow As DataGridViewRow
-        selectedRow = _sender.Rows(index)
-        selectedRow.DefaultCellStyle.BackColor = Color.Yellow
-        smetaMainForm.DGV_smeta.Rows(index).Selected = True
+        Dim row As DataGridViewRow
+
+        For Each row In smetaMainForm.DGV_smeta.Rows
+            If row.Cells(20).Value > 0 Then
+                row.DefaultCellStyle.BackColor = Color.Yellow
+            Else
+                row.DefaultCellStyle.BackColor = SystemColors.Window
+            End If
+            'smetaMainForm.DGV_smeta.DefaultCellStyle.SelectionBackColor = Color.Red
+        Next row
+
     End Sub
+
+
+
 End Module

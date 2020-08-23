@@ -25,6 +25,7 @@ Partial Class smetaMainForm
         Me.DGV_smeta = New System.Windows.Forms.DataGridView()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.btn_clrSelRow_smeta = New System.Windows.Forms.Button()
         Me.btn_sound_smeta = New System.Windows.Forms.Button()
         Me.btn_construct_smeta = New System.Windows.Forms.Button()
         Me.btn_truss_smeta = New System.Windows.Forms.Button()
@@ -32,7 +33,6 @@ Partial Class smetaMainForm
         Me.btn_screen_smeta = New System.Windows.Forms.Button()
         Me.btn_lighting_smeta = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.btn_clrSelRow_smeta = New System.Windows.Forms.Button()
         CType(Me.DGV_smeta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -41,8 +41,10 @@ Partial Class smetaMainForm
         'DGV_smeta
         '
         Me.DGV_smeta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGV_smeta.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2
         Me.DGV_smeta.Location = New System.Drawing.Point(170, 6)
         Me.DGV_smeta.Name = "DGV_smeta"
+        Me.DGV_smeta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGV_smeta.Size = New System.Drawing.Size(888, 603)
         Me.DGV_smeta.TabIndex = 0
         '
@@ -73,6 +75,15 @@ Partial Class smetaMainForm
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Database"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'btn_clrSelRow_smeta
+        '
+        Me.btn_clrSelRow_smeta.Location = New System.Drawing.Point(19, 261)
+        Me.btn_clrSelRow_smeta.Name = "btn_clrSelRow_smeta"
+        Me.btn_clrSelRow_smeta.Size = New System.Drawing.Size(145, 23)
+        Me.btn_clrSelRow_smeta.TabIndex = 2
+        Me.btn_clrSelRow_smeta.Text = "Clear selected row"
+        Me.btn_clrSelRow_smeta.UseVisualStyleBackColor = True
         '
         'btn_sound_smeta
         '
@@ -149,15 +160,6 @@ Partial Class smetaMainForm
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Smeta"
         Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'btn_clrSelRow_smeta
-        '
-        Me.btn_clrSelRow_smeta.Location = New System.Drawing.Point(19, 261)
-        Me.btn_clrSelRow_smeta.Name = "btn_clrSelRow_smeta"
-        Me.btn_clrSelRow_smeta.Size = New System.Drawing.Size(145, 23)
-        Me.btn_clrSelRow_smeta.TabIndex = 2
-        Me.btn_clrSelRow_smeta.Text = "Clear selected row"
-        Me.btn_clrSelRow_smeta.UseVisualStyleBackColor = True
         '
         'smetaMainForm
         '
