@@ -20,15 +20,57 @@ Public Class smetaMainForm
 
         txt_daysQty.Text = days
 
+        '           Fill up cities combobox
+        '----------------------------------------------------------------
         Dim sPath As String
-        sPath = mainForm.sDir & "Log"
+        sPath = mainForm.sDir & "\Log"
         Dim ws As ExcelWorksheet
         Dim excelFile = New FileInfo(sPath)
+        Dim xlTbl As ExcelTable
+        Dim city As String
+        Dim endRow As Integer
 
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial
         Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
 
+        ws = Excel.Workbook.Worksheets("Location")
 
+        xlTbl = ws.Tables("Cities")
+        endRow = xlTbl.Address.End.Row
+        For i As Integer = 2 To endRow
+            city = ws.Cells(i, 2).Value
+            cmb_eventCity.Items().Add(city)
+        Next i
+
+    End Sub
+    '           Fill up locations combobox
+    '----------------------------------------------------------------
+    Private Sub cmb_eventCity_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmb_eventCity.SelectedIndexChanged
+
+        cmb_eventLocation.Items.Clear()
+        cmb_eventLocation.Text = ""
+        Dim sPath As String
+        sPath = mainForm.sDir & "\Log"
+        Dim ws As ExcelWorksheet
+        Dim excelFile = New FileInfo(sPath)
+        Dim xlTbl As ExcelTable
+        Dim city, location As String
+        Dim endRow, startColumn As Integer
+
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+        Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
+
+        ws = Excel.Workbook.Worksheets("Location")
+        city = "City_" & cmb_eventCity.SelectedIndex.ToString
+        'Console.WriteLine(city)
+        xlTbl = ws.Tables(city)
+        startColumn = xlTbl.Address.Start.Column
+        endRow = xlTbl.Address.End.Row
+
+        For i As Integer = 2 To endRow
+            location = ws.Cells(i, startColumn).Value
+            cmb_eventLocation.Items().Add(location)
+        Next i
     End Sub
 
     Private Sub btn_lighting_smeta_Click(sender As Object, e As EventArgs) Handles btn_lighting_smeta.Click
@@ -115,4 +157,5 @@ Public Class smetaMainForm
         Dim days = diff.Days
         txt_daysQty.Text = days
     End Sub
+
 End Class

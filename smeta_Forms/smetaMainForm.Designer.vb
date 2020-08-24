@@ -26,12 +26,6 @@ Partial Class smetaMainForm
         Me.tbCtrl_smeta = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.btn_filter = New System.Windows.Forms.Button()
-        Me.txt_price = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txt_weight = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.txt_pwr = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.btn_sound_smeta = New System.Windows.Forms.Button()
         Me.btn_construct_smeta = New System.Windows.Forms.Button()
         Me.btn_truss_smeta = New System.Windows.Forms.Button()
@@ -39,6 +33,14 @@ Partial Class smetaMainForm
         Me.btn_screen_smeta = New System.Windows.Forms.Button()
         Me.btn_lighting_smeta = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.cmb_eventCity = New System.Windows.Forms.ComboBox()
+        Me.txt_daysQty = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.DTP_end = New System.Windows.Forms.DateTimePicker()
+        Me.DTP_start = New System.Windows.Forms.DateTimePicker()
+        Me.btn_clr_filter = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.DGV_smeta = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -61,19 +63,17 @@ Partial Class smetaMainForm
         Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.cmb_eventLocation = New System.Windows.Forms.ComboBox()
+        Me.txt_price = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txt_weight = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txt_pwr = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_event = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.cmb_eventLocation = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.btn_clr_filter = New System.Windows.Forms.Button()
-        Me.DTP_start = New System.Windows.Forms.DateTimePicker()
-        Me.DTP_end = New System.Windows.Forms.DateTimePicker()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txt_daysQty = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.cmb_eventCity = New System.Windows.Forms.ComboBox()
         CType(Me.DGV_db, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbCtrl_smeta.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -127,72 +127,6 @@ Partial Class smetaMainForm
         Me.btn_filter.TabIndex = 8
         Me.btn_filter.Text = "Go to smeta"
         Me.btn_filter.UseVisualStyleBackColor = True
-        '
-        'txt_price
-        '
-        Me.txt_price.BackColor = System.Drawing.SystemColors.Info
-        Me.txt_price.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.txt_price.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.txt_price.Location = New System.Drawing.Point(533, 667)
-        Me.txt_price.Name = "txt_price"
-        Me.txt_price.Size = New System.Drawing.Size(100, 29)
-        Me.txt_price.TabIndex = 7
-        Me.txt_price.Text = "123"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label3.Location = New System.Drawing.Point(529, 644)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(93, 20)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Total price"
-        '
-        'txt_weight
-        '
-        Me.txt_weight.BackColor = System.Drawing.SystemColors.Info
-        Me.txt_weight.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.txt_weight.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.txt_weight.Location = New System.Drawing.Point(415, 667)
-        Me.txt_weight.Name = "txt_weight"
-        Me.txt_weight.Size = New System.Drawing.Size(100, 29)
-        Me.txt_weight.TabIndex = 5
-        Me.txt_weight.Text = "123"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label2.Location = New System.Drawing.Point(411, 644)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(106, 20)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "Total weight"
-        '
-        'txt_pwr
-        '
-        Me.txt_pwr.BackColor = System.Drawing.SystemColors.Info
-        Me.txt_pwr.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.txt_pwr.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.txt_pwr.Location = New System.Drawing.Point(297, 667)
-        Me.txt_pwr.Name = "txt_pwr"
-        Me.txt_pwr.Size = New System.Drawing.Size(100, 29)
-        Me.txt_pwr.TabIndex = 3
-        Me.txt_pwr.Text = "123"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label1.Location = New System.Drawing.Point(293, 644)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(102, 20)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Total power"
         '
         'btn_sound_smeta
         '
@@ -281,6 +215,80 @@ Partial Class smetaMainForm
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Smeta"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label9.Location = New System.Drawing.Point(-1, 11)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(61, 20)
+        Me.Label9.TabIndex = 14
+        Me.Label9.Text = "Город"
+        '
+        'cmb_eventCity
+        '
+        Me.cmb_eventCity.FormattingEnabled = True
+        Me.cmb_eventCity.Location = New System.Drawing.Point(3, 35)
+        Me.cmb_eventCity.Name = "cmb_eventCity"
+        Me.cmb_eventCity.Size = New System.Drawing.Size(165, 21)
+        Me.cmb_eventCity.TabIndex = 15
+        '
+        'txt_daysQty
+        '
+        Me.txt_daysQty.Location = New System.Drawing.Point(8, 236)
+        Me.txt_daysQty.Name = "txt_daysQty"
+        Me.txt_daysQty.Size = New System.Drawing.Size(44, 20)
+        Me.txt_daysQty.TabIndex = 13
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label8.Location = New System.Drawing.Point(-1, 212)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(157, 20)
+        Me.Label8.TabIndex = 12
+        Me.Label8.Text = "Количество дней"
+        '
+        'DTP_end
+        '
+        Me.DTP_end.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTP_end.Location = New System.Drawing.Point(3, 179)
+        Me.DTP_end.Name = "DTP_end"
+        Me.DTP_end.Size = New System.Drawing.Size(159, 20)
+        Me.DTP_end.TabIndex = 11
+        Me.DTP_end.Visible = False
+        '
+        'DTP_start
+        '
+        Me.DTP_start.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTP_start.Location = New System.Drawing.Point(3, 127)
+        Me.DTP_start.Name = "DTP_start"
+        Me.DTP_start.Size = New System.Drawing.Size(159, 20)
+        Me.DTP_start.TabIndex = 10
+        '
+        'btn_clr_filter
+        '
+        Me.btn_clr_filter.Location = New System.Drawing.Point(8, 579)
+        Me.btn_clr_filter.Name = "btn_clr_filter"
+        Me.btn_clr_filter.Size = New System.Drawing.Size(156, 30)
+        Me.btn_clr_filter.TabIndex = 9
+        Me.btn_clr_filter.Text = "Back to DB"
+        Me.btn_clr_filter.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label7.Location = New System.Drawing.Point(-1, 156)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(146, 20)
+        Me.Label7.TabIndex = 7
+        Me.Label7.Text = "Дата окончания"
         '
         'DGV_smeta
         '
@@ -410,6 +418,102 @@ Partial Class smetaMainForm
         Me.Column20.HeaderText = "OrderQty"
         Me.Column20.Name = "Column20"
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label4.Location = New System.Drawing.Point(-1, 56)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(98, 20)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "Площадка"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label6.Location = New System.Drawing.Point(-1, 104)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(118, 20)
+        Me.Label6.TabIndex = 7
+        Me.Label6.Text = "Дата начала"
+        '
+        'cmb_eventLocation
+        '
+        Me.cmb_eventLocation.FormattingEnabled = True
+        Me.cmb_eventLocation.Location = New System.Drawing.Point(3, 80)
+        Me.cmb_eventLocation.Name = "cmb_eventLocation"
+        Me.cmb_eventLocation.Size = New System.Drawing.Size(165, 21)
+        Me.cmb_eventLocation.TabIndex = 8
+        '
+        'txt_price
+        '
+        Me.txt_price.BackColor = System.Drawing.SystemColors.Info
+        Me.txt_price.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.txt_price.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.txt_price.Location = New System.Drawing.Point(533, 667)
+        Me.txt_price.Name = "txt_price"
+        Me.txt_price.Size = New System.Drawing.Size(100, 29)
+        Me.txt_price.TabIndex = 7
+        Me.txt_price.Text = "123"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label3.Location = New System.Drawing.Point(529, 644)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(93, 20)
+        Me.Label3.TabIndex = 6
+        Me.Label3.Text = "Total price"
+        '
+        'txt_weight
+        '
+        Me.txt_weight.BackColor = System.Drawing.SystemColors.Info
+        Me.txt_weight.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.txt_weight.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.txt_weight.Location = New System.Drawing.Point(415, 667)
+        Me.txt_weight.Name = "txt_weight"
+        Me.txt_weight.Size = New System.Drawing.Size(100, 29)
+        Me.txt_weight.TabIndex = 5
+        Me.txt_weight.Text = "123"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label2.Location = New System.Drawing.Point(411, 644)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(106, 20)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Total weight"
+        '
+        'txt_pwr
+        '
+        Me.txt_pwr.BackColor = System.Drawing.SystemColors.Info
+        Me.txt_pwr.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.txt_pwr.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.txt_pwr.Location = New System.Drawing.Point(297, 667)
+        Me.txt_pwr.Name = "txt_pwr"
+        Me.txt_pwr.Size = New System.Drawing.Size(100, 29)
+        Me.txt_pwr.TabIndex = 3
+        Me.txt_pwr.Text = "123"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label1.Location = New System.Drawing.Point(293, 644)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(102, 20)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Total power"
+        '
         'txt_event
         '
         Me.txt_event.Location = New System.Drawing.Point(16, 667)
@@ -427,110 +531,6 @@ Partial Class smetaMainForm
         Me.Label5.Size = New System.Drawing.Size(123, 20)
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Мероприятие"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label4.Location = New System.Drawing.Point(-1, 56)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(98, 20)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Площадка"
-        '
-        'cmb_eventLocation
-        '
-        Me.cmb_eventLocation.FormattingEnabled = True
-        Me.cmb_eventLocation.Location = New System.Drawing.Point(3, 80)
-        Me.cmb_eventLocation.Name = "cmb_eventLocation"
-        Me.cmb_eventLocation.Size = New System.Drawing.Size(165, 21)
-        Me.cmb_eventLocation.TabIndex = 8
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label6.Location = New System.Drawing.Point(-1, 104)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(118, 20)
-        Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Дата начала"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label7.Location = New System.Drawing.Point(-1, 156)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(146, 20)
-        Me.Label7.TabIndex = 7
-        Me.Label7.Text = "Дата окончания"
-        '
-        'btn_clr_filter
-        '
-        Me.btn_clr_filter.Location = New System.Drawing.Point(8, 579)
-        Me.btn_clr_filter.Name = "btn_clr_filter"
-        Me.btn_clr_filter.Size = New System.Drawing.Size(156, 30)
-        Me.btn_clr_filter.TabIndex = 9
-        Me.btn_clr_filter.Text = "Back to DB"
-        Me.btn_clr_filter.UseVisualStyleBackColor = True
-        '
-        'DTP_start
-        '
-        Me.DTP_start.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTP_start.Location = New System.Drawing.Point(3, 127)
-        Me.DTP_start.Name = "DTP_start"
-        Me.DTP_start.Size = New System.Drawing.Size(159, 20)
-        Me.DTP_start.TabIndex = 10
-        '
-        'DTP_end
-        '
-        Me.DTP_end.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTP_end.Location = New System.Drawing.Point(3, 179)
-        Me.DTP_end.Name = "DTP_end"
-        Me.DTP_end.Size = New System.Drawing.Size(159, 20)
-        Me.DTP_end.TabIndex = 11
-        Me.DTP_end.Visible = False
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label8.Location = New System.Drawing.Point(-1, 212)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(157, 20)
-        Me.Label8.TabIndex = 12
-        Me.Label8.Text = "Количество дней"
-        '
-        'txt_daysQty
-        '
-        Me.txt_daysQty.Location = New System.Drawing.Point(8, 236)
-        Me.txt_daysQty.Name = "txt_daysQty"
-        Me.txt_daysQty.Size = New System.Drawing.Size(44, 20)
-        Me.txt_daysQty.TabIndex = 13
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label9.Location = New System.Drawing.Point(-1, 11)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(61, 20)
-        Me.Label9.TabIndex = 14
-        Me.Label9.Text = "Город"
-        '
-        'cmb_eventCity
-        '
-        Me.cmb_eventCity.FormattingEnabled = True
-        Me.cmb_eventCity.Location = New System.Drawing.Point(3, 35)
-        Me.cmb_eventCity.Name = "cmb_eventCity"
-        Me.cmb_eventCity.Size = New System.Drawing.Size(165, 21)
-        Me.cmb_eventCity.TabIndex = 15
         '
         'smetaMainForm
         '
