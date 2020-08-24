@@ -18,9 +18,16 @@ Public Class smetaMainForm
         Dim diff As TimeSpan = dateTwo - dateOne
         Dim days = diff.Days
 
-        'DTP_start.Value = Now
-
         txt_daysQty.Text = days
+
+        Dim sPath As String
+        Dim ws As ExcelWorksheet
+        Dim excelFile = New FileInfo(sPath)
+        'Console.WriteLine(mainForm.sFilePath)
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+        Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
+
+
     End Sub
 
     Private Sub btn_lighting_smeta_Click(sender As Object, e As EventArgs) Handles btn_lighting_smeta.Click
