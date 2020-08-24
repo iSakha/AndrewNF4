@@ -12,6 +12,15 @@ Public Class smetaMainForm
         txt_pwr.Text = 0
         txt_price.Text = 0
         txt_weight.Text = 0
+
+        Dim dateOne = DTP_start.Value
+        Dim dateTwo = DTP_end.Value
+        Dim diff As TimeSpan = dateTwo - dateOne
+        Dim days = diff.Days
+
+        'DTP_start.Value = Now
+
+        txt_daysQty.Text = days
     End Sub
 
     Private Sub btn_lighting_smeta_Click(sender As Object, e As EventArgs) Handles btn_lighting_smeta.Click
@@ -73,6 +82,29 @@ Public Class smetaMainForm
         Next
 
         tbCtrl_smeta.SelectedIndex = 1
+        DGV_smeta.ClearSelection()
 
+    End Sub
+
+    Private Sub btn_clr_filter_Click(sender As Object, e As EventArgs) Handles btn_clr_filter.Click
+        tbCtrl_smeta.SelectedIndex = 0
+    End Sub
+
+    Private Sub DTP_start_ValueChanged(sender As Object, e As EventArgs) Handles DTP_start.ValueChanged
+        Dim dateOne = DTP_start.Value
+        Dim dateTwo = DTP_end.Value
+        Dim diff As TimeSpan = dateTwo - dateOne
+        Dim days = diff.Days
+        txt_daysQty.Text = days
+
+        DTP_end.Visible = True
+    End Sub
+
+    Private Sub DTP_end_ValueChanged(sender As Object, e As EventArgs) Handles DTP_end.ValueChanged
+        Dim dateOne = DTP_start.Value
+        Dim dateTwo = DTP_end.Value
+        Dim diff As TimeSpan = dateTwo - dateOne
+        Dim days = diff.Days
+        txt_daysQty.Text = days
     End Sub
 End Class
