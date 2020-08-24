@@ -21,9 +21,10 @@ Public Class smetaMainForm
         txt_daysQty.Text = days
 
         Dim sPath As String
+        sPath = mainForm.sDir & "Log"
         Dim ws As ExcelWorksheet
         Dim excelFile = New FileInfo(sPath)
-        'Console.WriteLine(mainForm.sFilePath)
+
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial
         Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
 
