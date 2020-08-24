@@ -152,14 +152,14 @@ Module smetaFunc
         Next r
     End Sub
 
-    Sub format_DGV_smeta()
+    Sub format_DGV_smeta(_DGV)
 
-        smetaMainForm.DGV_db.RowHeadersVisible = False
+        _DGV.RowHeadersVisible = False
 
-        smetaMainForm.DGV_db.Columns(0).Width = 30
-        smetaMainForm.DGV_db.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _DGV.Columns(0).Width = 30
+        _DGV.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
-        For Each r As DataGridViewRow In smetaMainForm.DGV_db.Rows
+        For Each r As DataGridViewRow In _DGV.Rows
             Select Case r.Cells(0).Value
                 Case 1
                     r.Cells(0).Style.BackColor = Color.LemonChiffon
@@ -201,41 +201,41 @@ Module smetaFunc
         Next r
 
 
-        smetaMainForm.DGV_db.Columns(1).Width = 30
-        smetaMainForm.DGV_db.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        smetaMainForm.DGV_db.Columns(2).Width = 80
-        smetaMainForm.DGV_db.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        smetaMainForm.DGV_db.Columns(2).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        smetaMainForm.DGV_db.Columns(3).Width = 430
-        smetaMainForm.DGV_db.Columns(3).DefaultCellStyle.BackColor = Color.FromArgb(242, 245, 245)
-        smetaMainForm.DGV_db.Columns(3).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        smetaMainForm.DGV_db.Columns(4).Width = 50
-        smetaMainForm.DGV_db.Columns(4).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        smetaMainForm.DGV_db.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        smetaMainForm.DGV_db.Columns(5).Visible = False
-        smetaMainForm.DGV_db.Columns(6).Visible = False
-        smetaMainForm.DGV_db.Columns(7).Visible = False
-        smetaMainForm.DGV_db.Columns(8).Visible = False
-        smetaMainForm.DGV_db.Columns(9).Visible = False
-        smetaMainForm.DGV_db.Columns(10).Width = 60
-        smetaMainForm.DGV_db.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        smetaMainForm.DGV_db.Columns(10).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        smetaMainForm.DGV_db.Columns(11).Width = 68
-        smetaMainForm.DGV_db.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        smetaMainForm.DGV_db.Columns(11).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        smetaMainForm.DGV_db.Columns(12).Width = 60
-        smetaMainForm.DGV_db.Columns(12).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        smetaMainForm.DGV_db.Columns(12).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        smetaMainForm.DGV_db.Columns(13).Visible = False
-        smetaMainForm.DGV_db.Columns(14).Visible = False
-        smetaMainForm.DGV_db.Columns(15).Visible = False
-        smetaMainForm.DGV_db.Columns(16).Visible = False
-        smetaMainForm.DGV_db.Columns(17).Visible = False
-        smetaMainForm.DGV_db.Columns(18).Visible = False
-        smetaMainForm.DGV_db.Columns(19).Visible = False
-        smetaMainForm.DGV_db.Columns(20).Width = 60
-        smetaMainForm.DGV_db.Columns(20).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        smetaMainForm.DGV_db.Columns(20).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
+        _DGV.Columns(1).Width = 30
+        _DGV.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _DGV.Columns(2).Width = 80
+        _DGV.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _DGV.Columns(2).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
+        _DGV.Columns(3).Width = 430
+        _DGV.Columns(3).DefaultCellStyle.BackColor = Color.FromArgb(242, 245, 245)
+        _DGV.Columns(3).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
+        _DGV.Columns(4).Width = 50
+        _DGV.Columns(4).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
+        _DGV.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _DGV.Columns(5).Visible = False
+        _DGV.Columns(6).Visible = False
+        _DGV.Columns(7).Visible = False
+        _DGV.Columns(8).Visible = False
+        _DGV.Columns(9).Visible = False
+        _DGV.Columns(10).Width = 60
+        _DGV.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _DGV.Columns(10).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
+        _DGV.Columns(11).Width = 68
+        _DGV.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _DGV.Columns(11).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
+        _DGV.Columns(12).Width = 60
+        _DGV.Columns(12).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _DGV.Columns(12).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
+        _DGV.Columns(13).Visible = False
+        _DGV.Columns(14).Visible = False
+        _DGV.Columns(15).Visible = False
+        _DGV.Columns(16).Visible = False
+        _DGV.Columns(17).Visible = False
+        _DGV.Columns(18).Visible = False
+        _DGV.Columns(19).Visible = False
+        _DGV.Columns(20).Width = 60
+        _DGV.Columns(20).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        _DGV.Columns(20).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
 
     End Sub
 
@@ -254,7 +254,9 @@ Module smetaFunc
         enumRows()
     End Sub
 
-    Sub enumRows()
+    Function enumRows()
+
+        Dim targetRows = New List(Of DataGridViewRow)
 
         Dim row As DataGridViewRow
         Dim totalPwr As Integer = 0
@@ -266,6 +268,7 @@ Module smetaFunc
             If row.Cells(20).Value > 0 Then
 
                 row.DefaultCellStyle.BackColor = Color.Yellow
+                targetRows.Add(row)
 
                 '           Calculate total power for lighting,screen and sound
                 If (row.Cells(0).Value = 1) Or (row.Cells(0).Value = 2) Or (row.Cells(0).Value = 6) Then
@@ -288,6 +291,8 @@ Module smetaFunc
 
         Next row
 
-    End Sub
+        Return (targetRows)
+
+    End Function
 
 End Module

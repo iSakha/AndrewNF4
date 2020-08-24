@@ -7,7 +7,8 @@ Public Class smetaMainForm
     Dim dt_Global As DataTable
     Private Sub smetaMainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         createGlobal_dt()
-        format_DGV_smeta()
+        format_DGV_smeta(DGV_db)
+        format_DGV_smeta(DGV_smeta)
         txt_pwr.Text = 0
         txt_price.Text = 0
         txt_weight.Text = 0
@@ -59,10 +60,19 @@ Public Class smetaMainForm
     End Sub
 
     Private Sub btn_filter_Click(sender As Object, e As EventArgs) Handles btn_filter.Click
-        DGV_smeta.Columns.Add("Col_0", "Dep")
-        DGV_smeta.Columns.Add("Col_1", "Cat")
-        DGV_smeta.Columns.Add("Col_2", "ID")
-        DGV_smeta.Columns.Add("Col_3", "Fixture")
-        DGV_smeta.Columns.Add("Col_4", "Qty")
+
+        Dim targetRows = enumRows()
+        DGV_smeta.Rows.Clear()
+        For Each drr As DataGridViewRow In enumRows()
+            Dim row As DataGridViewRow = CType(drr.Clone(), DataGridViewRow)
+            For i As Int32 = 0 To drr.Cells.Count - 1
+                row.Cells(i).Value = drr.Cells(i).Value
+                row.DefaultCellStyle.BackColor = SystemColors.Window
+            Next
+            DGV_smeta.Rows.Add(row)
+        Next
+
+        tbCtrl_smeta.SelectedIndex = 1
+
     End Sub
 End Class

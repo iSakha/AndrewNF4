@@ -64,3 +64,4 @@ G:\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.s
 C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.settingsForm.resources
 C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.vbproj.CoreCompileInputs.cache
 C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.paramForm.resources
+G:\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.paramForm.resources
