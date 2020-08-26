@@ -43,6 +43,7 @@ Public Class smetaMainForm
         Next i
 
     End Sub
+
     '           Fill up locations combobox
     '----------------------------------------------------------------
     Private Sub cmb_eventCity_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmb_eventCity.SelectedIndexChanged

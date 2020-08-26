@@ -117,7 +117,7 @@ Module smetaFunc
         'Add Rows from Excel table
 
         For k As Integer = 1 To rng_Collection.Count            '   Categories
-
+            Console.WriteLine(k)
             For i = 1 To r_xlTable_Collection(k) - 1
 
                 row = dt.Rows.Add()
