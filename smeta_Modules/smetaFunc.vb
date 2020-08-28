@@ -274,7 +274,9 @@ Module smetaFunc
         smetaMainForm.lbl_depart_value.BackColor = _color
 
         Dim catName As String
-        'catName= 
+        catName = mainForm.i_wsDict(0).Name
+        smetaMainForm.lbl_cat_value.Text = catName
+        Console.WriteLine(catName)
 
     End Sub
 
