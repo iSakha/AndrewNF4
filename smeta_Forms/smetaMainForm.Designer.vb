@@ -74,6 +74,10 @@ Partial Class smetaMainForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_event = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.lbl_depart_smeta = New System.Windows.Forms.Label()
+        Me.lbl_cat_smeta = New System.Windows.Forms.Label()
+        Me.lbl_depart_value = New System.Windows.Forms.Label()
+        Me.lbl_cat_value = New System.Windows.Forms.Label()
         CType(Me.DGV_db, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbCtrl_smeta.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -103,6 +107,10 @@ Partial Class smetaMainForm
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.lbl_depart_value)
+        Me.TabPage1.Controls.Add(Me.lbl_cat_value)
+        Me.TabPage1.Controls.Add(Me.lbl_cat_smeta)
+        Me.TabPage1.Controls.Add(Me.lbl_depart_smeta)
         Me.TabPage1.Controls.Add(Me.btn_filter)
         Me.TabPage1.Controls.Add(Me.btn_sound_smeta)
         Me.TabPage1.Controls.Add(Me.btn_construct_smeta)
@@ -131,6 +139,8 @@ Partial Class smetaMainForm
         'btn_sound_smeta
         '
         Me.btn_sound_smeta.BackColor = System.Drawing.Color.Thistle
+        Me.btn_sound_smeta.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.btn_sound_smeta.FlatAppearance.BorderSize = 2
         Me.btn_sound_smeta.Location = New System.Drawing.Point(19, 151)
         Me.btn_sound_smeta.Name = "btn_sound_smeta"
         Me.btn_sound_smeta.Size = New System.Drawing.Size(145, 23)
@@ -142,6 +152,8 @@ Partial Class smetaMainForm
         'btn_construct_smeta
         '
         Me.btn_construct_smeta.BackColor = System.Drawing.Color.LightCyan
+        Me.btn_construct_smeta.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.btn_construct_smeta.FlatAppearance.BorderSize = 2
         Me.btn_construct_smeta.Location = New System.Drawing.Point(19, 122)
         Me.btn_construct_smeta.Name = "btn_construct_smeta"
         Me.btn_construct_smeta.Size = New System.Drawing.Size(145, 23)
@@ -153,6 +165,8 @@ Partial Class smetaMainForm
         'btn_truss_smeta
         '
         Me.btn_truss_smeta.BackColor = System.Drawing.Color.Honeydew
+        Me.btn_truss_smeta.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.btn_truss_smeta.FlatAppearance.BorderSize = 2
         Me.btn_truss_smeta.Location = New System.Drawing.Point(19, 93)
         Me.btn_truss_smeta.Name = "btn_truss_smeta"
         Me.btn_truss_smeta.Size = New System.Drawing.Size(145, 23)
@@ -164,6 +178,8 @@ Partial Class smetaMainForm
         'btn_commut_smeta
         '
         Me.btn_commut_smeta.BackColor = System.Drawing.Color.MistyRose
+        Me.btn_commut_smeta.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.btn_commut_smeta.FlatAppearance.BorderSize = 2
         Me.btn_commut_smeta.Location = New System.Drawing.Point(19, 64)
         Me.btn_commut_smeta.Name = "btn_commut_smeta"
         Me.btn_commut_smeta.Size = New System.Drawing.Size(145, 23)
@@ -175,6 +191,8 @@ Partial Class smetaMainForm
         'btn_screen_smeta
         '
         Me.btn_screen_smeta.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.btn_screen_smeta.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.btn_screen_smeta.FlatAppearance.BorderSize = 2
         Me.btn_screen_smeta.Location = New System.Drawing.Point(19, 35)
         Me.btn_screen_smeta.Name = "btn_screen_smeta"
         Me.btn_screen_smeta.Size = New System.Drawing.Size(145, 23)
@@ -186,6 +204,8 @@ Partial Class smetaMainForm
         'btn_lighting_smeta
         '
         Me.btn_lighting_smeta.BackColor = System.Drawing.Color.LemonChiffon
+        Me.btn_lighting_smeta.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.btn_lighting_smeta.FlatAppearance.BorderSize = 2
         Me.btn_lighting_smeta.Location = New System.Drawing.Point(19, 6)
         Me.btn_lighting_smeta.Name = "btn_lighting_smeta"
         Me.btn_lighting_smeta.Size = New System.Drawing.Size(145, 23)
@@ -532,6 +552,52 @@ Partial Class smetaMainForm
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Мероприятие"
         '
+        'lbl_depart_smeta
+        '
+        Me.lbl_depart_smeta.AutoSize = True
+        Me.lbl_depart_smeta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lbl_depart_smeta.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.lbl_depart_smeta.Location = New System.Drawing.Point(10, 223)
+        Me.lbl_depart_smeta.Name = "lbl_depart_smeta"
+        Me.lbl_depart_smeta.Size = New System.Drawing.Size(88, 16)
+        Me.lbl_depart_smeta.TabIndex = 9
+        Me.lbl_depart_smeta.Text = "Department"
+        '
+        'lbl_cat_smeta
+        '
+        Me.lbl_cat_smeta.AutoSize = True
+        Me.lbl_cat_smeta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lbl_cat_smeta.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.lbl_cat_smeta.Location = New System.Drawing.Point(10, 283)
+        Me.lbl_cat_smeta.Name = "lbl_cat_smeta"
+        Me.lbl_cat_smeta.Size = New System.Drawing.Size(71, 16)
+        Me.lbl_cat_smeta.TabIndex = 9
+        Me.lbl_cat_smeta.Text = "Category"
+        '
+        'lbl_depart_value
+        '
+        Me.lbl_depart_value.AutoSize = True
+        Me.lbl_depart_value.BackColor = System.Drawing.Color.OldLace
+        Me.lbl_depart_value.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lbl_depart_value.ForeColor = System.Drawing.Color.Black
+        Me.lbl_depart_value.Location = New System.Drawing.Point(10, 245)
+        Me.lbl_depart_value.Name = "lbl_depart_value"
+        Me.lbl_depart_value.Size = New System.Drawing.Size(66, 20)
+        Me.lbl_depart_value.TabIndex = 9
+        Me.lbl_depart_value.Text = "Label10"
+        '
+        'lbl_cat_value
+        '
+        Me.lbl_cat_value.AutoSize = True
+        Me.lbl_cat_value.BackColor = System.Drawing.Color.OldLace
+        Me.lbl_cat_value.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lbl_cat_value.ForeColor = System.Drawing.Color.Black
+        Me.lbl_cat_value.Location = New System.Drawing.Point(10, 305)
+        Me.lbl_cat_value.Name = "lbl_cat_value"
+        Me.lbl_cat_value.Size = New System.Drawing.Size(66, 20)
+        Me.lbl_cat_value.TabIndex = 9
+        Me.lbl_cat_value.Text = "Label10"
+        '
         'smetaMainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -551,6 +617,7 @@ Partial Class smetaMainForm
         CType(Me.DGV_db, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbCtrl_smeta.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
         CType(Me.DGV_smeta, System.ComponentModel.ISupportInitialize).EndInit()
@@ -611,4 +678,8 @@ Partial Class smetaMainForm
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents cmb_eventCity As ComboBox
+    Friend WithEvents lbl_depart_value As Label
+    Friend WithEvents lbl_cat_value As Label
+    Friend WithEvents lbl_cat_smeta As Label
+    Friend WithEvents lbl_depart_smeta As Label
 End Class

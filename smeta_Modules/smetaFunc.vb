@@ -249,9 +249,33 @@ Module smetaFunc
         End If
         Return result
     End Function
-
+    '===================================================================================
+    '             === DGV_smeta CellClick ===
+    '===================================================================================
     Sub DGV_smeta_clickCell(_sender As Object, _e As DataGridViewCellEventArgs)
         enumRows()
+        Dim index As Integer
+        Dim row As DataGridViewRow
+        index = _e.RowIndex
+        row = _sender.Rows(index)
+        mainForm.iDepartment = row.Cells(0).Value
+        mainForm.iCategory = row.Cells(1).Value
+        Dim color As Color
+        color = row.Cells(0).Style.BackColor
+        setLabels(color)
+
+    End Sub
+
+    Sub setLabels(_color)
+        Dim departName As String
+        departName = mainForm.fileNames(mainForm.iDepartment)
+        departName = Right(departName, Len(departName) - 3)
+        smetaMainForm.lbl_depart_value.Text = departName
+        smetaMainForm.lbl_depart_value.BackColor = _color
+
+        Dim catName As String
+        'catName= 
+
     End Sub
 
     Function enumRows()
@@ -294,5 +318,17 @@ Module smetaFunc
         Return (targetRows)
 
     End Function
+
+    Sub changeButtonStyle(_sender)
+
+        smetaMainForm.DGV_db.ClearSelection()
+
+        Dim departName As String = _sender.Text
+        departName = Right(departName, Len(departName) - 3)
+
+        smetaMainForm.lbl_depart_value.Text = departName
+        smetaMainForm.lbl_depart_value.BackColor = _sender.BackColor
+
+    End Sub
 
 End Module

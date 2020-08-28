@@ -5,6 +5,10 @@ Imports System.IO
 Public Class smetaMainForm
 
     Dim dt_Global As DataTable
+
+    '===================================================================================
+    '             === Load Smeta Form  ===
+    '===================================================================================
     Private Sub smetaMainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         createGlobal_dt()
         format_DGV_smeta(DGV_db)
@@ -42,6 +46,12 @@ Public Class smetaMainForm
             cmb_eventCity.Items().Add(city)
         Next i
 
+        lbl_cat_value.Text = ""
+
+        lbl_depart_value.Text = "Lighting"
+        lbl_depart_value.BackColor = btn_lighting_smeta.BackColor
+        DGV_db.ClearSelection()
+
     End Sub
 
     '           Fill up locations combobox
@@ -74,28 +84,45 @@ Public Class smetaMainForm
         Next i
     End Sub
 
+    '===================================================================================
+    '             === Select Department buttons ===
+    '===================================================================================
+
+    '             === Lighting button ===
+    '===================================================================================
     Private Sub btn_lighting_smeta_Click(sender As Object, e As EventArgs) Handles btn_lighting_smeta.Click
         setScroll(1001001)
+        changeButtonStyle(sender)
     End Sub
-
+    '             === Screen button ===
+    '===================================================================================
     Private Sub btn_screen_smeta_Click(sender As Object, e As EventArgs) Handles btn_screen_smeta.Click
         setScroll(2001001)
+        changeButtonStyle(sender)
     End Sub
-
+    '             === Commutation button ===
+    '===================================================================================
     Private Sub btn_commut_smeta_Click(sender As Object, e As EventArgs) Handles btn_commut_smeta.Click
         setScroll(3001001)
+        changeButtonStyle(sender)
     End Sub
-
+    '             === Trusses and motors button ===
+    '===================================================================================
     Private Sub btn_truss_smeta_Click(sender As Object, e As EventArgs) Handles btn_truss_smeta.Click
         setScroll(4001001)
+        changeButtonStyle(sender)
     End Sub
-
+    '             === Construction button ===
+    '===================================================================================
     Private Sub btn_construct_smeta_Click(sender As Object, e As EventArgs) Handles btn_construct_smeta.Click
         setScroll(5001001)
+        changeButtonStyle(sender)
     End Sub
-
+    '             === Sound button ===
+    '===================================================================================
     Private Sub btn_sound_smeta_Click(sender As Object, e As EventArgs) Handles btn_sound_smeta.Click
         setScroll(6001001)
+        changeButtonStyle(sender)
     End Sub
 
     Private Sub DGV_smeta_Scroll(sender As Object, e As ScrollEventArgs) _
@@ -104,7 +131,9 @@ Public Class smetaMainForm
         Console.WriteLine(DGV_db.FirstDisplayedScrollingRowIndex)
 
     End Sub
-
+    '===================================================================================
+    '             === DGV_smeta CellClick ===
+    '===================================================================================
     Private Sub DGV_smeta_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGV_db.CellClick
         DGV_smeta_clickCell(sender, e)
     End Sub
