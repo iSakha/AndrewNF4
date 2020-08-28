@@ -267,6 +267,7 @@ Module smetaFunc
     End Sub
 
     Sub setLabels(_color)
+
         Dim departName As String
         departName = mainForm.fileNames(mainForm.iDepartment)
         departName = Right(departName, Len(departName) - 3)
@@ -274,7 +275,7 @@ Module smetaFunc
         smetaMainForm.lbl_depart_value.BackColor = _color
 
         Dim catName As String
-        catName = mainForm.i_wsDict(0).Name
+        catName = mainForm.i_pivot_wsDict(mainForm.iDepartment - 1)(mainForm.iCategory - 1).Name
         smetaMainForm.lbl_cat_value.Text = catName
         Console.WriteLine(catName)
 
