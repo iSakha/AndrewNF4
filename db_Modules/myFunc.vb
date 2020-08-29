@@ -1,5 +1,6 @@
 ﻿Imports OfficeOpenXml
 Imports OfficeOpenXml.Table
+Imports System.Drawing.Drawing2D
 Imports System.IO
 
 Module myFunc
@@ -215,21 +216,6 @@ Module myFunc
             Color.FromArgb(226, 239, 218), Color.FromArgb(237, 226, 246)}
 
 
-        'mainForm.dgv.Columns(0).Width = 40                ' #
-        'mainForm.dgv.Columns(1).Width = 175               ' Fixture
-        'mainForm.dgv.Columns(2).Width = 40                ' Q-ty
-        'mainForm.dgv.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'mainForm.dgv.Columns(3).Width = 220               ' BelImlight_1  (PRLightigTouring, BlackOut, Vision, Stage)
-        'mainForm.dgv.Columns(4).Width = 40                ' Q-ty_1
-        'mainForm.dgv.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'mainForm.dgv.Columns(5).Width = 220               ' BelImlight_2  (PRLightigTouring, BlackOut, Vision, Stage)
-        'mainForm.dgv.Columns(6).Width = 40                ' Q-ty_2
-        'mainForm.dgv.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'mainForm.dgv.Columns(7).Width = 180               ' BelImlight_3  (PRLightigTouring, BlackOut, Vision, Stage)
-        'mainForm.dgv.Columns(8).Width = 40                ' Q-ty_3
-        'mainForm.dgv.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-
-
         mainForm.dgv.Columns(0).Visible = False           ' Department  
         mainForm.dgv.Columns(1).Visible = False           ' Category  
         mainForm.dgv.Columns(2).Width = 60                ' ID
@@ -276,19 +262,20 @@ Module myFunc
         sumForm.dgv_sum.Columns(0).Visible = False           ' Department
         sumForm.dgv_sum.Columns(1).Visible = False           ' Category
         sumForm.dgv_sum.Columns(2).Width = 55                ' ID
-        sumForm.dgv_sum.Columns(3).Width = 230               ' Fixture
-        sumForm.dgv_sum.Columns(4).Width = 65                ' Q-ty
+        sumForm.dgv_sum.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill                 ' Fixture
+        sumForm.dgv_sum.Columns(3).MinimumWidth = 230
+        sumForm.dgv_sum.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill                 ' Q-ty
         sumForm.dgv_sum.Columns(4).DefaultCellStyle.Font = New Font("Tahoma", 10)
         sumForm.dgv_sum.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(5).Width = 62                ' BelImlight
+        sumForm.dgv_sum.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill                 ' BelImlight
         sumForm.dgv_sum.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(6).Width = 62                ' PRLightigTouring
+        sumForm.dgv_sum.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill                 ' PRLightigTouring
         sumForm.dgv_sum.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(7).Width = 62                ' BlackOut
+        sumForm.dgv_sum.Columns(7).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill                 ' BlackOut
         sumForm.dgv_sum.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(8).Width = 62                ' Vision
+        sumForm.dgv_sum.Columns(8).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill                 ' Vision
         sumForm.dgv_sum.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(9).Width = 62                ' Stage
+        sumForm.dgv_sum.Columns(9).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill                 ' Stage
         sumForm.dgv_sum.Columns(9).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
         sumForm.dgv_sum.Columns(10).Visible = False     ' Weight
@@ -296,7 +283,7 @@ Module myFunc
         sumForm.dgv_sum.Columns(12).Visible = False     ' Price
 
         sumForm.dgv_sum.Columns(13).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        sumForm.dgv_sum.Columns(13).Width = 65
+        sumForm.dgv_sum.Columns(13).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         sumForm.dgv_sum.Columns(13).DefaultCellStyle.Font = New Font("Tahoma", 10, FontStyle.Bold)
 
         sumForm.dgv_sum.Columns(14).Visible = False
