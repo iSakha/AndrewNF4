@@ -27,7 +27,7 @@ Public Class smetaMainForm
         '           Fill up cities combobox
         '----------------------------------------------------------------
         Dim sPath As String
-        sPath = mainForm.sDir & "\Log"
+        sPath = mainForm.sDir & "\Log.txt"
         Dim ws As ExcelWorksheet
         Dim excelFile = New FileInfo(sPath)
         Dim xlTbl As ExcelTable
@@ -61,7 +61,7 @@ Public Class smetaMainForm
         cmb_eventLocation.Items.Clear()
         cmb_eventLocation.Text = ""
         Dim sPath As String
-        sPath = mainForm.sDir & "\Log"
+        sPath = mainForm.sDir & "\Log.txt"
         Dim ws As ExcelWorksheet
         Dim excelFile = New FileInfo(sPath)
         Dim xlTbl As ExcelTable

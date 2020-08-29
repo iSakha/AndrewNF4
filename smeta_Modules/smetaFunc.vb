@@ -321,7 +321,9 @@ Module smetaFunc
         Return (targetRows)
 
     End Function
-
+    '===================================================================================
+    '             === changeButtonStyle ===
+    '===================================================================================
     Sub changeButtonStyle(_sender)
 
         smetaMainForm.DGV_db.ClearSelection()
@@ -331,6 +333,8 @@ Module smetaFunc
 
         smetaMainForm.lbl_depart_value.Text = departName
         smetaMainForm.lbl_depart_value.BackColor = _sender.BackColor
+
+        smetaMainForm.lbl_cat_value.Text = ""
 
     End Sub
 
