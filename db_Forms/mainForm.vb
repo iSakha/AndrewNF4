@@ -612,6 +612,10 @@ Public Class mainForm
 
     End Sub
 
+    Private Sub mainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        loginForm.Close()
+    End Sub
+
     '===================================================================================      
     '                === Test button ===
     '===================================================================================
