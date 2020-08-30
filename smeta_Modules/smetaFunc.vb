@@ -201,15 +201,19 @@ Module smetaFunc
         Next r
 
 
+
         _DGV.Columns(1).Width = 30
         _DGV.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        _DGV.Columns(2).Width = 80
+        _DGV.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        _DGV.Columns(2).MinimumWidth = 80
         _DGV.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         _DGV.Columns(2).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        _DGV.Columns(3).Width = 430
+        _DGV.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        _DGV.Columns(3).MinimumWidth = 430
         _DGV.Columns(3).DefaultCellStyle.BackColor = Color.FromArgb(242, 245, 245)
         _DGV.Columns(3).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        _DGV.Columns(4).Width = 50
+        _DGV.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        _DGV.Columns(4).MinimumWidth = 50
         _DGV.Columns(4).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
         _DGV.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         _DGV.Columns(5).Visible = False
@@ -217,13 +221,16 @@ Module smetaFunc
         _DGV.Columns(7).Visible = False
         _DGV.Columns(8).Visible = False
         _DGV.Columns(9).Visible = False
-        _DGV.Columns(10).Width = 60
+        _DGV.Columns(10).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        _DGV.Columns(10).MinimumWidth = 60
         _DGV.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         _DGV.Columns(10).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        _DGV.Columns(11).Width = 68
+        _DGV.Columns(11).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        _DGV.Columns(11).MinimumWidth = 68
         _DGV.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         _DGV.Columns(11).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
-        _DGV.Columns(12).Width = 60
+        _DGV.Columns(12).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        _DGV.Columns(12).MinimumWidth = 60
         _DGV.Columns(12).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         _DGV.Columns(12).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
         _DGV.Columns(13).Visible = False
@@ -233,7 +240,8 @@ Module smetaFunc
         _DGV.Columns(17).Visible = False
         _DGV.Columns(18).Visible = False
         _DGV.Columns(19).Visible = False
-        _DGV.Columns(20).Width = 60
+        _DGV.Columns(20).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        _DGV.Columns(20).MinimumWidth = 60
         _DGV.Columns(20).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         _DGV.Columns(20).DefaultCellStyle.Font = New Font("Calibri", 11, FontStyle.Bold, FontStyle.Italic)
 

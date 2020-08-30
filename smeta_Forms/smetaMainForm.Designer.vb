@@ -25,6 +25,10 @@ Partial Class smetaMainForm
         Me.DGV_db = New System.Windows.Forms.DataGridView()
         Me.tbCtrl_smeta = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.lbl_depart_value = New System.Windows.Forms.Label()
+        Me.lbl_cat_value = New System.Windows.Forms.Label()
+        Me.lbl_cat_smeta = New System.Windows.Forms.Label()
+        Me.lbl_depart_smeta = New System.Windows.Forms.Label()
         Me.btn_filter = New System.Windows.Forms.Button()
         Me.btn_sound_smeta = New System.Windows.Forms.Button()
         Me.btn_construct_smeta = New System.Windows.Forms.Button()
@@ -74,10 +78,6 @@ Partial Class smetaMainForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_event = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.lbl_depart_smeta = New System.Windows.Forms.Label()
-        Me.lbl_cat_smeta = New System.Windows.Forms.Label()
-        Me.lbl_depart_value = New System.Windows.Forms.Label()
-        Me.lbl_cat_value = New System.Windows.Forms.Label()
         CType(Me.DGV_db, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbCtrl_smeta.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -87,6 +87,7 @@ Partial Class smetaMainForm
         '
         'DGV_db
         '
+        Me.DGV_db.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DGV_db.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGV_db.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2
         Me.DGV_db.Location = New System.Drawing.Point(170, 6)
@@ -97,6 +98,8 @@ Partial Class smetaMainForm
         '
         'tbCtrl_smeta
         '
+        Me.tbCtrl_smeta.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbCtrl_smeta.Controls.Add(Me.TabPage1)
         Me.tbCtrl_smeta.Controls.Add(Me.TabPage2)
         Me.tbCtrl_smeta.Location = New System.Drawing.Point(0, 0)
@@ -126,6 +129,52 @@ Partial Class smetaMainForm
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Database"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'lbl_depart_value
+        '
+        Me.lbl_depart_value.AutoSize = True
+        Me.lbl_depart_value.BackColor = System.Drawing.Color.OldLace
+        Me.lbl_depart_value.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lbl_depart_value.ForeColor = System.Drawing.Color.Black
+        Me.lbl_depart_value.Location = New System.Drawing.Point(10, 245)
+        Me.lbl_depart_value.Name = "lbl_depart_value"
+        Me.lbl_depart_value.Size = New System.Drawing.Size(66, 20)
+        Me.lbl_depart_value.TabIndex = 9
+        Me.lbl_depart_value.Text = "Label10"
+        '
+        'lbl_cat_value
+        '
+        Me.lbl_cat_value.AutoSize = True
+        Me.lbl_cat_value.BackColor = System.Drawing.Color.OldLace
+        Me.lbl_cat_value.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lbl_cat_value.ForeColor = System.Drawing.Color.Black
+        Me.lbl_cat_value.Location = New System.Drawing.Point(10, 305)
+        Me.lbl_cat_value.Name = "lbl_cat_value"
+        Me.lbl_cat_value.Size = New System.Drawing.Size(66, 20)
+        Me.lbl_cat_value.TabIndex = 9
+        Me.lbl_cat_value.Text = "Label10"
+        '
+        'lbl_cat_smeta
+        '
+        Me.lbl_cat_smeta.AutoSize = True
+        Me.lbl_cat_smeta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lbl_cat_smeta.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.lbl_cat_smeta.Location = New System.Drawing.Point(10, 283)
+        Me.lbl_cat_smeta.Name = "lbl_cat_smeta"
+        Me.lbl_cat_smeta.Size = New System.Drawing.Size(71, 16)
+        Me.lbl_cat_smeta.TabIndex = 9
+        Me.lbl_cat_smeta.Text = "Category"
+        '
+        'lbl_depart_smeta
+        '
+        Me.lbl_depart_smeta.AutoSize = True
+        Me.lbl_depart_smeta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.lbl_depart_smeta.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.lbl_depart_smeta.Location = New System.Drawing.Point(10, 223)
+        Me.lbl_depart_smeta.Name = "lbl_depart_smeta"
+        Me.lbl_depart_smeta.Size = New System.Drawing.Size(88, 16)
+        Me.lbl_depart_smeta.TabIndex = 9
+        Me.lbl_depart_smeta.Text = "Department"
         '
         'btn_filter
         '
@@ -551,52 +600,6 @@ Partial Class smetaMainForm
         Me.Label5.Size = New System.Drawing.Size(123, 20)
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Мероприятие"
-        '
-        'lbl_depart_smeta
-        '
-        Me.lbl_depart_smeta.AutoSize = True
-        Me.lbl_depart_smeta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.lbl_depart_smeta.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.lbl_depart_smeta.Location = New System.Drawing.Point(10, 223)
-        Me.lbl_depart_smeta.Name = "lbl_depart_smeta"
-        Me.lbl_depart_smeta.Size = New System.Drawing.Size(88, 16)
-        Me.lbl_depart_smeta.TabIndex = 9
-        Me.lbl_depart_smeta.Text = "Department"
-        '
-        'lbl_cat_smeta
-        '
-        Me.lbl_cat_smeta.AutoSize = True
-        Me.lbl_cat_smeta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.lbl_cat_smeta.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.lbl_cat_smeta.Location = New System.Drawing.Point(10, 283)
-        Me.lbl_cat_smeta.Name = "lbl_cat_smeta"
-        Me.lbl_cat_smeta.Size = New System.Drawing.Size(71, 16)
-        Me.lbl_cat_smeta.TabIndex = 9
-        Me.lbl_cat_smeta.Text = "Category"
-        '
-        'lbl_depart_value
-        '
-        Me.lbl_depart_value.AutoSize = True
-        Me.lbl_depart_value.BackColor = System.Drawing.Color.OldLace
-        Me.lbl_depart_value.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.lbl_depart_value.ForeColor = System.Drawing.Color.Black
-        Me.lbl_depart_value.Location = New System.Drawing.Point(10, 245)
-        Me.lbl_depart_value.Name = "lbl_depart_value"
-        Me.lbl_depart_value.Size = New System.Drawing.Size(66, 20)
-        Me.lbl_depart_value.TabIndex = 9
-        Me.lbl_depart_value.Text = "Label10"
-        '
-        'lbl_cat_value
-        '
-        Me.lbl_cat_value.AutoSize = True
-        Me.lbl_cat_value.BackColor = System.Drawing.Color.OldLace
-        Me.lbl_cat_value.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.lbl_cat_value.ForeColor = System.Drawing.Color.Black
-        Me.lbl_cat_value.Location = New System.Drawing.Point(10, 305)
-        Me.lbl_cat_value.Name = "lbl_cat_value"
-        Me.lbl_cat_value.Size = New System.Drawing.Size(66, 20)
-        Me.lbl_cat_value.TabIndex = 9
-        Me.lbl_cat_value.Text = "Label10"
         '
         'smetaMainForm
         '
