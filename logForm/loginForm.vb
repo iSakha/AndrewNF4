@@ -24,22 +24,14 @@ Public Class loginForm
     Private Sub cmb_login_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmb_login.SelectedIndexChanged
 
         If cmb_login.SelectedItem = "superAdmin" Then
-            Dim msg = "Enter password for superAdmin"
-            Dim response = InputBox(msg)
-            If response = "Sakha2836" Then
-                Me.Hide()
-                mainForm.Show()
-            Else
-                MsgBox("Wrong pass!")
-                Me.Close()
-            End If
+            passwordForm.Show()
         End If
     End Sub
 
 
     Private Sub loginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Try
-            mainForm.sDir = My.Settings.databasePath
+
+        mainForm.sDir = My.Settings.databasePath
             Dim path As String
             path = mainForm.sDir & "\Log.txt"
             Dim ws As ExcelWorksheet
@@ -49,11 +41,15 @@ Public Class loginForm
 
             Dim user, pass As String
 
+        Try
+
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial
             Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
 
+
             ws = Excel.Workbook.Worksheets("Login")
             xlTbl = ws.Tables("login_tbl")
+
 
             startColumn = xlTbl.Address.Start.Column
             endRow = xlTbl.Address.End.Row
@@ -73,6 +69,8 @@ Public Class loginForm
         Catch ex As Exception
             MsgBox("Set path to DB")
         End Try
+
+
     End Sub
 
     Private Sub btn_clear_Click(sender As Object, e As EventArgs) Handles btn_clear.Click

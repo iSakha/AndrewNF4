@@ -4,9 +4,30 @@ Imports System.IO
 
 Public Class registrationForm
     Private Sub registrationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Dim oldAddr As OfficeOpenXml.ExcelAddressBase
+        Dim newAddr As OfficeOpenXml.ExcelAddressBase
+
+        Dim path As String
+        path = mainForm.sDir & "\Log.txt"
+        Dim ws As ExcelWorksheet
+        Dim excelFile = New FileInfo(path)
+        Dim xlTbl As ExcelTable
+        Dim endRow, startColumn As Integer
+
+        Dim user, pass As String
+
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+        Dim Excel As ExcelPackage = New ExcelPackage(excelFile)
+
+
+        ws = Excel.Workbook.Worksheets("Login")
+        xlTbl = ws.Tables("login_tbl")
+
         txt_login_reg.Text = ""
         txt_pass_reg.Text = ""
         txt_pass_confirm.Text = ""
+
     End Sub
     Function checkName()
         Dim name As String = txt_login_reg.Text
@@ -45,6 +66,7 @@ Public Class registrationForm
 
         If checkPass() Then
             MsgBox("Pass ok")
+            Me.Close()
         Else
             MsgBox("Wrong password confirmation")
         End If

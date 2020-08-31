@@ -68,3 +68,5 @@ G:\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.p
 C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.loginForm.resources
 G:\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.loginForm.resources
 G:\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.registrationForm.resources
+C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.passwordForm.resources
+C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.registrationForm.resources

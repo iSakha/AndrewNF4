@@ -117,6 +117,12 @@
     <Compile Include="logForm\loginForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="logForm\passwordForm.Designer.vb">
+      <DependentUpon>passwordForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="logForm\passwordForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="logForm\registrationForm.Designer.vb">
       <DependentUpon>registrationForm.vb</DependentUpon>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="logForm\loginForm.resx">
       <DependentUpon>loginForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="logForm\passwordForm.resx">
+      <DependentUpon>passwordForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="logForm\registrationForm.resx">
       <DependentUpon>registrationForm.vb</DependentUpon>

@@ -76,6 +76,7 @@ Partial Class registrationForm
         Me.txt_pass_reg.Name = "txt_pass_reg"
         Me.txt_pass_reg.Size = New System.Drawing.Size(127, 20)
         Me.txt_pass_reg.TabIndex = 5
+        Me.txt_pass_reg.UseSystemPasswordChar = True
         '
         'txt_pass_confirm
         '
@@ -83,6 +84,7 @@ Partial Class registrationForm
         Me.txt_pass_confirm.Name = "txt_pass_confirm"
         Me.txt_pass_confirm.Size = New System.Drawing.Size(127, 20)
         Me.txt_pass_confirm.TabIndex = 5
+        Me.txt_pass_confirm.UseSystemPasswordChar = True
         '
         'btn_registr
         '
