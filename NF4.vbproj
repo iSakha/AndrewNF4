@@ -205,6 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="pic\comein.jpg" />
+    <Content Include="pic\registration.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

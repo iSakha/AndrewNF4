@@ -3,7 +3,7 @@ Imports OfficeOpenXml.Table
 Imports System.IO
 Public Class loginForm
 
-    Dim loginDict As Dictionary(Of String, String)
+    Public loginDict As Dictionary(Of String, String)
 
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
         Dim user, pass As String
@@ -86,6 +86,6 @@ Public Class loginForm
     End Sub
 
     Private Sub btn_registr_Click(sender As Object, e As EventArgs) Handles btn_registr.Click
-
+        registrationForm.Show()
     End Sub
 End Class
