@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("2020-09-01")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("2020-10-01")>  _
         Public ReadOnly Property expireDate() As Date
             Get
                 Return CType(Me("expireDate"),Date)

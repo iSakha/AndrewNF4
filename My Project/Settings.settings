@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="expireDate" Type="System.DateTime" Scope="Application">
-      <Value Profile="(Default)">2020-09-01</Value>
+      <Value Profile="(Default)">2020-10-01</Value>
     </Setting>
     <Setting Name="lastRun" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)">2020-06-09</Value>

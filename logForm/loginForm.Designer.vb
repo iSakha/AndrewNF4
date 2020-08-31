@@ -25,8 +25,8 @@ Partial Class loginForm
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.cmb_login = New System.Windows.Forms.ComboBox()
+        Me.txt_pass = New System.Windows.Forms.TextBox()
         Me.btn_registr = New System.Windows.Forms.Button()
         Me.btn_login = New System.Windows.Forms.Button()
         Me.btn_clear = New System.Windows.Forms.Button()
@@ -64,20 +64,22 @@ Partial Class loginForm
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Password"
         '
-        'ComboBox1
+        'cmb_login
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(218, 13)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(175, 21)
-        Me.ComboBox1.TabIndex = 3
+        Me.cmb_login.FormattingEnabled = True
+        Me.cmb_login.Items.AddRange(New Object() {"superAdmin"})
+        Me.cmb_login.Location = New System.Drawing.Point(218, 13)
+        Me.cmb_login.Name = "cmb_login"
+        Me.cmb_login.Size = New System.Drawing.Size(175, 21)
+        Me.cmb_login.TabIndex = 3
         '
-        'TextBox1
+        'txt_pass
         '
-        Me.TextBox1.Location = New System.Drawing.Point(218, 65)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(175, 20)
-        Me.TextBox1.TabIndex = 4
+        Me.txt_pass.Location = New System.Drawing.Point(218, 65)
+        Me.txt_pass.Name = "txt_pass"
+        Me.txt_pass.Size = New System.Drawing.Size(175, 20)
+        Me.txt_pass.TabIndex = 4
+        Me.txt_pass.UseSystemPasswordChar = True
         '
         'btn_registr
         '
@@ -140,8 +142,8 @@ Partial Class loginForm
         Me.Controls.Add(Me.btn_clear)
         Me.Controls.Add(Me.btn_login)
         Me.Controls.Add(Me.btn_registr)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.txt_pass)
+        Me.Controls.Add(Me.cmb_login)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox1)
@@ -156,8 +158,8 @@ Partial Class loginForm
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents cmb_login As ComboBox
+    Friend WithEvents txt_pass As TextBox
     Friend WithEvents btn_registr As Button
     Friend WithEvents btn_login As Button
     Friend WithEvents btn_clear As Button
