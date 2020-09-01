@@ -219,16 +219,20 @@ Module myFunc
         mainForm.dgv.Columns(0).Visible = False           ' Department  
         mainForm.dgv.Columns(1).Visible = False           ' Category  
         mainForm.dgv.Columns(2).Width = 60                ' ID
-        mainForm.dgv.Columns(3).Width = 175               ' Fixture
+        mainForm.dgv.Columns(3).MinimumWidth = 175               ' Fixture
+        mainForm.dgv.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         mainForm.dgv.Columns(4).Width = 40                ' Q-ty
         mainForm.dgv.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.dgv.Columns(5).Width = 230               ' BelImlight_1  (PRLightigTouring, BlackOut, Vision, Stage)
+        mainForm.dgv.Columns(5).MinimumWidth = 230               ' BelImlight_1  (PRLightigTouring, BlackOut, Vision, Stage)
+        mainForm.dgv.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         mainForm.dgv.Columns(6).Width = 40                ' Q-ty_1
         mainForm.dgv.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.dgv.Columns(7).Width = 230               ' BelImlight_2  (PRLightigTouring, BlackOut, Vision, Stage)
+        mainForm.dgv.Columns(7).MinimumWidth = 230               ' BelImlight_2  (PRLightigTouring, BlackOut, Vision, Stage)
+        mainForm.dgv.Columns(7).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         mainForm.dgv.Columns(8).Width = 40                ' Q-ty_2
         mainForm.dgv.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        mainForm.dgv.Columns(9).Width = 180               ' BelImlight_3  (PRLightigTouring, BlackOut, Vision, Stage)
+        mainForm.dgv.Columns(9).MinimumWidth = 180               ' BelImlight_3  (PRLightigTouring, BlackOut, Vision, Stage)
+        mainForm.dgv.Columns(9).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         mainForm.dgv.Columns(10).Width = 40                ' Q-ty_3
         mainForm.dgv.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 

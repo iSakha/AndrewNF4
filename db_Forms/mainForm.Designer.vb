@@ -169,6 +169,8 @@ Partial Class mainForm
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.Silver
         Me.Panel1.Controls.Add(Me.btn_test)
         Me.Panel1.Controls.Add(Me.GroupBox3)
@@ -281,10 +283,13 @@ Partial Class mainForm
         '
         'dgv
         '
+        Me.dgv.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv.Location = New System.Drawing.Point(5, 90)
         Me.dgv.Name = "dgv"
         Me.dgv.ReadOnly = True
+        Me.dgv.RowHeadersWidth = 82
         Me.dgv.Size = New System.Drawing.Size(1056, 437)
         Me.dgv.TabIndex = 3
         '
@@ -455,6 +460,7 @@ Partial Class mainForm
         Me.dgv_result.Location = New System.Drawing.Point(6, 13)
         Me.dgv_result.Name = "dgv_result"
         Me.dgv_result.ReadOnly = True
+        Me.dgv_result.RowHeadersWidth = 82
         Me.dgv_result.Size = New System.Drawing.Size(743, 49)
         Me.dgv_result.TabIndex = 0
         '
@@ -464,6 +470,7 @@ Partial Class mainForm
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Column1.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column1.HeaderText = "Смета"
+        Me.Column1.MinimumWidth = 10
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
         '
@@ -472,6 +479,7 @@ Partial Class mainForm
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(228, Byte), Integer), CType(CType(214, Byte), Integer))
         Me.Column2.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column2.HeaderText = "Belimlight"
+        Me.Column2.MinimumWidth = 10
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
@@ -480,6 +488,7 @@ Partial Class mainForm
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(221, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(247, Byte), Integer))
         Me.Column3.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column3.HeaderText = "PRLighting"
+        Me.Column3.MinimumWidth = 10
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
         '
@@ -488,6 +497,7 @@ Partial Class mainForm
         DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(237, Byte), Integer), CType(CType(237, Byte), Integer), CType(CType(237, Byte), Integer))
         Me.Column4.DefaultCellStyle = DataGridViewCellStyle4
         Me.Column4.HeaderText = "Blackout"
+        Me.Column4.MinimumWidth = 10
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         '
@@ -496,6 +506,7 @@ Partial Class mainForm
         DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(218, Byte), Integer))
         Me.Column5.DefaultCellStyle = DataGridViewCellStyle5
         Me.Column5.HeaderText = "Multivision"
+        Me.Column5.MinimumWidth = 10
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         '
@@ -504,6 +515,7 @@ Partial Class mainForm
         DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(237, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.Column6.DefaultCellStyle = DataGridViewCellStyle6
         Me.Column6.HeaderText = "Stage"
+        Me.Column6.MinimumWidth = 10
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
         '
@@ -513,15 +525,18 @@ Partial Class mainForm
         DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Column7.DefaultCellStyle = DataGridViewCellStyle7
         Me.Column7.HeaderText = "Итого"
+        Me.Column7.MinimumWidth = 10
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.menuItem_department, Me.menuItem_company})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1068, 24)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(3, 1, 0, 1)
+        Me.MenuStrip1.Size = New System.Drawing.Size(642, 24)
         Me.MenuStrip1.TabIndex = 6
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -529,7 +544,7 @@ Partial Class mainForm
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.toolStripSeparator, Me.SaveToolStripMenuItem, Me.SaveAsToolStripMenuItem, Me.ExportToolStripMenuItem, Me.toolStripSeparator1, Me.PrintToolStripMenuItem, Me.PrintPreviewToolStripMenuItem, Me.toolStripSeparator2, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 22)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'OpenToolStripMenuItem
@@ -623,7 +638,7 @@ Partial Class mainForm
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UndoToolStripMenuItem, Me.RedoToolStripMenuItem, Me.toolStripSeparator3, Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.PasteToolStripMenuItem, Me.toolStripSeparator4, Me.SelectAllToolStripMenuItem})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 22)
         Me.EditToolStripMenuItem.Text = "&Edit"
         '
         'UndoToolStripMenuItem
@@ -687,7 +702,7 @@ Partial Class mainForm
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomizeToolStripMenuItem, Me.OptionsToolStripMenuItem, Me.CreateSmetaToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 22)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'CustomizeToolStripMenuItem
@@ -712,7 +727,7 @@ Partial Class mainForm
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContentsToolStripMenuItem, Me.IndexToolStripMenuItem, Me.SearchToolStripMenuItem, Me.toolStripSeparator5, Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 22)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'ContentsToolStripMenuItem
@@ -748,7 +763,7 @@ Partial Class mainForm
         '
         Me.menuItem_department.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.item_lighting, Me.item_screen, Me.item_commutation, Me.item_truss_and_motors, Me.item_construction, Me.item_sound})
         Me.menuItem_department.Name = "menuItem_department"
-        Me.menuItem_department.Size = New System.Drawing.Size(82, 20)
+        Me.menuItem_department.Size = New System.Drawing.Size(82, 22)
         Me.menuItem_department.Text = "Department"
         '
         'item_lighting
@@ -1031,7 +1046,7 @@ Partial Class mainForm
         '
         Me.menuItem_company.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.item_belimlight, Me.item_PRLighting, Me.item_blackout, Me.item_vision, Me.item_stage, Me.item_summary})
         Me.menuItem_company.Name = "menuItem_company"
-        Me.menuItem_company.Size = New System.Drawing.Size(71, 20)
+        Me.menuItem_company.Size = New System.Drawing.Size(71, 22)
         Me.menuItem_company.Text = "Company"
         '
         'item_belimlight
@@ -1079,7 +1094,7 @@ Partial Class mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1068, 736)
+        Me.ClientSize = New System.Drawing.Size(642, 406)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
