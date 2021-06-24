@@ -181,7 +181,7 @@ Public Class mainForm
         iDepartment = 0
         iCategory = 0
         writeToLabel("Lighting", sender)
-
+        Console.WriteLine(iDepartment)
     End Sub
 
     Private Sub item_strobes_Click(sender As Object, e As EventArgs) Handles item_strobes.Click
@@ -246,6 +246,7 @@ Public Class mainForm
         iDepartment = 1
         iCategory = 0
         writeToLabel("Screen", sender)
+        Console.WriteLine(iDepartment)
     End Sub
 
     Private Sub item_servers_Click(sender As Object, e As EventArgs) Handles item_servers.Click

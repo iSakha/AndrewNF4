@@ -70,3 +70,30 @@ G:\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.l
 G:\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.registrationForm.resources
 C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.passwordForm.resources
 C:\Users\Sakha\OneDrive\Visual Studio 2019\PROJECTS\DifNetFrameworks\NF4\NF4\obj\Debug\NF4.registrationForm.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\bin\Debug\NF4.exe.config
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\bin\Debug\NF4.exe
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\bin\Debug\NF4.pdb
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\bin\Debug\NF4.xml
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\bin\Debug\DotNetZip.dll
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\bin\Debug\EPPlus.dll
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\bin\Debug\DotNetZip.pdb
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\bin\Debug\DotNetZip.xml
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\bin\Debug\EPPlus.xml
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.vbproj.AssemblyReference.cache
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.editForm.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.paramForm.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.settingsForm.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.exportExcel.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.mainForm.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.loginForm.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.passwordForm.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.registrationForm.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.Resources.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.sumForm.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.smetaMainForm.resources
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.vbproj.GenerateResource.cache
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.vbproj.CoreCompileInputs.cache
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.vbproj.CopyComplete
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.exe
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.xml
+C:\Users\Sakha\Source\Repos\iSakha\AndrewNF4\obj\Debug\NF4.pdb
